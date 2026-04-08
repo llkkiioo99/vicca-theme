@@ -1,0 +1,522 @@
+{% comment %}
+  Affiliate Modal — Slide-up from bottom
+  Contains the existing affiliate registration form for "Ya soy afiliado" users.
+  Also contains the "Quiero afiliarme" new affiliate form.
+{% endcomment %}
+
+<!-- Already Affiliate Modal (Ya soy afiliado) -->
+<div id="vicca-affiliate-modal" class="vicca-modal-overlay" aria-hidden="true">
+  <div class="vicca-modal-backdrop" onclick="viccaCloseAffiliateModal()"></div>
+  <div class="vicca-modal-panel">
+    <button class="vicca-modal-close" onclick="viccaCloseAffiliateModal()" aria-label="Cerrar">&times;</button>
+
+    <div class="vicca-modal-scroll">
+      <div class="aff-modal-header">
+        <p class="aff-modal-exclusive">Este espacio es exclusivo para afiliados activos de vicca.agency</p>
+        <h2 class="aff-modal-title">Área de afiliados</h2>
+        <p class="aff-modal-subtitle">Registra a tus clientes de forma sencilla.</p>
+      </div>
+
+      <div class="aff-modal-alert">
+        <strong>Antes de registrar a tu cliente recuerda…</strong>
+        <p>Si un afiliado registra a un cliente antes de que este haya agendado una llamada con nuestro equipo, ese registro no será válido y no se abonará la comisión, aunque el cliente contrate más adelante.</p>
+        <p>Esta condición existe para garantizar un funcionamiento claro y justo del programa.</p>
+        <div class="aff-modal-norm">
+          <span>&#9635;</span> Registrar un cliente implica aceptar esta norma.
+        </div>
+      </div>
+
+      {% form 'contact', id: 'affiliate-modal-form' %}
+        {{ form.errors | default_errors }}
+        <input type="hidden" name="contact[tags]" value="affiliate_registration">
+        <textarea name="contact[body]" id="affiliate-modal-body" style="display:none;"></textarea>
+
+        <div class="aff-modal-section-title">Datos del afiliado:</div>
+
+        <label class="aff-modal-label">Nombre *</label>
+        <input type="text" id="aff-modal-name" class="aff-modal-input" required>
+
+        <label class="aff-modal-label">Correo electrónico (el mismo con el que estás registrado/a) *</label>
+        <input type="email" id="aff-modal-email" name="contact[email]" class="aff-modal-input" required>
+
+        <div class="aff-modal-section-title">
+          Datos del cliente <span style="font-weight:500; font-size:0.9em;">(asegúrate de que sean los mismos que ha indicado al registrar la llamada)</span>
+        </div>
+
+        <label class="aff-modal-label">Nombre *</label>
+        <input type="text" id="aff-modal-client-name" class="aff-modal-input" required>
+
+        <label class="aff-modal-label">Apellidos *</label>
+        <input type="text" id="aff-modal-client-lastname" class="aff-modal-input" required>
+
+        <label class="aff-modal-label">Email *</label>
+        <input type="email" id="aff-modal-client-email" class="aff-modal-input" required>
+
+        <label class="aff-modal-label">Servicio interesado *</label>
+        <select id="aff-modal-service" class="aff-modal-input">
+          <option>Programa Step Into Opportunity</option>
+        </select>
+
+        <div class="aff-modal-checkbox">
+          <input type="checkbox" id="aff-modal-confirm" required>
+          <label for="aff-modal-confirm">
+            Confirmo que este cliente ya ha agendado una llamada con <strong>vicca.agency</strong> y que el registro se realiza conforme a las condiciones del programa de afiliados.
+          </label>
+        </div>
+
+        <div class="aff-modal-footer">
+          <button type="button" class="aff-modal-back" onclick="viccaCloseAffiliateModal()">Cerrar</button>
+          <button type="submit" class="aff-modal-submit">Confirmar registro</button>
+        </div>
+      {% endform %}
+    </div>
+  </div>
+</div>
+
+<!-- New Affiliate Signup Modal (Quiero afiliarme / Quiero recibir la info) -->
+<div id="vicca-signup-modal" class="vicca-modal-overlay" aria-hidden="true">
+  <div class="vicca-modal-backdrop" onclick="viccaCloseSignupModal()"></div>
+  <div class="vicca-modal-panel">
+    <button class="vicca-modal-close" onclick="viccaCloseSignupModal()" aria-label="Cerrar">&times;</button>
+
+    <div class="vicca-modal-scroll">
+      <div class="aff-modal-header">
+        <h2 class="aff-modal-title">Quiero ser vicca<span style="color:#ff914d;">.</span>afiliate</h2>
+        <p class="aff-modal-subtitle">Rellena tus datos y te enviaremos toda la información del programa de afiliados.</p>
+      </div>
+
+      <form id="vicca-signup-form" class="vicca-signup-form" onsubmit="return viccaSubmitSignup(event)">
+        <label class="aff-modal-label">Nombre completo *</label>
+        <input type="text" id="signup-name" class="aff-modal-input" required>
+
+        <label class="aff-modal-label">Correo electrónico *</label>
+        <input type="email" id="signup-email" class="aff-modal-input" required>
+
+        <label class="aff-modal-label">Teléfono (opcional)</label>
+        <input type="tel" id="signup-phone" class="aff-modal-input">
+
+        <label class="aff-modal-label">¿Cómo nos conociste?</label>
+        <select id="signup-source" class="aff-modal-input">
+          <option value="">Seleccionar...</option>
+          <option value="redes_sociales">Redes sociales</option>
+          <option value="amigo">Un amigo/a</option>
+          <option value="google">Google</option>
+          <option value="otro">Otro</option>
+        </select>
+
+        <label class="aff-modal-label">Mensaje (opcional)</label>
+        <textarea id="signup-message" class="aff-modal-input" rows="3" style="resize:vertical; min-height:80px;"></textarea>
+
+        <div class="aff-modal-checkbox">
+          <input type="checkbox" id="signup-consent" required>
+          <label for="signup-consent">
+            Acepto recibir información sobre el programa de afiliados de <strong>vicca.agency</strong>
+          </label>
+        </div>
+
+        <div class="aff-modal-footer">
+          <button type="button" class="aff-modal-back" onclick="viccaCloseSignupModal()">Cerrar</button>
+          <button type="submit" class="aff-modal-submit" id="signup-submit-btn">Enviar</button>
+        </div>
+
+        <p id="signup-success-msg" class="aff-modal-success" style="display:none;">
+          ¡Gracias! Te hemos enviado un email con toda la información del programa de afiliados. Revisa tu bandeja de entrada.
+        </p>
+        <p id="signup-error-msg" class="aff-modal-error" style="display:none;">
+          Ha ocurrido un error. Por favor, inténtalo de nuevo.
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+  .vicca-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .vicca-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .vicca-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .vicca-modal-panel {
+    position: relative;
+    z-index: 1;
+    background: #111;
+    width: 100%;
+    max-width: 560px;
+    max-height: 90vh;
+    border-radius: 30px 30px 0 0;
+    transform: translateY(100%);
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .vicca-modal-overlay.active .vicca-modal-panel {
+    transform: translateY(0);
+  }
+
+  .vicca-modal-close {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    background: none;
+    border: none;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 2;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+
+  .vicca-modal-close:hover { opacity: 1; }
+
+  .vicca-modal-scroll {
+    overflow-y: auto;
+    padding: 48px 36px 36px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Modal inner styles */
+  .aff-modal-header { text-align: center; margin-bottom: 28px; }
+
+  .aff-modal-exclusive {
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    opacity: 0.8;
+    margin-bottom: 12px;
+  }
+
+  .aff-modal-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: #ff914d;
+    margin: 0 0 8px;
+    letter-spacing: -0.5px;
+  }
+
+  .aff-modal-subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ff914d;
+  }
+
+  .aff-modal-alert {
+    background: #ff914d;
+    color: #fff;
+    padding: 24px;
+    border-radius: 20px;
+    margin-bottom: 32px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .aff-modal-alert strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+
+  .aff-modal-alert p { margin-bottom: 14px; }
+
+  .aff-modal-norm {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+  }
+
+  .aff-modal-section-title {
+    color: #ff914d;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    margin: 28px 0 12px;
+  }
+
+  .aff-modal-label {
+    display: block;
+    color: #ff914d;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .aff-modal-input {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 12px;
+    border: none;
+    background: #fdfaf7;
+    margin-bottom: 18px;
+    color: #000;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    box-sizing: border-box;
+  }
+
+  .aff-modal-checkbox {
+    display: flex;
+    gap: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    color: #ff914d;
+    font-weight: 600;
+    margin-top: 24px;
+    align-items: flex-start;
+    line-height: 1.4;
+  }
+
+  .aff-modal-checkbox input { margin-top: 3px; transform: scale(1.2); flex-shrink: 0; }
+  .aff-modal-checkbox strong { font-weight: 800; }
+
+  .aff-modal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 36px;
+  }
+
+  .aff-modal-back {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 700;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .aff-modal-submit {
+    background: #ff914d;
+    color: #fff;
+    padding: 14px 36px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    transition: opacity 0.2s;
+  }
+
+  .aff-modal-submit:hover { opacity: 0.9; }
+
+  .aff-modal-success {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #2ecc71;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .aff-modal-error {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #e74c3c;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  @media (max-width: 600px) {
+    .vicca-modal-panel { max-width: 100%; border-radius: 24px 24px 0 0; }
+    .vicca-modal-scroll { padding: 36px 20px 28px; }
+    .aff-modal-title { font-size: 26px; }
+    .aff-modal-footer { flex-direction: column-reverse; gap: 16px; }
+    .aff-modal-submit { width: 100%; }
+    .aff-modal-back { text-align: center; }
+  }
+</style>
+
+<script>
+// Affiliate Modal (Ya soy afiliado)
+function viccaOpenAffiliateModal() {
+  var modal = document.getElementById('vicca-affiliate-modal');
+  modal.classList.add('active');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function viccaCloseAffiliateModal() {
+  var modal = document.getElementById('vicca-affiliate-modal');
+  modal.classList.remove('active');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+// Signup Modal (Quiero afiliarme / Quiero recibir la info)
+function viccaOpenSignupModal() {
+  var modal = document.getElementById('vicca-signup-modal');
+  modal.classList.add('active');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function viccaCloseSignupModal() {
+  var modal = document.getElementById('vicca-signup-modal');
+  modal.classList.remove('active');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+// Affiliate form: populate body before submit
+(function() {
+  var form = document.getElementById('affiliate-modal-form');
+  if (form) {
+    form.addEventListener('submit', function() {
+      document.getElementById('affiliate-modal-body').value =
+        "AFFILIATE REGISTRATION\n\n" +
+        "Affiliate Name: " + document.getElementById('aff-modal-name').value + "\n" +
+        "Affiliate Email: " + document.getElementById('aff-modal-email').value + "\n\n" +
+        "CLIENT DETAILS\n" +
+        "Name: " + document.getElementById('aff-modal-client-name').value + "\n" +
+        "Last Name: " + document.getElementById('aff-modal-client-lastname').value + "\n" +
+        "Email: " + document.getElementById('aff-modal-client-email').value + "\n\n" +
+        "Service: " + document.getElementById('aff-modal-service').value;
+    });
+  }
+})();
+
+// Signup form: submit via Shopify contact form + trigger email via EmailJS
+function viccaSubmitSignup(e) {
+  e.preventDefault();
+
+  var name = document.getElementById('signup-name').value;
+  var email = document.getElementById('signup-email').value;
+  var phone = document.getElementById('signup-phone').value;
+  var source = document.getElementById('signup-source').value;
+  var message = document.getElementById('signup-message').value;
+
+  var btn = document.getElementById('signup-submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+
+  var bodyText = "AFFILIATE SIGNUP REQUEST\n\n" +
+    "Name: " + name + "\n" +
+    "Email: " + email + "\n" +
+    "Phone: " + phone + "\n" +
+    "Source: " + source + "\n" +
+    "Message: " + message;
+
+  // Submit to Shopify contact form
+  var formData = new URLSearchParams();
+  formData.append('form_type', 'contact');
+  formData.append('utf8', '\u2713');
+  formData.append('contact[email]', email);
+  formData.append('contact[body]', bodyText);
+  formData.append('contact[tags]', 'affiliate_signup');
+
+  fetch('/contact', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: formData.toString()
+  }).then(function(response) {
+    // Also try EmailJS if configured (load dynamically)
+    viccaSendSignupEmail(name, email, phone, source, message);
+
+    document.getElementById('vicca-signup-form').querySelectorAll('input, select, textarea, button').forEach(function(el) {
+      el.style.display = 'none';
+    });
+    document.querySelector('.aff-modal-checkbox').style.display = 'none';
+    document.querySelector('.aff-modal-footer').style.display = 'none';
+    document.getElementById('signup-success-msg').style.display = 'block';
+  }).catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Enviar';
+    document.getElementById('signup-error-msg').style.display = 'block';
+  });
+
+  return false;
+}
+
+// EmailJS integration - configure service_id, template_id, and public_key in the Shopify admin
+function viccaSendSignupEmail(name, email, phone, source, message) {
+  // Check if EmailJS is available
+  if (typeof emailjs === 'undefined') {
+    // Try to load EmailJS dynamically
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
+    script.onload = function() {
+      emailjs.init('YOUR_EMAILJS_PUBLIC_KEY'); // Replace with actual public key
+      sendViaEmailJS(name, email, phone, source, message);
+    };
+    document.head.appendChild(script);
+  } else {
+    sendViaEmailJS(name, email, phone, source, message);
+  }
+}
+
+function sendViaEmailJS(name, email, phone, source, message) {
+  if (typeof emailjs === 'undefined') return;
+
+  emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+    to_email: email,
+    from_name: 'vicca.agency',
+    user_name: name,
+    user_email: email,
+    user_phone: phone || 'No proporcionado',
+    user_source: source || 'No especificado',
+    user_message: message || 'Sin mensaje',
+    subject: 'Información del Programa de Afiliados - vicca.agency',
+    affiliate_info: 'Gracias por tu interés en ser vicca.afiliate. Aquí tienes toda la información:\n\n' +
+      'CÓMO CONVERTIRTE EN AFILIADO:\n' +
+      '1. Regístrate rellenando el formulario (ya lo has hecho).\n' +
+      '2. Recibirás este email con los detalles del programa.\n' +
+      '3. Si todo encaja, confírmanos y quedas registrado/a como vicca.afiliate.\n\n' +
+      'CONDICIONES DEL PROGRAMA:\n' +
+      '- Comunicación honesta y clara\n' +
+      '- Recomendar solo a personas que encajen en el programa\n' +
+      '- Respetar el proceso y las normas\n' +
+      '- Valorar el trato cercano y humano\n\n' +
+      'COMISIONES:\n' +
+      '- Recibirás una comisión por cada persona que contrate Step Into Opportunity gracias a tu recomendación.\n' +
+      '- Sistema claro y sin letra pequeña.\n\n' +
+      'FORMA DE PAGO:\n' +
+      '- Comunicación directa con el equipo vicca para gestión de pagos.\n\n' +
+      '¿Tienes dudas? Responde a este email y te las resolvemos.'
+  }).catch(function(err) {
+    console.log('EmailJS error:', err);
+  });
+}
+
+// Keyboard: Escape to close modals
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    if (document.getElementById('vicca-affiliate-modal').classList.contains('active')) {
+      viccaCloseAffiliateModal();
+    }
+    if (document.getElementById('vicca-signup-modal').classList.contains('active')) {
+      viccaCloseSignupModal();
+    }
+  }
+});
+</script>

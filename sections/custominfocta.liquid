@@ -24,7 +24,7 @@
     {
       "type": "url",
       "id": "btn_left_link",
-      "label": "Button Link"
+      "label": "Button Link (fallback)"
     },
     {
       "type": "color",
@@ -77,107 +77,86 @@
     font-family: 'Poppins', sans-serif;
   }
 
-  .cta-container {
+  .cta-container-{{ section.id }} {
     max-width: 1100px;
     margin: 0 auto;
     position: relative;
   }
 
-  .cta-content {
+  .cta-content-{{ section.id }} {
     max-width: 600px;
     position: relative;
   }
 
-  .cta-heading {
+  .cta-heading-{{ section.id }} {
     font-family: 'Poppins', sans-serif;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 500;
-    line-height: 1.2;
+    line-height: 1.3;
     color: #000;
-    margin-bottom: 40px;
+    margin-bottom: 36px;
     margin-top: 0;
   }
 
-  .stars-icon {
-    position: absolute;
-    top: -10px;
-    right: -60px;
-    width: 60px;
-  }
-
-  .button-group {
+  .button-group-{{ section.id }} {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     margin-top: 20px;
   }
 
-  .pill-nav {
+  .pill-nav-{{ section.id }} {
     display: inline-flex;
     border: 2px solid #000;
-    border-radius: 50px; /* Mantiene la forma redondeada */
+    border-radius: 50px;
     overflow: hidden;
   }
 
-  .pill-nav a {
+  .pill-nav-{{ section.id }} a {
     text-decoration: none;
-    padding: 12px 25px;
-    font-size: 16px;
+    padding: 12px 28px;
+    font-size: 15px;
     font-weight: 600;
     color: #000;
     transition: 0.3s;
     text-align: center;
     font-family: 'Poppins', sans-serif;
-    background-color: {{ section.settings.accent_color }}; /* Ahora el botón principal usa el color de acento */
+    background-color: {{ section.settings.accent_color }};
+    cursor: pointer;
   }
 
-  .pill-nav a:hover {
-    filter: brightness(0.9);
-  }
+  .pill-nav-{{ section.id }} a:hover { filter: brightness(0.9); }
 
-  .sub-text {
+  .sub-text-{{ section.id }} {
     text-align: right;
     font-family: 'Poppins', sans-serif;
-    font-size: 14px;
-    margin-top: 15px;
+    font-size: 13px;
+    margin-top: 12px;
     color: #333;
     font-weight: 400;
   }
 
   @media (max-width: 768px) {
-    .cta-heading { 
-      font-size: 22px; 
-      text-align: center; 
-    }
-    .stars-icon { display: none; }
-    .button-group { justify-content: center; }
-    .pill-nav { 
-      width: 100%; 
-    }
-    .pill-nav a {
-      width: 100%;
-    }
-    .sub-text { text-align: center; }
+    .cta-heading-{{ section.id }} { font-size: 20px; text-align: center; }
+    .button-group-{{ section.id }} { justify-content: center; }
+    .pill-nav-{{ section.id }} { width: 100%; }
+    .pill-nav-{{ section.id }} a { width: 100%; padding: 14px 20px; }
+    .sub-text-{{ section.id }} { text-align: center; }
   }
 </style>
 
 <section class="custom-cta-{{ section.id }}">
-  <div class="cta-container">
-    <div class="cta-content">
-      <h2 class="cta-heading">{{ section.settings.heading_text }}</h2>
-      <div class="stars-icon">
-        <svg viewBox="0 0 24 24" fill="black" width="40">
-          <path d="M12 2L14.5 9H22L16 14L18.5 21L12 17L5.5 21L8 14L2 9H9.5L12 2Z"/>
-        </svg>
-      </div>
+  <div class="cta-container-{{ section.id }}">
+    <div class="cta-content-{{ section.id }}">
+      <h2 class="cta-heading-{{ section.id }}">{{ section.settings.heading_text }}</h2>
     </div>
 
-    <div class="button-group">
+    <div class="button-group-{{ section.id }}">
       <div class="pill-wrapper">
-        <div class="pill-nav">
-          <a href="{{ section.settings.btn_left_link }}">{{ section.settings.btn_left_text }}</a>
+        <div class="pill-nav-{{ section.id }}">
+          <a href="javascript:void(0)" onclick="viccaOpenSignupModal()">{{ section.settings.btn_left_text }}</a>
         </div>
-        <p class="sub-text">Desliza para saber más...</p>
+        <p class="sub-text-{{ section.id }}">Desliza para saber más...</p>
       </div>
     </div>
   </div>

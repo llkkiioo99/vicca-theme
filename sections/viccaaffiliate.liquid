@@ -21,7 +21,7 @@
     {
       "type": "url",
       "id": "button_1_link",
-      "label": "Enlace"
+      "label": "Enlace (fallback)"
     },
     {
       "type": "header",
@@ -36,7 +36,7 @@
     {
       "type": "url",
       "id": "button_2_link",
-      "label": "Enlace"
+      "label": "Enlace (fallback)"
     }
   ],
   "presets": [
@@ -48,9 +48,9 @@
 {% endschema %}
 
 <div class="vicca-banner-wrapper" style="background-color: {{ section.settings.bg_color }};">
-  <div class="vicca-container">
+  <div class="vicca-aff-container">
     <div class="vicca-content-grid">
-      
+
       <div class="vicca-title-area">
         <h2 class="vicca-main-title">
           <span class="serif-font">Programa de</span>
@@ -69,13 +69,13 @@
     <div class="vicca-button-container">
       <div class="vicca-button-group">
         {%- if section.settings.button_1_text != blank -%}
-          <a href="{{ section.settings.button_1_link | default: '#' }}" class="btn-orange">
+          <a href="javascript:void(0)" class="btn-orange" onclick="viccaOpenSignupModal()">
             {{ section.settings.button_1_text }}
           </a>
         {%- endif -%}
 
         {%- if section.settings.button_2_text != blank -%}
-          <a href="{{ section.settings.button_2_link | default: '#' }}" class="btn-black">
+          <a href="javascript:void(0)" class="btn-black" onclick="viccaOpenAffiliateModal()">
             {{ section.settings.button_2_text }}
           </a>
         {%- endif -%}
@@ -88,14 +88,14 @@
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&family=Poppins:wght@400;700;800;900&display=swap');
 
   .vicca-banner-wrapper {
-    padding: 100px 5%;
+    padding: 80px 5%;
     font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  .vicca-container {
+  .vicca-aff-container {
     max-width: 1100px;
     width: 100%;
   }
@@ -103,9 +103,9 @@
   .vicca-content-grid {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
-    gap: 60px;
+    gap: 50px;
     align-items: center;
-    margin-bottom: 80px;
+    margin-bottom: 60px;
   }
 
   .vicca-main-title {
@@ -116,7 +116,7 @@
 
   .vicca-main-title .serif-font {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(45px, 6vw, 60px);
+    font-size: clamp(36px, 5vw, 52px);
     display: block;
     font-weight: 400;
     margin-bottom: 10px;
@@ -124,40 +124,29 @@
 
   .vicca-main-title .bold-font {
     font-family: 'Poppins', sans-serif;
-    font-size: clamp(55px, 8vw, 110px);
+    font-size: clamp(48px, 7vw, 80px);
     font-weight: 900;
     display: block;
-    letter-spacing: -3px;
+    letter-spacing: -2px;
     text-transform: lowercase;
   }
 
-  /* --- Updated Description Styling --- */
   .vicca-description {
-    font-size: clamp(22px, 3vw, 30px); /* সাইজ বাড়ানো হয়েছে */
+    font-size: clamp(18px, 2.5vw, 24px);
     line-height: 1.4;
     color: #000;
     margin: 0;
     font-weight: 400;
   }
 
-  .vicca-description strong {
-    font-weight: 800;
-  }
-
-  .dot-orange {
-    color: #FF914D; /* কমলা রঙ */
-    font-weight: 900;
-  }
+  .vicca-description strong { font-weight: 800; }
+  .dot-orange { color: #FF914D; font-weight: 900; }
 
   .highlight-text {
-    text-decoration: underline;
-    text-underline-offset: 4px;
     font-weight: 800;
     border-bottom: 2px solid #000;
-    text-decoration: none; 
   }
 
-  /* --- Button Styling --- */
   .vicca-button-container {
     display: flex;
     justify-content: center;
@@ -169,58 +158,52 @@
     background-color: #000;
     border-radius: 100px;
     padding: 0;
-    height: 65px;
+    height: 58px;
   }
 
   .btn-orange {
     background-color: #FF914D;
     color: #fff !important;
     text-decoration: none;
-    padding: 0 50px;
+    padding: 0 40px;
     height: 100%;
     display: flex;
     align-items: center;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
     border-radius: 100px;
     transition: 0.3s ease;
     white-space: nowrap;
     z-index: 2;
+    cursor: pointer;
   }
 
   .btn-black {
     background-color: transparent;
     color: #fff !important;
     text-decoration: none;
-    padding: 0 40px 0 30px; 
+    padding: 0 35px 0 25px;
     height: 100%;
     display: flex;
     align-items: center;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
     transition: 0.3s ease;
     white-space: nowrap;
+    cursor: pointer;
   }
 
-  .btn-orange:hover {
-    background-color: #e87a3a;
-  }
+  .btn-orange:hover { background-color: #e87a3a; }
+  .btn-black:hover { opacity: 0.8; }
 
-  .btn-black:hover {
-    opacity: 0.8;
-  }
-
-  /* --- Responsive Adjustments --- */
   @media (max-width: 900px) {
     .vicca-content-grid {
       grid-template-columns: 1fr;
       text-align: center;
-      gap: 30px;
+      gap: 24px;
     }
-    
-    .vicca-main-title .bold-font {
-        letter-spacing: -1px;
-    }
+
+    .vicca-main-title .bold-font { letter-spacing: -1px; }
 
     .vicca-button-group {
       flex-direction: column;
@@ -231,15 +214,15 @@
 
     .btn-orange, .btn-black {
       width: 100%;
-      height: 60px;
+      height: 54px;
       justify-content: center;
       border-radius: 100px;
-      margin: 5px 0;
+      margin: 4px 0;
     }
-    
+
     .btn-black {
-        background-color: #000;
-        padding: 0;
+      background-color: #000;
+      padding: 0;
     }
   }
 </style>
