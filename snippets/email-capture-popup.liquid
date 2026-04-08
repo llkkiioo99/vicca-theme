@@ -1,0 +1,243 @@
+{% comment %}
+  Email Capture Pop-up
+  Triggers on exit intent (desktop) or scroll depth 60% (mobile)
+  Stores dismissal in localStorage for 7 days
+{% endcomment %}
+
+<div id="vicca-email-popup" class="vicca-popup-overlay" aria-hidden="true">
+  <div class="vicca-popup-card">
+    <button class="vicca-popup-close" onclick="viccaClosePopup()" aria-label="Cerrar">&times;</button>
+    <div class="vicca-popup-content">
+      <p class="vicca-popup-pretitle">vicca<span class="vicca-popup-dot">.</span></p>
+      <h3 class="vicca-popup-heading">No te pierdas nada</h3>
+      <p class="vicca-popup-text">Recibe información, novedades y contenido exclusivo directamente en tu correo.</p>
+      <form id="vicca-email-form" class="vicca-popup-form" onsubmit="return viccaSubmitEmail(event)">
+        <input
+          type="email"
+          name="email"
+          id="vicca-popup-email"
+          class="vicca-popup-input"
+          placeholder="Tu email"
+          required
+          autocomplete="email"
+        >
+        <button type="submit" class="vicca-popup-btn">Suscribirme</button>
+      </form>
+      <p id="vicca-popup-success" class="vicca-popup-success" style="display:none;">Gracias por suscribirte</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .vicca-popup-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+    padding: 20px;
+  }
+
+  .vicca-popup-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .vicca-popup-card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 48px 40px 40px;
+    max-width: 420px;
+    width: 100%;
+    position: relative;
+    transform: translateY(30px) scale(0.96);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+  }
+
+  .vicca-popup-overlay.active .vicca-popup-card {
+    transform: translateY(0) scale(1);
+  }
+
+  .vicca-popup-close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #999;
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px;
+    transition: color 0.2s;
+  }
+
+  .vicca-popup-close:hover { color: #000; }
+
+  .vicca-popup-content { text-align: center; }
+
+  .vicca-popup-pretitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: #000;
+    margin: 0 0 8px;
+  }
+
+  .vicca-popup-dot { color: #ff914d; }
+
+  .vicca-popup-heading {
+    font-family: 'Poppins', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: #000;
+    margin: 0 0 10px;
+    line-height: 1.2;
+  }
+
+  .vicca-popup-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+    margin: 0 0 24px;
+  }
+
+  .vicca-popup-form {
+    display: flex;
+    gap: 8px;
+  }
+
+  .vicca-popup-input {
+    flex: 1;
+    padding: 14px 18px;
+    border: 2px solid #eee;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #000;
+    outline: none;
+    transition: border-color 0.2s;
+    background: #fafafa;
+  }
+
+  .vicca-popup-input:focus { border-color: #ff914d; }
+
+  .vicca-popup-btn {
+    padding: 14px 28px;
+    background: #ff914d;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+
+  .vicca-popup-btn:hover { background: #e8803a; }
+
+  .vicca-popup-success {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #2ecc71;
+    margin-top: 16px;
+  }
+
+  @media (max-width: 480px) {
+    .vicca-popup-card { padding: 36px 24px 30px; border-radius: 20px; }
+    .vicca-popup-heading { font-size: 22px; }
+    .vicca-popup-form { flex-direction: column; }
+    .vicca-popup-btn { width: 100%; }
+  }
+</style>
+
+<script>
+(function() {
+  var POPUP_KEY = 'vicca_email_popup_dismissed';
+  var POPUP_DAYS = 7;
+  var popup = document.getElementById('vicca-email-popup');
+  if (!popup) return;
+
+  // Check if already dismissed
+  var dismissed = localStorage.getItem(POPUP_KEY);
+  if (dismissed) {
+    var dismissedAt = parseInt(dismissed, 10);
+    if (Date.now() - dismissedAt < POPUP_DAYS * 86400000) return;
+  }
+
+  var shown = false;
+
+  function showPopup() {
+    if (shown) return;
+    shown = true;
+    popup.classList.add('active');
+    popup.setAttribute('aria-hidden', 'false');
+  }
+
+  // Exit intent (desktop): mouse leaves viewport from top
+  document.addEventListener('mouseout', function(e) {
+    if (e.clientY <= 0 && !shown) showPopup();
+  });
+
+  // Scroll depth 60% (mobile/fallback)
+  var scrollHandler = function() {
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (docHeight > 0 && (scrollTop / docHeight) >= 0.6) {
+      showPopup();
+      window.removeEventListener('scroll', scrollHandler);
+    }
+  };
+  window.addEventListener('scroll', scrollHandler, { passive: true });
+
+  // Close on backdrop click
+  popup.addEventListener('click', function(e) {
+    if (e.target === popup) viccaClosePopup();
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && popup.classList.contains('active')) viccaClosePopup();
+  });
+})();
+
+function viccaClosePopup() {
+  var popup = document.getElementById('vicca-email-popup');
+  popup.classList.remove('active');
+  popup.setAttribute('aria-hidden', 'true');
+  localStorage.setItem('vicca_email_popup_dismissed', Date.now().toString());
+}
+
+function viccaSubmitEmail(e) {
+  e.preventDefault();
+  var email = document.getElementById('vicca-popup-email').value;
+  if (!email) return false;
+
+  // Submit to Shopify customer API (newsletter)
+  fetch(window.Shopify && window.Shopify.routes ? window.Shopify.routes.root + 'contact' : '/contact', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'form_type=customer&utf8=%E2%9C%93&contact%5Bemail%5D=' + encodeURIComponent(email) + '&contact%5Btags%5D=newsletter_popup'
+  }).then(function() {
+    document.getElementById('vicca-email-form').style.display = 'none';
+    document.getElementById('vicca-popup-success').style.display = 'block';
+    setTimeout(viccaClosePopup, 2500);
+  }).catch(function() {
+    document.getElementById('vicca-email-form').style.display = 'none';
+    document.getElementById('vicca-popup-success').style.display = 'block';
+    setTimeout(viccaClosePopup, 2500);
+  });
+
+  return false;
+}
+</script>
