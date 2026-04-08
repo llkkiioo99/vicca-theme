@@ -1,0 +1,259 @@
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+<div class="vicca-section-wrapper" id="section-{{ section.id }}" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+  <div class="vicca-main-container">
+    
+    <div class="vicca-background-layer">
+      {% if section.settings.wave_image != blank %}
+        <img src="{{ section.settings.wave_image | image_url: width: 2000 }}" 
+             alt="Background" 
+             class="vicca-bg-img" 
+             loading="lazy">
+      {% endif %}
+    </div>
+
+    <div class="vicca-content-container">
+      <div class="vicca-floating-card">
+        <h2 class="vicca-title">{{ section.settings.title }}</h2>
+        
+        <div class="vicca-description">
+          {{ section.settings.description | replace: 'vicca.', 'vicca<span class="dot">.</span>' }}
+        </div>
+ <div class="vicca-footer-text">
+          <span class="bold-text">{{ section.settings.footer_bold_text }}</span> 
+          {{ section.settings.footer_regular_text }}
+        </div>
+
+
+        {% if section.settings.button_label != blank %}
+          <div class="vicca-action">
+            <a href="{{ section.settings.button_link }}" class="vicca-button">
+              {{ section.settings.button_label }}
+            </a>
+          </div>
+        {% endif %}
+
+       
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+  /* Global Container Setup */
+  .vicca-section-wrapper {
+    width: 100%;
+    background-color: #FAF7F2; 
+    position: relative;
+    overflow: visible;
+    display: block;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .vicca-main-container {
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0px; 
+  }
+
+  /* Background Wave Image */
+  .vicca-background-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .vicca-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+  }
+
+  /* Responsive Card Wrapper */
+  .vicca-content-container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 900px;
+    padding: 0 20px;
+    /* Keeps the overlapping effect */
+    transform: translateY(120px); 
+  }
+
+  .vicca-floating-card {
+    background: #FAF7F2;
+    padding: 80px 60px;
+    border-radius: 50px;
+    text-align: center;
+    {% comment %} box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08); {% endcomment %}
+    {% comment %} border: 1px solid rgba(0,0,0,0.02); {% endcomment %}
+  }
+
+  /* Typography */
+  .vicca-title {
+    font-size: 42px;
+    color: #000;
+    margin: 0 0 25px 0;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .vicca-description {
+    font-size: 22px;
+    line-height: 1.5;
+    color: #111;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .vicca-description .dot {
+    color: #FF9D54;
+    font-weight: 900;
+  }
+
+  /* --- Button Styling & Hover Effects --- */
+  .vicca-action {
+    margin-bottom: 30px;
+  }
+
+  .vicca-button {
+    display: inline-block;
+    background-color: #FF9D54; /* Initial BG color */
+    color: #ffffff !important;   /* Initial Text color */
+    padding: 12px 25px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 18px;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: 2px solid #FF9D54;
+  }
+
+  .vicca-button:hover {
+    background-color: #222222; /* Changes to Dark Grey/Black */
+    color: #FF9D54 !important; /* Text changes to Orange */
+    border-color: #222222;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  .vicca-footer-text {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.4;
+  }
+
+  .bold-text {
+    font-weight: 800;
+    color: #222;
+  }
+
+  /* --- RESPONSIVE BREAKPOINTS --- */
+  @media (max-width: 1023px) {
+    .vicca-title { font-size: 34px; }
+    .vicca-description { font-size: 19px; }
+    .vicca-floating-card { padding: 60px 40px; }
+    .vicca-content-container { transform: translateY(100px); }
+  }
+
+  @media (max-width: 767px) {
+    .vicca-main-container { min-height: 400px; }
+    .vicca-floating-card { padding: 45px 25px; border-radius: 30px; }
+    .vicca-title { font-size: 28px; }
+    .vicca-description { font-size: 17px; }
+    .vicca-button { width: 100%; box-sizing: border-box; }
+    .vicca-content-container { transform: translateY(80px); }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "priceVicca Hero Card",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout Settings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 120
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "image_picker",
+      "id": "wave_image",
+      "label": "Background Wave Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "No estás solo/a."
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Si sueñas con trabajar y vivir en los Países Bajos, <strong>vicca. te guía paso a paso.</strong></p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Quiero empezar"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "footer_bold_text",
+      "label": "Footer Bold Text",
+      "default": "Sin compromiso."
+    },
+    {
+      "type": "text",
+      "id": "footer_regular_text",
+      "label": "Footer Regular Text",
+      "default": "Hablamos de tu caso y te mostramos como podemos ayudarte."
+    }
+  ],
+  "presets": [
+    {
+      "name": "priceVicca Hero Card"
+    }
+  ]
+}
+{% endschema %}

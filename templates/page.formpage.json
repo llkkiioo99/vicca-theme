@@ -1,0 +1,35 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
+    },
+    "affiliateform_fQbUFw": {
+      "type": "affiliateform",
+      "custom_css": [
+        "p {font-size: 16px !important; color: #ffff !important;}"
+      ],
+      "name": "Affiliate Registration Form",
+      "settings": {
+        "bg_color": "#ffffff",
+        "card_bg": "#000000",
+        "accent_color": "#ff8a4c",
+        "back_link": "https://vicca-agency.myshopify.com/pages/allready-vicca-affiliate"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "affiliateform_fQbUFw"
+  ]
+}

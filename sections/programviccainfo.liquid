@@ -1,0 +1,199 @@
+{%- style -%}
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+  .vicca-program-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-family: 'Poppins', sans-serif;
+    color: {{ section.settings.text_color }};
+    overflow: hidden;
+  }
+
+  .vicca-container-{{ section.id }} {
+    max-width: 1100px; /* Un poco más ancho para desktops modernos */
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .vicca-headline-{{ section.id }} {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    /* Fuente fluida: min 28px, max 42px */
+    font-size: clamp(28px, 5vw, 42px); 
+    line-height: 1.2;
+    margin-bottom: clamp(20px, 4vw, 45px);
+    text-align: center;
+    color: {{ section.settings.text_color }};
+  }
+
+  .vicca-content-{{ section.id }} {
+    max-width: 850px; /* Lectura cómoda */
+    margin: 0 auto;
+  }
+
+  .vicca-content-{{ section.id }} p {
+    font-family: 'Poppins', sans-serif;
+    /* Fuente fluida: min 15px, max 18px */
+    font-size: clamp(15px, 2vw, 18px);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    text-align: left;
+    color: {{ section.settings.text_color }};
+  }
+
+  .vicca-content-{{ section.id }} strong {
+    font-weight: 700;
+  }
+
+  .vicca-button-container-{{ section.id }} {
+    text-align: center;
+    margin: clamp(30px, 5vw, 50px) 0;
+  }
+
+  .vicca-cta-{{ section.id }} {
+    display: inline-block;
+    background-color: {{ section.settings.btn_bg }};
+    color: {{ section.settings.btn_text }} !important;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none !important;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: clamp(16px, 2vw, 19px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid {{ section.settings.btn_bg }};
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+
+  /* Efecto Hover mejorado */
+  .vicca-cta-{{ section.id }}:hover {
+    transform: translateY(-3px);
+    background-color: #000000;
+    color: #ff9e57 !important;
+    border: 2px solid #000000;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  }
+
+  /* Ajustes específicos para Móviles (Pantallas pequeñas) */
+  @media (max-width: 480px) {
+    .vicca-program-{{ section.id }} {
+      padding-top: 50px;
+      padding-bottom: 50px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .vicca-cta-{{ section.id }} {
+      width: 100%; /* Botón ancho completo en móviles pequeños */
+      box-sizing: border-box;
+      padding: 15px 20px;
+    }
+    .vicca-content-{{ section.id }} p {
+      text-align: left; /* Mantenemos izquierda o cambiamos a 'justify' si prefieres */
+    }
+  }
+
+  /* Ajustes para Laptops/Tablets */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .vicca-container-{{ section.id }} {
+      max-width: 90%;
+    }
+  }
+{%- endstyle -%}
+
+<section class="vicca-program-{{ section.id }}">
+  <div class="vicca-container-{{ section.id }}">
+    
+    <h2 class="vicca-headline-{{ section.id }}">¿Qué incluye el programa?</h2>
+
+    <div class="vicca-content-{{ section.id }}">
+      <p>En este programa <strong>siempre estarás acompañado</strong> y guiado por el equipo de <strong>vicca.agency</strong></p>
+      
+      <p>Tendrás una <strong>sesión online vía Google Meet inicial personalizada</strong> para entender tu situación, poder adaptarnos a tus preferencias y crear un plan de acción juntos. En base a eso, <strong>te ayudaremos a encontrar alojamiento</strong> en la ciudad que prefieras vivir, <strong>te ayudaremos a adaptar tu currículum y aplicar a ofertas laborales</strong> según tu nivel de inglés y experiencia, <strong>te ayudaremos con todos los primeros trámites legales</strong> que debes gestionar, seguro médico obligatorio, apertura de tu cuenta bancaria, obtener tu número de teléfono holandés <strong>y mucho más.</strong></p>
+
+      <div class="vicca-button-container-{{ section.id }}">
+        <a href="{{ section.settings.button_link }}" class="vicca-cta-{{ section.id }}">
+          Consulta sin compromiso
+        </a>
+      </div>
+
+      <p><strong>Revisaremos contigo cada detalle</strong>, asegurándonos de que todo esté en orden y evitando engaños. Además, durante el proceso podrás <strong>resolver todas tus dudas</strong> a través de WhatsApp y/o llamada con nuestro equipo que estará disponible de lunes a sábado.</p>
+
+      <p>Con este programa también obtendrás <strong>nuestra guía digital de forma gratuita.</strong></p>
+
+      <p>El transporte hasta el destino corre a vuestro cargo.</p>
+
+      <p>Manejamos <strong>plazas limitadas porque creemos en el acompañamiento real, no masivo.</strong> Nos enfocamos en cada persona, dedicando tiempo, atención y recursos para ayudarte en todo el proceso. Menos clientes, más impacto.</p>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Vicca Program Section",
+  "settings": [
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Enlace del Botón"
+    },
+    {
+      "type": "header",
+      "content": "Colores y Diseño"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Fondo de Sección",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Color de Texto",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg",
+      "label": "Fondo Botón",
+      "default": "#FF9E57"
+    },
+    {
+      "type": "color",
+      "id": "btn_text",
+      "label": "Texto Botón",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 80
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vicca Program Section"
+    }
+  ]
+}
+{% endschema %}

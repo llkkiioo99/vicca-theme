@@ -1,0 +1,139 @@
+{% style %}
+  /* Google Fonts Import */
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600&display=swap');
+
+  .custom-hero-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: {{ section.settings.bg_color }};
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .custom-hero-container-{{ section.id }} {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .custom-hero-title-{{ section.id }} {
+    font-family: "Playfair Display", serif;
+    font-size: 80px; 
+    line-height: 1.1; 
+    color: #000000;
+    margin: 0 0 30px 0;
+    
+    max-width: 550px; 
+    font-weight: 400;
+    display: inline-block;
+  }
+
+
+  .custom-hero-title-{{ section.id }} em,
+  .custom-hero-title-{{ section.id }} strong {
+    font-style: italic;
+    font-weight: 700;
+  }
+
+  .custom-hero-desc-{{ section.id }} {
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+    color: #000000;
+    margin: 0;
+    max-width: 800px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+  }
+
+  /* Mobile Responsive */
+  @media screen and (max-width: 768px) {
+    .custom-hero-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top | times: 0.6 | round }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.6 | round }}px;
+    }
+    .custom-hero-title-{{ section.id }} {
+      font-size: 42px;
+      max-width: 100%;
+    }
+    .custom-hero-desc-{{ section.id }} {
+      font-size: 16px;
+    }
+  }
+{% endstyle %}
+
+<section class="custom-hero-section-{{ section.id }}">
+  <div class="custom-hero-container-{{ section.id }}">
+    {% if section.settings.title != blank %}
+      <h2 class="custom-hero-title-{{ section.id }}">
+        {{ section.settings.title }}
+      </h2>
+    {% endif %}
+    
+    {% if section.settings.description != blank %}
+      <p class="custom-hero-desc-{{ section.id }}">
+        "{{ section.settings.description }}"
+      </p>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom Hero Text",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#fdfaf4"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Title",
+      "default": "Nothing <em>great</em> is built <strong>alone.</strong>"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Grow with us by promoting a program built on honesty, experience, and real support."
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 100
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Hero Text"
+    }
+  ]
+}
+{% endschema %}

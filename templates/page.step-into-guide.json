@@ -1,0 +1,234 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
+    },
+    "guidestep_8DyTYJ": {
+      "type": "guidestep",
+      "custom_css": [
+        "span.serif-template--27238020841858__guidestep_8DyTYJ.block {font-weight: 700; font-size: 58px; line-height: 1.1;}",
+        ".font-black {font-weight: 700; font-size: 60px;}",
+        "@media (max-width: 768px) {span.serif-template--27238020841858__guidestep_8DyTYJ.block {font-size: 60px !important; } span.font-black.block {font-size: 60px !important; } a.btn-template--27238020841858__guidestep_8DyTYJ.inline-block.font-bold.py-4.md\\:py-5.px-10.md\\:px-14.rounded-full.text-lg.w-full.md\\:w-auto {padding: 20px; }}"
+      ],
+      "name": "Custom Hero Guide",
+      "settings": {
+        "bg_color": "#fdf8f1",
+        "accent_color": "#ff914d",
+        "title_1": "Step Into",
+        "title_2": "Guide",
+        "description": "Cómo la guía digital puede ayudarte a mudarte a los Países Bajos.",
+        "button_label": "Consigue tu guía aquí",
+        "button_link": "shopify://pages/buttonstep-guide",
+        "image": "shopify://shop_images/image_31.png"
+      }
+    },
+    "guidedescription_tzan47": {
+      "type": "guidedescription",
+      "name": "Vicca Guide Section",
+      "settings": {
+        "image": "shopify://shop_images/image_33.png",
+        "background_color": "#fffdfa",
+        "padding_top": 60,
+        "padding_bottom": 75
+      }
+    },
+    "custominfosection_wyxEQ3": {
+      "type": "custominfosection",
+      "name": "Custom Info Section",
+      "settings": {
+        "padding_top": 160,
+        "padding_bottom": 100,
+        "full_header_text": "<span class='text-orange'>Es directa, clara y práctica.</span> Está llena de <span class='text-bold'>consejos y enlaces</span> directos a webs que te pueden ayudar para que tomes decisiones firmes desde el primer día y no pierdas energía en errores evitables.",
+        "main_image": "shopify://shop_images/image_32.png"
+      }
+    },
+    "rich_text_h3xJU8": {
+      "type": "rich-text",
+      "blocks": {
+        "text_UBw3Ya": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Esta guía no es simple teoría:</strong></p><p><strong>está construida desde la experiencia real.</strong></p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_UBw3Ya"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "p {font-size: 20px;}"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "container": "container",
+        "color_scheme": "footer",
+        "content_alignment": "center",
+        "padding_top": 96,
+        "padding_bottom": 100,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "imagewithtext_tkUB4j": {
+      "type": "imagewithtext",
+      "name": "Custom Experience Text",
+      "settings": {
+        "text_content": "<p>Esta guía no es simple teoría:<br/>está <strong>construida desde la experiencia real.</strong></p>",
+        "bg_color": "#fdf9f3",
+        "text_color": "#000000",
+        "content_width": 900,
+        "font_size": 28,
+        "font_size_mobile": 22,
+        "padding_top": 160,
+        "padding_bottom": 160,
+        "mobile_padding_top": 60,
+        "mobile_padding_bottom": 60
+      }
+    },
+    "carosualguide_DEtgrA": {
+      "type": "carosualguide",
+      "blocks": {
+        "book_page_79RzjJ": {
+          "type": "book_page",
+          "settings": {
+            "book_image": "shopify://shop_images/MERCHANDAISING_7_59a6fbbc-9acf-4248-bc51-724587dc20e3.png"
+          }
+        },
+        "book_page_Y63brW": {
+          "type": "book_page",
+          "settings": {
+            "book_image": "shopify://shop_images/MERCHANDAISING_2.png"
+          }
+        },
+        "book_page_QkEeKg": {
+          "type": "book_page",
+          "settings": {
+            "book_image": "shopify://shop_images/MERCHANDAISING_1_0e834d9c-824b-4c02-bc99-17aef267d5c0.png"
+          }
+        },
+        "book_page_Y9xKpx": {
+          "type": "book_page",
+          "settings": {
+            "book_image": "shopify://shop_images/MERCHANDAISING_3_7e2dabe6-45b9-472c-9f38-93485bed884f.png"
+          }
+        },
+        "book_page_WK38qt": {
+          "type": "book_page",
+          "settings": {
+            "book_image": "shopify://shop_images/MERCHANDAISING_4_488df377-c6ae-4c0b-80ae-e429b3ba644b.png"
+          }
+        },
+        "book_page_8XCDmK": {
+          "type": "book_page",
+          "settings": {
+            "book_image": "shopify://shop_images/MERCHANDAISING_5_a06da1e1-54d3-439a-9911-3bce4359cb42.png"
+          }
+        },
+        "book_page_qUQrLE": {
+          "type": "book_page",
+          "settings": {
+            "book_image": "shopify://shop_images/MERCHANDAISING_6_e6a4bd91-de4b-4bfb-a8b2-3783dc924173.png"
+          }
+        }
+      },
+      "block_order": [
+        "book_page_79RzjJ",
+        "book_page_Y63brW",
+        "book_page_QkEeKg",
+        "book_page_Y9xKpx",
+        "book_page_WK38qt",
+        "book_page_8XCDmK",
+        "book_page_qUQrLE"
+      ],
+      "custom_css": [
+        "@media (max-width: 768px) {h2.section-title {font-size: 25px !important; }}",
+        "h2.section-title {font-size: 35px !important;}"
+      ],
+      "name": "3D Book Carousel",
+      "settings": {
+        "title": "Descubre lo que encontrarás dentro de la guía...",
+        "padding_top": 60,
+        "padding_bottom": 65
+      }
+    },
+    "featuregrid_EanxXN": {
+      "type": "featuregrid",
+      "name": "Custom Features Grid",
+      "settings": {}
+    },
+    "stepguideprice_V377PW": {
+      "type": "stepguideprice",
+      "custom_css": [
+        "h3.price-display {font-size: 60px !important;}"
+      ],
+      "name": "Custom Price Section",
+      "settings": {
+        "title": "Precio",
+        "subtitle": "*Pago único",
+        "price_text": "49€",
+        "bg_color": "#fdf9f3",
+        "text_color": "#000000",
+        "price_color": "#ff9f5f",
+        "padding_top": 10,
+        "padding_bottom": 110
+      }
+    },
+    "wavesection_GjjcUL": {
+      "type": "wavesection",
+      "custom_css": [
+        "h2.guide-title {font-family: \"Poppins\", sans-serif; font-size: 39px; font-weight: 600;}",
+        "h2.guide-title {padding-bottom: 30px;}"
+      ],
+      "name": "Wave Guide Section",
+      "settings": {
+        "title": "Esta guía es para ti si...",
+        "bullet_1": "<p>Sientes que quieres mudarte a los Países Bajos, pero <strong>no sabes por dónde empezar.</strong></p>",
+        "bullet_2": "<p>Buscas <strong>tomar decisiones informadas y evitar errores costosos.</strong></p>",
+        "bullet_3": "<p><strong>Te imaginas viviendo, creciendo y trabajando</strong> en el país de los canales.</p>",
+        "image": "shopify://shop_images/Untitled_design_-_2026-02-22T114441.243.png",
+        "bg_color": "#fffdfa",
+        "padding_top": 84,
+        "padding_bottom": 60
+      }
+    },
+    "stepvicca_rxGUQQ": {
+      "type": "stepvicca",
+      "custom_css": [
+        ".guide-title {font-family: \"Playfair Display\", serif; font-size: 30px; color: #000; margin-bottom: 25px; font-weight: 400; line-height: 1.3;}"
+      ],
+      "name": "guideVicca Hero Card",
+      "settings": {
+        "bg_color": "#fdf9f3",
+        "card_width": 800,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "button_link": "shopify://pages/agenda-una-llamada"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "guidestep_8DyTYJ",
+    "guidedescription_tzan47",
+    "custominfosection_wyxEQ3",
+    "rich_text_h3xJU8",
+    "imagewithtext_tkUB4j",
+    "carosualguide_DEtgrA",
+    "featuregrid_EanxXN",
+    "stepguideprice_V377PW",
+    "wavesection_GjjcUL",
+    "stepvicca_rxGUQQ"
+  ]
+}

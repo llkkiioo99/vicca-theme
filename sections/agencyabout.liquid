@@ -1,0 +1,190 @@
+{%- style -%}
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+
+  .section-container-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: #fdfaf5; 
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .cards-wrapper-{{ section.id }} {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* ইমেজ অনুযায়ী কার্ডগুলো নিচে সমান থাকবে */
+    gap: 25px;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .card-item-{{ section.id }} {
+    position: relative;
+    flex: 1;
+    min-width: 300px;
+    max-width: 350px;
+    border-radius: 40px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    padding: 45px 35px;
+    box-sizing: border-box;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  }
+
+  /* Typography */
+  .card-text-{{ section.id }} {
+    font-family: 'Poppins', sans-serif;
+    font-size: 19px;
+    line-height: 1.35;
+    color: #333333;
+    margin: 0;
+    z-index: 2;
+    letter-spacing: -0.02em;
+  }
+
+  .card-text-{{ section.id }} strong {
+    font-weight: 800;
+  }
+
+  /* --- কার্ডের স্পেসিফিক হাইট ও টেক্সট পজিশন --- */
+
+  /* কার্ড ১: টেক্সট নিচে এবং ডান দিকে */
+  .card-1-{{ section.id }} {
+    height: 500px; 
+    justify-content: flex-end;
+    text-align: right;
+  }
+
+  /* কার্ড ২: ছোট কার্ড, টেক্সট উপরে, বাম দিকে */
+  .card-2-{{ section.id }} {
+    height: 380px; /* হাইট কমিয়ে ছোট করা হয়েছে */
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  /* কার্ড ৩: টেক্সট উপরে এবং নিচে ছড়ানো */
+  .card-3-{{ section.id }} {
+    height: 500px; 
+    justify-content: space-between;
+    text-align: left;
+    color: #ffffff;
+  }
+
+  .card-3-{{ section.id }} .card-text-{{ section.id }} {
+    color: #ffffff;
+  }
+
+  /* রেসপন্সিভ (মোবাইল ও ট্যাবের জন্য) */
+  @media (max-width: 1024px) {
+    .cards-wrapper-{{ section.id }} {
+      align-items: center; /* ট্যাবে সেন্টারে থাকলে দেখতে ভালো লাগে */
+    }
+    .card-item-{{ section.id }} {
+      height: 450px !important;
+      max-width: 45%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cards-wrapper-{{ section.id }} {
+      flex-direction: column;
+      align-items: center;
+    }
+    .card-item-{{ section.id }} {
+      width: 100%;
+      max-width: 400px;
+      height: 450px !important;
+      text-align: center !important; /* মোবাইলে সেন্টারে পড়া সহজ */
+      justify-content: center !important; 
+    }
+    .card-3-{{ section.id }} {
+        justify-content: space-between !important;
+    }
+  }
+{%- endstyle -%}
+
+<div class="section-container-{{ section.id }}">
+  <div class="cards-wrapper-{{ section.id }}">
+    
+    <div class="card-item-{{ section.id }} card-1-{{ section.id }}" 
+         style="background-image: url('{{ section.settings.bg_1 | image_url: width: 800 }}');">
+      <div class="card-text-{{ section.id }}">
+        Nuestra <strong>misión</strong> es hacer que tu mudanza a los Países Bajos sea un proceso acompañado, claro y seguro.
+      </div>
+    </div>
+
+    <div class="card-item-{{ section.id }} card-2-{{ section.id }}" 
+         style="background-image: url('{{ section.settings.bg_2 | image_url: width: 800 }}');">
+      <div class="card-text-{{ section.id }}">
+        <strong>Creamos un plan personalizado</strong> para tu aventura, ajustándonos a tus necesidades, objetivos y presupuesto.
+      </div>
+    </div>
+
+    <div class="card-item-{{ section.id }} card-3-{{ section.id }}" 
+         style="background-image: url('{{ section.settings.bg_3 | image_url: width: 800 }}');">
+      <div class="card-text-{{ section.id }}">
+        Rodéate de un<strong> equipo </strong> que combina <strong> experiencia real </strong>, cercanía y empatía para hacerte sentir acompañado.
+      </div>
+      <div class="card-text-{{ section.id }}">
+        Te apoyamos como lo haría un amigo que ya hizo el camino.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Moving Info Cards",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_1",
+      "label": "Card 1 Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_2",
+      "label": "Card 2 Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_3",
+      "label": "Card 3 Background"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 80
+    }
+  ],
+  "presets": [
+    {
+      "name": "Moving Info Cards"
+    }
+  ]
+}
+{% endschema %}

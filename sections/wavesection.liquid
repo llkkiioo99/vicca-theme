@@ -1,0 +1,222 @@
+{% comment %}
+  Custom Shopify Section: "Esta guía es para ti si..."
+  Matches the provided screenshot layout with Poppins Font.
+{% endcomment %}
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+</style>
+
+<div class="custom-guide-section section-{{ section.id }}">
+  <div class="page-width">
+    <h2 class="guide-title">{{ section.settings.title }}</h2>
+    
+    <div class="guide-container">
+      <div class="guide-content">
+        <ul class="guide-list">
+          {% if section.settings.bullet_1 != blank %}
+            <li>
+              <span class="guide-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z" fill="#ff8a5b"/>
+                </svg>
+              </span>
+              <div class="guide-text-content">{{ section.settings.bullet_1 }}</div>
+            </li>
+          {% endif %}
+          
+          {% if section.settings.bullet_2 != blank %}
+            <li>
+              <span class="guide-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z" fill="#ff8a5b"/>
+                </svg>
+              </span>
+              <div class="guide-text-content">{{ section.settings.bullet_2 }}</div>
+            </li>
+          {% endif %}
+          
+          {% if section.settings.bullet_3 != blank %}
+            <li>
+              <span class="guide-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z" fill="#ff8a5b"/>
+                </svg>
+              </span>
+              <div class="guide-text-content">{{ section.settings.bullet_3 }}</div>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+
+      <div class="guide-image">
+        {% if section.settings.image != blank %}
+          <img src="{{ section.settings.image | image_url: width: 1000 }}" alt="{{ section.settings.image.alt }}" loading="lazy">
+        {% else %}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.bg_color }};
+    font-family: 'Poppins', sans-serif; /* Aplicado a toda la sección */
+  }
+
+  .guide-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px;
+    font-weight: 800; /* Peso extra bold para el título */
+    margin-bottom: 50px;
+    text-align: center;
+    color: #000;
+    line-height: 1.2;
+  }
+
+  .guide-container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .guide-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .guide-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 25px;
+    font-size: 17px;
+    line-height: 1.6;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .guide-icon {
+    flex-shrink: 0;
+    width: 24px;
+    margin-top: 4px;
+  }
+
+  /* Estilos para el texto dentro del richtext */
+  .guide-text-content p {
+    margin: 0;
+    font-weight: 400;
+  }
+
+  .guide-list b, .guide-list strong {
+    font-weight: 700; /* Poppins Bold */
+    color: #000;
+  }
+
+  .guide-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 30px;
+    display: block;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  }
+
+  /* Desktop Adjustments */
+  @media screen and (min-width: 768px) {
+    .guide-container {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .guide-content {
+      flex: 1;
+      padding-right: 60px;
+    }
+
+    .guide-image {
+      flex: 0 0 45%; 
+    }
+
+    .guide-title {
+      font-size: 42px;
+      margin-bottom: 60px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Custom Guide Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Esta guía es para ti si..."
+    },
+    {
+      "type": "richtext",
+      "id": "bullet_1",
+      "label": "Bullet Point 1",
+      "default": "<p>Sientes que quieres mudarte a los Países Bajos, pero <b>no sabes por dónde empezar.</b></p>"
+    },
+    {
+      "type": "richtext",
+      "id": "bullet_2",
+      "label": "Bullet Point 2",
+      "default": "<p>Buscas <b>tomar decisiones informadas y evitar errores costosos.</b></p>"
+    },
+    {
+      "type": "richtext",
+      "id": "bullet_3",
+      "label": "Bullet Point 3",
+      "default": "<p><b>Te imaginas viviendo, creciendo y trabajando</b> en el país de los canales.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Side Image"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#fdfdfd"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 80
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Guide Section"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,394 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
+    },
+    "oppertunatiyhero_DjQBfX": {
+      "type": "oppertunatiyhero",
+      "custom_css": [
+        ".section-template--27238056329602__oppertunatiyhero_DjQBfX h2 span {font-family: \"Poppins\", sans-serif; font-weight: 700; display: block; font-size: 50px; margin-top: 5px;}"
+      ],
+      "name": "Step Opportunity Hero",
+      "settings": {
+        "bg_color": "#fdf8f1",
+        "title_serif": "Step Into",
+        "title_sans": "Opportunity",
+        "description": "Acompañándote en cada paso para que tu nueva vida en los Países Bajos empiece con seguridad.",
+        "button_label": "Quiero dar el paso",
+        "button_link": "shopify://pages/finout-page",
+        "btn_color": "#ff9152",
+        "image": "shopify://shop_images/image_38-Picsart-AiImageEnhancer.png"
+      }
+    },
+    "viccaintrosection_chkXCx": {
+      "type": "viccaintrosection",
+      "custom_css": [
+        ".vicca-header {text-align: center; margin-bottom: 60px; max-width: 900px; margin-left: auto; margin-right: auto;}",
+        "h2 {font-size: 28px !important;}"
+      ],
+      "name": "Vicca Intro Section",
+      "settings": {
+        "bg_color": "#fffdfa",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "image": "shopify://shop_images/image_39.png",
+        "content_text": "<p>Nuestro <strong>objetivo</strong> es facilitar tu mudanza y adaptación a los Países Bajos, combinando la gestión práctica de trámites y procesos con un apoyo cercano y humano. No tendrás que hacerlo todo solo/a: te ayudamos a resolver gestiones, entender cada paso con claridad y avanzar de forma fácil y rápida, aumentando tus posibilidades de encontrar trabajo y vivienda en menos tiempo y con menos estrés.</p>"
+      }
+    },
+    "textrich_tC4Ry9": {
+      "type": "textrich",
+      "name": "Custom Info Text",
+      "settings": {
+        "text_line_1": "Un recurso muy valioso y que todos cuidamos, es <strong>el tiempo.</strong>",
+        "text_line_2": "Es importante que lo inviertas en cosas que de verdad te aportan valor.",
+        "font_size": 24,
+        "bg_color": "#fcfaf5",
+        "text_color": "#000000",
+        "padding_top": 180,
+        "padding_bottom": 180
+      }
+    },
+    "programviccainfo_mBdfwM": {
+      "type": "programviccainfo",
+      "custom_css": [
+        "h2.vicca-headline-template--27238056329602__programviccainfo_mBdfwM {font-size: 30px;}",
+        "p {font-size: 17px !important;}"
+      ],
+      "name": "Vicca Program Info",
+      "settings": {
+        "button_link": "shopify://pages/agenda-una-llamada",
+        "bg_color": "#fffdfa",
+        "text_color": "#000000",
+        "btn_bg": "#ff9e57",
+        "btn_text": "#ffffff",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "rich_text_9KkTCw": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_z8z9BN": {
+          "type": "heading",
+          "settings": {
+            "heading": "¿Qué incluye el programa?",
+            "heading_size": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "heading_z8z9BN"
+      ],
+      "disabled": true,
+      "name": "Rich text",
+      "settings": {
+        "container": "container",
+        "color_scheme": "footer",
+        "content_alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "rich_text_qhT7Ve": {
+      "type": "rich-text",
+      "blocks": {
+        "text_hR77gT": {
+          "type": "text",
+          "settings": {
+            "text": "<p></p><p>En este programa <strong>siempre estarás acompañado</strong> y guiado por el equipo de <strong>vicca.agency</strong> </p><p>Tendrás una <strong>sesión online vía Google Meet inicial personalizada</strong> para entender tu situación, poder adaptarnos a tus preferencias y crear un plan de acción juntos. En base a eso, <strong>te ayudaremos a encontrar alojamiento </strong>en la ciudad que prefieras vivir, <strong>te ayudaremos a adaptar tu currículum y aplicar a ofertas laborales</strong> según tu nivel de inglés y experiencia, <strong>te ayudaremos con todos los primeros trámites legales</strong> que debes gestionar, seguro médico obligatorio, apertura de tu cuenta bancaria, obtener tu número de teléfono holandés <strong>y mucho más. </strong></p>"
+          }
+        },
+        "button_9kyd4g": {
+          "type": "button",
+          "settings": {
+            "button_label": "Consulta sin compromiso",
+            "button_link": "shopify://pages/agenda-una-llamada",
+            "button_style": "m-button--primary",
+            "button_size": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_hR77gT",
+        "button_9kyd4g"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "p {font-size: 20px;}"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "container": "container",
+        "color_scheme": "footer",
+        "content_alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "rich_text_dri6Th": {
+      "type": "rich-text",
+      "blocks": {
+        "text_mtWdmq": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Revisaremos contigo cada detalle, asegurándonos de que todo esté en orden y evitando engaños. Además, durante el proceso podrás resolver todas tus dudas a través de WhatsApp y/o llamada con nuestro equipo que estará disponible de lunes a sábado. Con este programa también obtendrás nuestra guía digital de forma gratuita. El transporte hasta el destino corre a vuestro cargo. Manejamos plazas limitadas porque creemos en el acompañamiento real, no masivo. Nos enfocamos en cada persona, dedicando tiempo, atención y recursos para ayudarte en todo el proceso. Menos clientes, más impacto.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_mtWdmq"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "p {font-size: 20px;}"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "container": "container",
+        "color_scheme": "footer",
+        "content_alignment": "center",
+        "padding_top": 16,
+        "padding_bottom": 40,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "programduration_wCrMYf": {
+      "type": "programduration",
+      "name": "Program Duration",
+      "settings": {
+        "title": "Duración del programa",
+        "text_1": "Este programa tiene una duración total de 4 meses. Este es el tiempo que, bajo nuestra experiencia, es más que suficiente para que puedas instalarte con trabajo, alojamiento y seguridad en tu nuevo destino.",
+        "text_2": "Un mes antes de que llegues al país, el equipo comenzará con todos los trámites para que al llegar todo fluya lo más rápido posible.",
+        "text_bold": "Si consigues alojamiento y trabajo antes del plazo de 4 meses, no nos olvidaremos de ti, aún seguirás contando con nuestro apoyo y resolveremos todas tus dudas igual."
+      }
+    },
+    "realstick_RWW37V": {
+      "type": "realstick",
+      "disabled": true,
+      "name": "Realistic Expectations",
+      "settings": {
+        "bg_color": "#fdf9f0",
+        "title": "Expectativas realistas",
+        "subheading_1": "Has de saber que no existe una fórmula mágica ni un camino rápido.",
+        "subheading_2": "Es importante entender que cada uno vive su propio proceso y este programa se adapta a cada persona.",
+        "description": "Hay quienes encuentran alojamiento más rápido y otras que tardan más tiempo. Todo depende del momento, de la cantidad de viviendas disponibles, y del propietario o inquilinos. A veces es incluso cuestión de suerte. Pero con esfuerzo mutuo y constancia, conseguirás tus objetivos lo antes posible. Nuestro papel es que nunca te rindas y que tengas las herramientas necesarias para seguir adelante."
+      }
+    },
+    "shapegallery_3UY6gL": {
+      "type": "shapegallery",
+      "disabled": true,
+      "custom_css": [
+        "h2 {font-size: 32px !important; font-weight: 600 !important;}",
+        "p {font-size: 20px;}"
+      ],
+      "name": "V-Shape Image Gallery",
+      "settings": {
+        "title": "Expectativas realistas",
+        "middle_text": "<p>Has de saber que <strong>no existe una fórmula mágica ni un camino rápido.</strong></p><p>Es importante entender que <strong>cada uno vive su propio proceso y este programa se adapta a cada persona.</strong></p>",
+        "text_content": "<p>Hay quienes encuentran <strong>alojamiento</strong> más rápido y otras que tardan más tiempo. Todo depende del momento, de la cantidad de viviendas disponibles, y del propietario o inquilinos. A veces es incluso cuestión de suerte. Pero con esfuerzo mutuo y constancia, conseguirás tus objetivos lo antes posible. Nuestro papel es que nunca te rindas y que tengas las herramientas necesarias para seguir adelante.</p>",
+        "bg_color": "#fdf9f3",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "alienmentstep_aKWU4A": {
+      "type": "alienmentstep",
+      "blocks": {
+        "image_UBdMVU": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image_43.png"
+          }
+        },
+        "image_6gMF6N": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image_45.png"
+          }
+        },
+        "image_mACGWm": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image_41.png"
+          }
+        },
+        "image_NgyHwJ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image_40.png"
+          }
+        },
+        "image_CXTj7q": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image_41.png"
+          }
+        },
+        "image_9NwmWJ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image_45.png"
+          }
+        },
+        "image_8etVme": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image_44.png"
+          }
+        },
+        "image_iLaXhD": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image_43.png"
+          }
+        },
+        "image_hYWqyX": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image_47.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_UBdMVU",
+        "image_6gMF6N",
+        "image_mACGWm",
+        "image_NgyHwJ",
+        "image_CXTj7q",
+        "image_9NwmWJ",
+        "image_8etVme",
+        "image_iLaXhD",
+        "image_hYWqyX"
+      ],
+      "name": "350 U-Curve Gallery",
+      "settings": {
+        "bg_color": "#fdf9f3",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top_negative": -50
+      }
+    },
+    "starpircetext_zzzREX": {
+      "type": "starpircetext",
+      "custom_css": [
+        ".pricing-amount-template--27238056329602__starpircetext_zzzREX {font-size: 40px;}"
+      ],
+      "name": "Custom Pricing Section",
+      "settings": {
+        "title": "Precio",
+        "description": "<p>*Puedes elegir la opción que mejor se adapte a ti: hacer un pago único o dividir el importe en dos pagos. El segundo pago debe realizarse 30 días después del primer pago.</p>",
+        "price": "890€",
+        "bg_color": "#fdf8f0",
+        "price_color": "#f2914b",
+        "padding_top_desktop": 70,
+        "padding_bottom_desktop": 95,
+        "padding_top_mobile": 45,
+        "padding_bottom_mobile": 45
+      }
+    },
+    "viccaaggencystyle_9nkKYp": {
+      "type": "viccaaggencystyle",
+      "custom_css": [
+        "h2.vicca-main-title {font-weight: 600;}"
+      ],
+      "name": "Vicca Agency Style",
+      "settings": {
+        "heading": "¿Por qué elegirnos?",
+        "subheading": "Porque no decidimos por ti, decidimos contigo.",
+        "content": "<p>No trabajamos como otras agencias ni te imponemos casa, trabajo o condiciones. No tocamos tu salario, no te mandamos a donde no quieres ir. Te acompañamos como lo haríamos con un amigo, pero con la experiencia de una agencia profesional que ya conoce el camino.</p><p>Con un equipo dedicado y experiencia probada, estamos listos para ayudarte a dar el paso hacia tu nueva vida.</p><p>¡Únete ya al grupo de personas que han confiado en vicca.agency y han logrado sus metas!</p>",
+        "image": "shopify://shop_images/image_47.png",
+        "padding_top": 84,
+        "padding_bottom": 88
+      }
+    },
+    "promosection_YnCq9X": {
+      "type": "promosection",
+      "blocks": {
+        "text_block_zqxkbU": {
+          "type": "text_block",
+          "settings": {
+            "text": "<p>Si tienes la <strong>actitud</strong>, el <strong>compromiso</strong>, la <strong>valentía</strong> y la <strong>flexibilidadpara adaptarte a lo nuevo</strong>, entonces este camino está hecho para ti.</p>"
+          }
+        },
+        "text_block_kDRrnw": {
+          "type": "text_block",
+          "settings": {
+            "text": "<p>Si estás<strong> dispuesto a dejarte asesorar y guiar</strong> por un equipo de expertos, y<strong> mirar los cambios como una oportunidad.</strong></p>"
+          }
+        },
+        "text_block_TnRwNA": {
+          "type": "text_block",
+          "settings": {
+            "text": "<p><strong>Si quieres </strong>transformar lo que puede ser el caos de mudarse a otro país, en <strong>una experiencia increíble que nunca olvidarás.</strong></p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_block_zqxkbU",
+        "text_block_kDRrnw",
+        "text_block_TnRwNA"
+      ],
+      "name": "Custom Promo Section",
+      "settings": {
+        "title": "Este programa es para ti si...",
+        "image": "shopify://shop_images/image_46.png",
+        "padding_top": 92,
+        "padding_bottom": 92
+      }
+    },
+    "oppertaunityvicca_TY8nKr": {
+      "type": "oppertaunityvicca",
+      "custom_css": [
+        ".vicca-footer-text {font-size: 23px; margin-bottom: 10px; color: #555; line-height: 1.4;}",
+        "@media (max-width: 768px) {a.vicca-button {padding: 20px; } .vicca-footer-text {font-size: 16px !important; }}",
+        "h2.vicca-title {font-size: 30px;}",
+        "p {font-size: 19px;}"
+      ],
+      "name": "opperntinyVicca Hero Card",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "title": "¿Y ahora...?",
+        "description": "<p>No improvises tu futuro. Contra antes empieces, antes estarás disfrutando de tu nueva vida.</p>",
+        "button_label": "Quiero dar el paso",
+        "button_link": "shopify://pages/finout-page",
+        "footer_bold_text": "Empecemos juntos,",
+        "footer_regular_text": "con claridad, confianza y acompañamiento real."
+      }
+    }
+  },
+  "order": [
+    "main",
+    "oppertunatiyhero_DjQBfX",
+    "viccaintrosection_chkXCx",
+    "textrich_tC4Ry9",
+    "programviccainfo_mBdfwM",
+    "rich_text_9KkTCw",
+    "rich_text_qhT7Ve",
+    "rich_text_dri6Th",
+    "programduration_wCrMYf",
+    "realstick_RWW37V",
+    "shapegallery_3UY6gL",
+    "alienmentstep_aKWU4A",
+    "starpircetext_zzzREX",
+    "viccaaggencystyle_9nkKYp",
+    "promosection_YnCq9X",
+    "oppertaunityvicca_TY8nKr"
+  ]
+}

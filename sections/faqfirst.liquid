@@ -1,0 +1,120 @@
+{% style %}
+  /* Importación de la fuente Poppins desde Google Fonts */
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+  .faq-section-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    /* Aplicamos la fuente Poppins a toda la sección */
+    font-family: 'Poppins', sans-serif;
+    color: #000;
+  }
+
+  .faq-container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+  .header-area { margin-bottom: 40px; }
+  .header-area h2 { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 36px; margin: 0; }
+  .header-area p { font-family: 'Poppins', sans-serif; font-size: 18px; color: #444; }
+
+  .faq-item {
+    border-bottom: 1px solid #ddd;
+    padding: 20px 0;
+  }
+
+  .faq-header {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600; /* Peso de fuente para la pregunta */
+    font-size: 18px;
+  }
+
+  .faq-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .faq-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    color: #333;
+    line-height: 1.6;
+    font-family: 'Poppins', sans-serif; /* Aseguramos que la respuesta también use Poppins */
+  }
+
+  .faq-item.active .faq-content {
+    max-height: 500px; 
+    margin-top: 15px;
+  }
+
+  .icon-toggle { transition: transform 0.3s; font-size: 24px; }
+  .faq-item.active .icon-toggle { transform: rotate(45deg); }
+
+  @media screen and (max-width: 768px) {
+    .faq-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+    .header-area h2 { font-size: 28px; }
+  }
+{% endstyle %}
+
+<section class="faq-section-{{ section.id }}">
+  <div class="faq-container">
+    <div class="header-area">
+      <h2>{{ section.settings.title }}</h2>
+      <p>{{ section.settings.subtitle }}</p>
+    </div>
+
+    <div class="faq-list">
+      {% for block in section.blocks %}
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <h3>{{ block.settings.question }}</h3>
+            <span class="icon-toggle">+</span>
+          </div>
+          <div class="faq-content">
+            {{ block.settings.answer }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+  function toggleFaq(element) {
+    const parent = element.parentElement;
+    parent.classList.toggle('active');
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Custom FAQ Accordion",
+  "settings": [
+    { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#fdfaf5" },
+    { "type": "text", "id": "title", "label": "Heading", "default": "Preguntas frecuentes" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Aquí tienes lo que necesitas saber." },
+    { "type": "range", "id": "padding_top_desktop", "min": 0, "max": 200, "step": 5, "unit": "px", "label": "Padding Top (Desktop)", "default": 80 },
+    { "type": "range", "id": "padding_bottom_desktop", "min": 0, "max": 200, "step": 5, "unit": "px", "label": "Padding Bottom (Desktop)", "default": 80 },
+    { "type": "range", "id": "padding_top_mobile", "min": 0, "max": 150, "step": 5, "unit": "px", "label": "Padding Top (Mobile)", "default": 40 },
+    { "type": "range", "id": "padding_bottom_mobile", "min": 0, "max": 150, "step": 5, "unit": "px", "label": "Padding Bottom (Mobile)", "default": 40 }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question" },
+        { "type": "richtext", "id": "answer", "label": "Answer" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Custom FAQ Accordion" }]
+}
+{% endschema %}

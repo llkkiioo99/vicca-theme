@@ -1,0 +1,151 @@
+{% schema %}
+{
+  "name": "About Agency Section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#fdf8f0"
+    },
+    {
+      "type": "color",
+      "id": "text_highlight",
+      "label": "Highlight Color (Orange)",
+      "default": "#f18e43"
+    },
+    {
+      "type": "color",
+      "id": "text_body",
+      "label": "Body Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading_text",
+      "label": "Heading Text (Use Bold for specific parts)",
+      "default": "<strong>Más que una agencia</strong> somos ese amigo que te acompaña paso a paso y te guía con <strong>honestidad.</strong>"
+    },
+    {
+      "type": "richtext",
+      "id": "content_body",
+      "label": "Body Content",
+      "default": "<p>Ayudamos a personas de Europa a mudarse a Holanda: sin caos, evitando errores, trámites confusos y frustraciones innecesarias.</p><p>Ya sea a través de nuestra guía práctica digital o con nuestro programa de acompañamiento personalizado, estamos contigo desde la decisión hasta tu llegada y adaptación al país.</p><p>Para conseguir todo esto, contamos con un equipo que no solo es experto, si no que ha pasado por lo mismo que tú, lo que hace que esté más involucrado y empatice más contigo.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 80
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Agency Section"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  /* Import Poppins with weights 300, 400, 600, 700 */
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+  .agency-about-section-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .container-agency-{{ section.id }} {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  /* Heading Styles */
+  .agency-heading-{{ section.id }} {
+    color: {{ section.settings.text_highlight }};
+    font-size: clamp(28px, 5vw, 35px);
+    line-height: 1.2;
+    font-weight: 400; /* Regular weight for non-bold text */
+    margin-bottom: 45px;
+    text-wrap: balance;
+  }
+
+  /* Targeting the Bold text inside the heading */
+  .agency-heading-{{ section.id }} strong, 
+  .agency-heading-{{ section.id }} b {
+    font-weight: 700; /* Makes bold parts stand out like your image */
+  }
+
+  /* Body Content Styles */
+  .agency-content-{{ section.id }} {
+    color: {{ section.settings.text_body }};
+    font-size: 17px;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  .agency-content-{{ section.id }} p {
+    margin-bottom: 25px;
+  }
+
+  /* Bold text inside body paragraphs */
+  .agency-content-{{ section.id }} strong,
+  .agency-content-{{ section.id }} b {
+    font-weight: 600;
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .agency-about-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top | divided_by: 1.5 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | divided_by: 1.5 }}px;
+    }
+    .agency-heading-{{ section.id }} {
+      margin-bottom: 30px;
+    }
+    .agency-content-{{ section.id }} {
+      font-size: 16px;
+    }
+  }
+</style>
+
+<section class="agency-about-section-{{ section.id }}">
+  <div class="container-agency-{{ section.id }}">
+    <div class="agency-heading-{{ section.id }}">
+      {{ section.settings.heading_text }}
+    </div>
+    
+    <div class="agency-content-{{ section.id }}">
+      {{ section.settings.content_body }}
+    </div>
+  </div>
+</section>

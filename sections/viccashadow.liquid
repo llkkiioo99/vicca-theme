@@ -1,0 +1,193 @@
+{% style %}
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,700;0,800;1,300&display=swap');
+
+  .vicca-agency-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    background-color: {{ section.settings.bg_color }};
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  @media screen and (min-width: 768px) {
+    .vicca-agency-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_desktop }}px;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    }
+  }
+
+  .vicca-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* Headline superior ajustado para no ser muy grande */
+  .vicca-title {
+    font-size: 24px; 
+    font-family: 'Poppins', sans-serif;
+    color: #000;
+    margin-bottom: 80px; /* Más espacio bajo el título */
+    line-height: 1.2;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+  }
+
+  .vicca-title strong {
+    font-weight: 700;
+  }
+
+  .vicca-image-wrapper {
+    display: block;
+    width: 100%;
+    max-width: 500px; /* Tamaño de imagen moderado como en la captura */
+    margin: 0 auto;
+  }
+
+  .vicca-main-img {
+    width: 100%;
+    height: auto;
+    border-radius: 30px;
+    display: block;
+  }
+
+  /* Caption con más espacio arriba */
+  .vicca-caption {
+    font-size: 13px;
+    color: #8e8e8e;
+    margin-top: 40px; 
+    font-style: italic;
+    font-weight: 300;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* Headline inferior ajustado */
+  .vicca-footer-text {
+    font-size: 22px; 
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    margin-top: 100px; /* Mucho más espacio arriba para separar del contenido */
+    color: #000;
+    letter-spacing: -0.2px;
+  }
+
+  .vicca-dot {
+    color: #f4803d;
+  }
+
+  @media screen and (max-width: 767px) {
+    .vicca-title {
+      font-size: 20px;
+      margin-bottom: 50px;
+    }
+    .vicca-footer-text {
+      font-size: 18px;
+      margin-top: 60px;
+    }
+  }
+{% endstyle %}
+
+<div class="vicca-agency-section-{{ section.id }}">
+  <div class="vicca-container">
+    
+    <h2 class="vicca-title">
+      <strong>Ayudarte</strong> no es un trámite más para nosotros:<br>
+      <strong>es un compromiso personal.</strong>
+    </h2>
+
+    <div class="vicca-image-wrapper">
+      {%- if section.settings.main_image != blank -%}
+        <img src="{{ section.settings.main_image | img_url: '1000x' }}" alt="Vicca Agency" class="vicca-main-img" loading="lazy">
+      {%- else -%}
+        {{ 'collection-1' | placeholder_svg_tag: 'vicca-main-img' }}
+      {%- endif -%}
+    </div>
+
+    <p class="vicca-caption">
+      {{ section.settings.caption_text }}
+    </p>
+
+    <h3 class="vicca-footer-text">
+      vicca<span class="vicca-dot">.</span> hoy es tu amigo en los Países Bajos
+    </h3>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Vicca Custom Section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#fdf8f3"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Main Image"
+    },
+    {
+      "type": "text",
+      "id": "caption_text",
+      "label": "Caption Text",
+      "default": "Carla y Victor | de las primeras reuniones de Vicca Agency | Rotterdam | 2023"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 120
+    },
+    {
+      "type": "header",
+      "content": "Mobile Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 80
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vicca Custom Section"
+    }
+  ]
+}
+{% endschema %}

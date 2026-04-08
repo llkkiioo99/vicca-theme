@@ -1,0 +1,157 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
+    },
+    "rich_text_figY8Q": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_gVphVa": {
+          "type": "heading",
+          "settings": {
+            "heading": "Conoce al equipo vicca.",
+            "heading_size": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "heading_gVphVa"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "h2.m-richtext__title.h2.m-scroll-trigger.animate--fade-in-up {font-weight: 600;}"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "container": "container",
+        "color_scheme": "footer",
+        "content_alignment": "center",
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "teamheader_67GjKy": {
+      "type": "teamheader",
+      "name": "Vicca Team Header",
+      "settings": {
+        "title_text": "Conoce al equipo <strong>vicca</strong>",
+        "text_color": "#000000",
+        "dot_color": "#ff8c42",
+        "bg_color": "#fdfaf5",
+        "font_size": 48,
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "viccaaboutus_wUpfcK": {
+      "type": "viccaaboutus",
+      "custom_css": [
+        ".vicca-heading {font-family: \"Poppins\", sans-serif; font-size: 36px; font-weight: 700; margin-bottom: 40px; letter-spacing: -1px; line-height: 1.2; color: #1a1a1a;}"
+      ],
+      "name": "About Us (Vicca Style)",
+      "settings": {
+        "main_title": "Como empezó todo",
+        "text_block_1": "<p>Mudarse a otro país siempre empieza con ilusión, pero también puede ser confuso si no sabes por dónde empezar. </p><p></p><p>Esa sensación de estar perdido es algo que Víctor, nuestro founder, cuando decidió mudarse a los Países Bajos por primera vez, conoció muy bien. </p><p></p><p>Pero lo que al principio fue incertidumbre, errores, trámites, gastos y multas innecesarias, con la experiencia se convirtió en estabilidad, crecimiento personal, éxito profesional. </p>",
+        "image_1": "shopify://shop_images/image_52.png",
+        "caption_name_1": "Victor | Founder y CEO",
+        "caption_sub_1": "trabajando de chef en Tholen | 2018",
+        "image_2": "shopify://shop_images/image_53.png",
+        "caption_name_2": "Carla | Co-Founder",
+        "caption_sub_2": "trabajando de chef en Rotterdam | 2022",
+        "text_block_2": "<p>Años después Carla, amiga y hoy co-founder, decidió mudarse también. Él la guió, le dio los mejores consejos y la ayudó a hacer que todo fuera más sencillo y seguro desde la honestidad.</p><p></p><p>Ambos se dieron cuenta de lo valioso que había sido para Carla el contar con la ayuda de Victor y  de que lo que había funcionado entre ellos podía cambiar la experiencia de muchas más personas. Y así nació<strong> vicca.agency</strong></p>",
+        "bottom_text": "<p>Y es porque nosotros ya pasamos por todo el proceso — y también por todo lo difícil — es que hoy te queremos acompañar de verdad. Desde la empatía y el compromiso, con honestidad, y también con muchísimas ganas.</p>",
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "viccashadow_tYxwtQ": {
+      "type": "viccashadow",
+      "name": "Vicca Custom Section",
+      "settings": {
+        "bg_color": "#fdf8f3",
+        "main_image": "shopify://shop_images/image_54.png",
+        "caption_text": "Carla y Victor | de las primeras reuniones de Vicca Agency | Rotterdam | 2023",
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "teamsection_7GqtzY": {
+      "type": "teamsection",
+      "blocks": {
+        "team_member_fGDN4d": {
+          "type": "team_member",
+          "settings": {
+            "image": "shopify://shop_images/image_55.png",
+            "name": "Victor Carbó",
+            "role": "CEO y fundador",
+            "bio": "<p>Víctor tiene una energía que contagia, una visión que siempre va un paso por delante y una pasión sincera por todo lo que hace. Cuida cada detalle y busca siempre la manera de ayudar a los demás desde el corazón, ya sea en vicca o su vida personal. Para él no existen los límites, solo los caminos para llegar. Su espíritu emprendedor y su compromiso son la razón por la que vicca sigue creciendo cada día.<br/><br/></p>"
+          }
+        },
+        "team_member_yWkaUe": {
+          "type": "team_member",
+          "settings": {
+            "image": "shopify://shop_images/image_56.png",
+            "name": "Carla Sáez",
+            "role": "Co-fundadora",
+            "bio": "<p>Carla destaca por su mente brillante, su perfeccionismo (del bueno) y una forma de trabajar que inspira y arrastra. Admiro profundamente su entrega, su sensibilidad y esa capacidad de hacerlo todo bien, incluso cuando no lo ve. Gracias por dar siempre más de lo que se ve y por hacerlo con tanta elegancia, corazón y magia.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "team_member_fGDN4d",
+        "team_member_yWkaUe"
+      ],
+      "name": "Custom Team Section",
+      "settings": {
+        "bg_color": "#fdfaf5",
+        "heading": "Una gran historia empieza con un gran equipo",
+        "subheading": "<p>Todo lo que hacemos en <strong>vicca.</strong> nace de la confianza y la experiencia compartida. Por eso <strong>quisimos presentarnos de una manera distinta</strong>. Porque a veces, la mejor forma de conocernos es a través de los ojos del otro.</p>",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_top_mb": 20,
+        "padding_bottom_mb": 20
+      }
+    },
+    "viccaresponsive_VnYAni": {
+      "type": "viccaresponsive",
+      "disabled": true,
+      "name": "Custom BG Hero",
+      "settings": {
+        "image": "shopify://shop_images/abstrack.jpg",
+        "title": "",
+        "subtext": "",
+        "text_color": "#333333",
+        "btn_label": "",
+        "btn_link": "",
+        "btn_bg": "#000000",
+        "btn_text": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_figY8Q",
+    "teamheader_67GjKy",
+    "viccaaboutus_wUpfcK",
+    "viccashadow_tYxwtQ",
+    "teamsection_7GqtzY",
+    "viccaresponsive_VnYAni"
+  ]
+}

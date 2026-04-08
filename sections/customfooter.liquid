@@ -1,0 +1,187 @@
+{% schema %}
+{
+  "name": "Vicca Hero Card",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color_top",
+      "label": "Card Color",
+      "default": "#FAF7F2"
+    },
+    {
+      "type": "color",
+      "id": "bg_color_bottom",
+      "label": "Bottom Section Color",
+      "default": "#fcf9f3"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "No estás solo/a."
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Si sueñas con trabajar y vivir en los Países Bajos, <strong>vicca. te guía paso a paso.</strong>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Quiero empezar"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "footer_text",
+      "label": "Footer Text",
+      "default": "<strong>Sin compromiso.</strong> Hablamos de tu caso y te mostramos como podemos ayudarte."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vicca Hero Card"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  /* The main container - background color you requested */
+  .vicca-outer-wrapper {
+    background-color: {{ section.settings.bg_color_bottom }};
+    padding: 60px 0 0 0; /* Space at top */
+    margin: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Fixed width container to keep the card from being full-screen width */
+  .vicca-inner-max-width {
+    max-width: 1100px;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  /* THE CARD - Now includes the shadow as requested */
+  .vicca-card-container {
+    background-color: {{ section.settings.bg_color_top }};
+    padding: 80px 40px 100px 40px;
+    text-align: center;
+    /* Rounded bottom corners */
+    border-bottom-left-radius: 60px;
+    border-bottom-right-radius: 60px;
+    /* Soft shadow applied to the card body */
+    box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.08); 
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .vicca-title {
+    font-family: serif; 
+    font-size: 34px;
+    font-weight: 700;
+    color: #000;
+    margin: 0 0 30px 0;
+  }
+
+  .vicca-subtitle {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 26px;
+    line-height: 1.4;
+    color: #000;
+    margin: 0 auto 40px auto;
+    max-width: 750px;
+    letter-spacing: -0.5px;
+  }
+
+  .vicca-subtitle strong {
+    font-weight: 800;
+  }
+
+  /* Button stays clean and flat to match the floating card style */
+  .vicca-button-main {
+    background-color: #FF964F; 
+    color: #ffffff !important;
+    padding: 16px 50px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 18px;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 50px;
+    transition: all 0.3s ease;
+  }
+
+  .vicca-button-main:hover {
+    background-color: #ff8533;
+    transform: scale(1.02);
+  }
+
+  .vicca-footer-info {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    color: #888;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  /* The Black Bottom Area from your image */
+  .vicca-bottom-black {
+    background-color: #000000;
+    height: 150px; /* Controls how much black shows at the bottom */
+    width: 100%;
+    margin-top: -100px; /* Pulls the black section up behind the white card */
+  }
+
+  @media (max-width: 768px) {
+    .vicca-card-container {
+      padding: 50px 20px 70px 20px;
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+    }
+    .vicca-title { font-size: 26px; }
+    .vicca-subtitle { font-size: 20px; }
+  }
+</style>
+
+<div class="vicca-outer-wrapper">
+  <div class="vicca-inner-max-width">
+    <div class="vicca-card-container">
+      
+      {% if section.settings.heading != blank %}
+        <h2 class="vicca-title">{{ section.settings.heading }}</h2>
+      {% endif %}
+
+      {% if section.settings.subheading != blank %}
+        <div class="vicca-subtitle">
+          {{ section.settings.subheading }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.button_label != blank %}
+        <a href="{{ section.settings.button_link }}" class="vicca-button-main">
+          {{ section.settings.button_label }}
+        </a>
+      {% endif %}
+
+      {% if section.settings.footer_text != blank %}
+        <div class="vicca-footer-info">
+          {{ section.settings.footer_text }}
+        </div>
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+

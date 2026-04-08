@@ -1,0 +1,159 @@
+{%- style -%}
+  .vicca-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.bg_color }};
+    font-family: sans-serif;
+  }
+
+  .vicca-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    /* Cambiado de 'align-items: center' a 'align-items: flex-start' para alinear a la izquierda */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .vicca-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #000;
+    /* Asegura que el título también esté alineado a la izquierda */
+    text-align: left; 
+  }
+
+  .vicca-dot {
+    color: {{ section.settings.dot_color }};
+  }
+
+  .vicca-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    width: 100%;
+  }
+
+  .vicca-list li {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    color: #333;
+    display: block;
+  }
+
+  @media screen and (max-width: 749px) {
+    .vicca-title { font-size: 1.8rem; }
+    .vicca-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="vicca-section-{{ section.id }}">
+  <div class="vicca-container">
+    <h2 class="vicca-title">
+      {{ section.settings.title_part1 }}<span class="vicca-dot">.</span>{{ section.settings.title_part2 }}
+    </h2>
+    
+    <ul class="vicca-list">
+      {%- if section.settings.text_1 != blank -%}<li>{{ section.settings.text_1 }}</li>{%- endif -%}
+      {%- if section.settings.text_2 != blank -%}<li>{{ section.settings.text_2 }}</li>{%- endif -%}
+      {%- if section.settings.text_3 != blank -%}<li>{{ section.settings.text_3 }}</li>{%- endif -%}
+      {%- if section.settings.text_4 != blank -%}<li>{{ section.settings.text_4 }}</li>{%- endif -%}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Vicca Affiliate Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title_part1",
+      "label": "Title before dot",
+      "default": "¿Qué te llevas como vicca"
+    },
+    {
+      "type": "text",
+      "id": "title_part2",
+      "label": "Title after dot",
+      "default": "afiliate?"
+    },
+    {
+      "type": "color",
+      "id": "dot_color",
+      "label": "Dot Color",
+      "default": "#FF8C00"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#F9F7F2"
+    },
+    {
+      "type": "header",
+      "content": "List Content"
+    },
+    {
+      "type": "textarea",
+      "id": "text_1",
+      "label": "Line 1",
+      "default": "Comisiones por cada persona que contrate Step Into Opportunity gracias a tu recomendación"
+    },
+    {
+      "type": "textarea",
+      "id": "text_2",
+      "label": "Line 2",
+      "default": "Un sistema claro y sin letra pequeña"
+    },
+    {
+      "type": "textarea",
+      "id": "text_3",
+      "label": "Line 3",
+      "default": "Comunicación directa con el equipo vicca."
+    },
+    {
+      "type": "textarea",
+      "id": "text_4",
+      "label": "Line 4",
+      "default": "Formar parte de un proyecto en crecimiento, con valores claros"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vicca Affiliate Section"
+    }
+  ]
+}
+{% endschema %}

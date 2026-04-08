@@ -1,0 +1,111 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
+    },
+    "sectioninfo_wUbWaY": {
+      "type": "sectioninfo",
+      "name": "Custom Info Section",
+      "settings": {
+        "bg_color": "#fdf9f3",
+        "accent_color": "#ff8a5b"
+      }
+    },
+    "opertunattiypage_JN6eXN": {
+      "type": "opertunattiypage",
+      "name": "Honesty Message Section",
+      "settings": {
+        "bg_color": "#fdf9f3",
+        "accent_color": "#ff8a5b",
+        "heading": "Sé honesto/a.",
+        "main_text": "La transparencia es clave\n primero contigo mismo/a, \ndespués con nosotros.",
+        "padding_top": 0,
+        "padding_bottom": 100
+      }
+    },
+    "checklist_9rTcJj": {
+      "type": "checklist",
+      "blocks": {
+        "requirement_WeGCBb": {
+          "type": "requirement",
+          "settings": {
+            "text": "<p>Nivel mínimo de <strong>inglés</strong> B1, o <strong>capacidad para mantener una conversación</strong> básica (aunque no tengas titulación oficial).</p>"
+          }
+        },
+        "requirement_jz3iCd": {
+          "type": "requirement",
+          "settings": {
+            "text": "<p><strong>Pasaporte o DNI vigente de la Unión Europea.</strong></p>"
+          }
+        },
+        "requirement_cfaxXL": {
+          "type": "requirement",
+          "settings": {
+            "text": "<p><strong>Ahorros disponibles entre 2.000€ y 3.500 €,</strong> para cubrir los primeros gastos al llegar al país.</p>"
+          }
+        },
+        "requirement_6qUieL": {
+          "type": "requirement",
+          "settings": {
+            "text": "<p>Una idea aproximada de la fecha de <strong>cuando mudarte</strong>.</p>"
+          }
+        },
+        "requirement_gajH7B": {
+          "type": "requirement",
+          "settings": {
+            "text": "<p><strong>Flexibilidad</strong> para trabajar en distintos sectores, especialmente en áreas como hostelería, donde hay más oportunidades.</p>"
+          }
+        },
+        "requirement_NGTfhE": {
+          "type": "requirement",
+          "settings": {
+            "text": "<p><strong>Compromiso real con el programa</strong> y con aprovechar al máximo cada fase del proceso.</p>"
+          }
+        },
+        "requirement_ywErh6": {
+          "type": "requirement",
+          "settings": {
+            "text": "<p><strong>Actitud positiva y motivación para salir de tu zona de confort, adaptarte y crecer personal y profesionalmente.</strong></p>"
+          }
+        }
+      },
+      "block_order": [
+        "requirement_WeGCBb",
+        "requirement_jz3iCd",
+        "requirement_cfaxXL",
+        "requirement_6qUieL",
+        "requirement_gajH7B",
+        "requirement_NGTfhE",
+        "requirement_ywErh6"
+      ],
+      "custom_css": [
+        ".btn-next {padding: 16px 45px;}",
+        "a.btn-next {padding: 12px 25px !important;}"
+      ],
+      "name": "Requirements Checklist",
+      "settings": {
+        "back_label": "Atrás",
+        "back_link": "shopify://pages/step-into-opportunity",
+        "next_label": "Quiero dar el paso",
+        "next_link": "shopify://pages/agenda-una-llamada"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "sectioninfo_wUbWaY",
+    "opertunattiypage_JN6eXN",
+    "checklist_9rTcJj"
+  ]
+}

@@ -1,0 +1,252 @@
+{%- style -%}
+.affiliate-section-{{ section.id }} {
+  background-color: {{ section.settings.bg_color }};
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+  font-family: 'Inter', Helvetica, Arial, sans-serif;
+}
+
+.aff-container {
+  max-width: 520px;
+  width: 100%;
+  background: {{ section.settings.card_bg }};
+  border-radius: 50px;
+  padding: 60px 45px;
+  color: #ffffff;
+}
+
+/* Header Styles */
+.aff-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.aff-header p:first-child {
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #ffffff;
+  opacity: 0.9;
+}
+
+.aff-header h2 {
+  color: {{ section.settings.accent_color }};
+  font-size: 48px;
+  margin: 0 0 10px 0;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.aff-header p:last-child {
+  font-size: 18px;
+  font-weight: 800;
+  color: {{ section.settings.accent_color }};
+}
+
+/* Alert Box */
+.aff-alert-box {
+  background-color: {{ section.settings.accent_color }};
+  color: #ffffff;
+  padding: 28px;
+  border-radius: 24px;
+  margin-bottom: 45px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.aff-alert-box strong {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 15px;
+  font-weight: 800;
+}
+
+.aff-alert-box p {
+  margin-bottom: 18px;
+}
+
+.aff-alert-box .norm-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+}
+
+/* Form Labels & Subtitles */
+.aff-subtitle {
+  color: {{ section.settings.accent_color }};
+  font-size: 19px;
+  font-weight: 800;
+  margin: 40px 0 15px;
+}
+
+.aff-label {
+  display: block;
+  color: {{ section.settings.accent_color }};
+  margin-bottom: 10px;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+/* Inputs */
+.aff-input {
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: 12px;
+  border: none;
+  background: #fdfaf7;
+  margin-bottom: 22px;
+  color: #000;
+  font-size: 15px;
+  box-sizing: border-box;
+  font-weight: 500;
+}
+
+/* Checkbox Section */
+.aff-checkbox-wrap {
+  display: flex;
+  gap: 15px;
+  font-size: 14px;
+  margin-top: 30px;
+  align-items: flex-start;
+  color: {{ section.settings.accent_color }};
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.aff-checkbox-wrap input {
+  margin-top: 5px;
+  transform: scale(1.2);
+}
+
+.aff-checkbox-wrap strong {
+  font-weight: 900;
+}
+
+/* Footer Buttons */
+.aff-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 55px;
+}
+
+.aff-back {
+  font-size: 14px;
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.aff-btn-submit {
+  background-color: {{ section.settings.accent_color }};
+  color: #ffffff;
+  padding: 16px 40px;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 15px;
+  transition: opacity 0.3s;
+}
+
+.aff-btn-submit:hover {
+  opacity: 0.9;
+}
+{%- endstyle -%}
+
+<div class="affiliate-section-{{ section.id }}">
+  <div class="aff-container">
+
+    <div class="aff-header">
+      <p>Este espacio es exclusivo para afiliados activos de vicca.agency</p>
+      <h2>Área de afiliados</h2>
+      <p>Registra a tus clientes de forma sencilla.</p>
+    </div>
+
+    <div class="aff-alert-box">
+      <strong>Antes de registrar a tu cliente recuerda…</strong>
+      <p>Si un afiliado registra a un cliente antes de que este haya agendado una llamada con nuestro equipo, ese registro no será válido y no se abonará la comisión, aunque el cliente contrate más adelante.</p>
+      <p>Esta condición existe para garantizar un funcionamiento claro y justo del programa.</p>
+      <div class="norm-check">
+        <span>▣</span> Registrar un cliente implica aceptar esta norma.
+      </div>
+    </div>
+
+    {% form 'contact', id: 'affiliate-registration-form' %}
+      {{ form.errors | default_errors }}
+
+      <input type="hidden" name="contact[tags]" value="affiliate_registration">
+      <textarea name="contact[body]" id="affiliate-body" style="display:none;"></textarea>
+
+      <div class="aff-subtitle">Datos del afiliado:</div>
+
+      <label class="aff-label">Nombre *</label>
+      <input type="text" id="aff-name" class="aff-input" required>
+
+      <label class="aff-label">Correo electrónico (el mismo con el que estás registrado/a) *</label>
+      <input type="email" id="aff-email" name="contact[email]" class="aff-input" required>
+
+      <div class="aff-subtitle">
+        Datos del cliente <span style="font-weight:600; font-size: 0.95em;">(asegúrate de que sean los mismos que ha indicado al registrar la llamada)</span>
+      </div>
+
+      <label class="aff-label">Nombre *</label>
+      <input type="text" id="client-name" class="aff-input" required>
+
+      <label class="aff-label">Apellidos *</label>
+      <input type="text" id="client-lastname" class="aff-input" required>
+
+      <label class="aff-label">Email *</label>
+      <input type="email" id="client-email" class="aff-input" required>
+
+      <label class="aff-label">Servicio interesado *</label>
+      <select id="service" class="aff-input">
+        <option>Programa Step Into Opportunity</option>
+      </select>
+
+      <div class="aff-checkbox-wrap">
+        <input type="checkbox" required>
+        <label>
+          Confirmo que este cliente ya ha agendado una llamada con <strong>vicca.agency</strong> y que el registro se realiza conforme a las condiciones del programa de afiliados.
+        </label>
+      </div>
+
+      <div class="aff-footer">
+        <a href="{{ section.settings.back_link }}" class="aff-back">Atrás</a>
+        <button type="submit" class="aff-btn-submit">Confirmar registro</button>
+      </div>
+    {% endform %}
+  </div>
+</div>
+
+<script>
+document.getElementById('affiliate-registration-form')
+  .addEventListener('submit', function () {
+    document.getElementById('affiliate-body').value =
+      "AFFILIATE REGISTRATION\n\n" +
+      "Affiliate Name: " + document.getElementById('aff-name').value + "\n" +
+      "Affiliate Email: " + document.getElementById('aff-email').value + "\n\n" +
+      "CLIENT DETAILS\n" +
+      "Name: " + document.getElementById('client-name').value + "\n" +
+      "Last Name: " + document.getElementById('client-lastname').value + "\n" +
+      "Email: " + document.getElementById('client-email').value + "\n\n" +
+      "Service: " + document.getElementById('service').value;
+});
+</script>
+
+{% schema %}
+{
+  "name": "Affiliate Registration",
+  "settings": [
+    { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#000000" },
+    { "type": "color", "id": "card_bg", "label": "Form Background", "default": "#000000" },
+    { "type": "color", "id": "accent_color", "label": "Accent Color", "default": "#ff8a4c" },
+    { "type": "url", "id": "back_link", "label": "Atrás button link" }
+  ],
+  "presets": [
+    { "name": "Affiliate Registration Form" }
+  ]
+}
+{% endschema %}

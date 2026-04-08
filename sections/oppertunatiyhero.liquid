@@ -1,0 +1,191 @@
+{%- style -%}
+  /* Import Fonts */
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap');
+
+  .section-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    padding: 80px 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .section-{{ section.id }} .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    position: relative;
+  }
+
+  /* Text Content */
+  .section-{{ section.id }} .text-content {
+    flex: 1;
+    position: relative;
+    z-index: 2;
+  }
+
+  .section-{{ section.id }} h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    line-height: 1.1;
+    color: #000;
+    margin: 0 0 20px 0;
+  }
+
+  .section-{{ section.id }} h2 span {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    display: block;
+    font-size: 64px;
+    margin-top: 5px;
+  }
+
+  .section-{{ section.id }} p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #333;
+    max-width: 450px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+
+  /* Button Style */
+  .section-{{ section.id }} .btn {
+    background-color: {{ section.settings.btn_color }};
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+
+  .section-{{ section.id }} .btn:hover {
+    background:#000000;
+    color:#fe8f46;
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+  }
+
+  /* Image Side */
+  .section-{{ section.id }} .image-wrapper {
+    flex: 1;
+    position: relative;
+  }
+
+  .section-{{ section.id }} .image-wrapper img {
+    width: 100%;
+    height: auto;
+    border-radius: 40px;
+    display: block;
+    object-fit: cover;
+  }
+
+  /* Tablet & Mobile Responsive */
+  @media (max-width: 1024px) {
+    .section-{{ section.id }} h2 { font-size: 45px; }
+    .section-{{ section.id }} h2 span { font-size: 50px; }
+  }
+
+  @media (max-width: 768px) {
+    .section-{{ section.id }} .container {
+      flex-direction: column;
+      text-align: center;
+    }
+    .section-{{ section.id }} h2 { font-size: 40px; }
+    .section-{{ section.id }} h2 span { font-size: 45px; }
+    .section-{{ section.id }} p { margin: 0 auto 30px; }
+    .section-{{ section.id }} .image-wrapper { width: 100%; margin-top: 40px; }
+  }
+{%- endstyle -%}
+
+<section class="section-{{ section.id }}">
+  <div class="container">
+    
+    <div class="text-content">
+      <h2>
+        {{ section.settings.title_serif }}
+        <span>{{ section.settings.title_sans }}</span>
+      </h2>
+      <p>{{ section.settings.description }}</p>
+      
+      {% if section.settings.button_label != blank %}
+        <a href="{{ section.settings.button_link }}" class="btn">{{ section.settings.button_label }}</a>
+      {% endif %}
+    </div>
+
+    <div class="image-wrapper">
+      {% if section.settings.image != blank %}
+        {{ section.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy' }}
+      {% else %}
+        <img src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-lifestyle-1.png" alt="placeholder">
+      {% endif %}
+    </div>
+    
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Step Opportunity Hero",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FDF9F3"
+    },
+    {
+      "type": "text",
+      "id": "title_serif",
+      "label": "Title (Playfair Font)",
+      "default": "Step Into"
+    },
+    {
+      "type": "text",
+      "id": "title_sans",
+      "label": "Title (Poppins Bold)",
+      "default": "Opportunity"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Acompañándote en cada paso para que tu nueva vida en los Países Bajos empiece con seguridad."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Quiero dar el paso"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color",
+      "id": "btn_color",
+      "label": "Button Color",
+      "default": "#FF9152"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Main Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Step Opportunity Hero"
+    }
+  ]
+}
+{% endschema %}

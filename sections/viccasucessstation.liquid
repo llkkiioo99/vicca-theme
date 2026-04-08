@@ -1,0 +1,163 @@
+{%- style -%}
+  /* Import Poppins Font */
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+  .vicca-success-container {
+    background-color: #fdfaf4; 
+    padding: 80px 15px; /* Responsive padding */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh; /* Ensures it looks good on tall desktop screens */
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .vicca-card {
+    background-color: #ffffff;
+    border-radius: 30px;
+    padding: 80px 60px;
+    max-width: 900px; /* Better width for Desktop */
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    margin: 0 auto;
+  }
+
+  /* Font Sizes for Desktop */
+  .vicca-title-small {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .vicca-headline {
+    font-size: 2.2rem; /* Larger for Desktop */
+    font-weight: 700;
+    line-height: 1.3;
+    color: #000000;
+    margin-bottom: 25px;
+  }
+
+  .vicca-headline p { margin: 0; } /* Reset Shopify RichText p tag */
+
+  .vicca-subtext {
+    font-size: 1.1rem;
+    color: #555555;
+    margin-bottom: 40px;
+    font-weight: 400;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .vicca-footer-text {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ff8a5c; 
+    margin-bottom: 5px;
+  }
+
+  .vicca-brand {
+    font-weight: 700;
+    color: #000000;
+    font-size: 1.1rem;
+    text-transform: lowercase;
+  }
+
+  /* Laptop Responsive (1024px) */
+  @media (max-width: 1199px) {
+    .vicca-card {
+      padding: 60px 40px;
+      max-width: 80%;
+    }
+    .vicca-headline { font-size: 1.8rem; }
+  }
+
+  /* Tablet Responsive (768px) */
+  @media (max-width: 989px) {
+    .vicca-success-container { padding: 60px 20px; }
+    .vicca-card { padding: 50px 30px; max-width: 100%; }
+    .vicca-headline { font-size: 1.6rem; }
+  }
+
+  /* Mobile Responsive (480px and below) */
+  @media (max-width: 480px) {
+    .vicca-success-container { padding: 40px 10px; }
+    .vicca-card { 
+      padding: 40px 20px; 
+      border-radius: 20px; /* Softer corners for mobile */
+    }
+    .vicca-title-small { font-size: 1rem; margin-bottom: 15px; }
+    .vicca-headline { font-size: 1.3rem; margin-bottom: 20px; }
+    .vicca-subtext { font-size: 0.95rem; margin-bottom: 30px; }
+    .vicca-footer-text { font-size: 1.1rem; }
+    .vicca-brand { font-size: 1rem; }
+  }
+{%- endstyle -%}
+
+<section class="vicca-success-container">
+  <div class="vicca-card">
+    <div class="vicca-title-small">{{ section.settings.top_title }}</div>
+    
+    <div class="vicca-headline">
+      {{ section.settings.main_headline }}
+    </div>
+
+    <div class="vicca-subtext">
+      {{ section.settings.subtext }}
+    </div>
+
+    <div class="vicca-footer-text">
+      {{ section.settings.footer_greeting }}
+    </div>
+    
+    <div class="vicca-brand">
+      {{ section.settings.brand_name }}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Vicca Success Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "top_title",
+      "label": "Top Title",
+      "default": "Reunión agendada con éxito."
+    },
+    {
+      "type": "richtext",
+      "id": "main_headline",
+      "label": "Main Headline",
+      "default": "<p>¡Enhorabuena, ya has dado el primer paso hacia tu nueva vida en los Países Bajos!</p>"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Te hemos enviado un correo con todos los detalles de la cita."
+    },
+    {
+      "type": "text",
+      "id": "footer_greeting",
+      "label": "Footer Greeting",
+      "default": "¡Nos vemos pronto!"
+    },
+    {
+      "type": "text",
+      "id": "brand_name",
+      "label": "Brand Name",
+      "default": "El equipo vicca."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vicca Success Section"
+    }
+  ]
+}
+{% endschema %}

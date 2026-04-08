@@ -1,0 +1,186 @@
+{%- style -%}
+  /* Google Font Import - যদি আপনার থিমে আগে থেকে না থাকে তবেই এটি লাগবে */
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&display=swap');
+
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    background-color: {{ section.settings.bg_color }};
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_desktop }}px;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    }
+  }
+
+  .pricing-wrapper-{{ section.id }} {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    font-family: 'Poppins', sans-serif; /* Full section using Poppins */
+  }
+
+  /* Headline */
+  .pricing-title-{{ section.id }} {
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #000;
+    letter-spacing: -0.02em;
+    margin-top: 0; /* Default margin fix */
+  }
+
+  /* Description */
+  .pricing-desc-{{ section.id }}, 
+  .pricing-desc-{{ section.id }} p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 25px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 400;
+  }
+
+  /* Price */
+  .pricing-amount-{{ section.id }} {
+    font-family: 'Poppins', sans-serif;
+    font-size: 52px;
+    font-weight: 800;
+    color: {{ section.settings.price_color }};
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .pricing-title-{{ section.id }} {
+      font-size: 42px;
+    }
+    .pricing-desc-{{ section.id }} {
+      font-size: 18px;
+    }
+    .pricing-amount-{{ section.id }} {
+      font-size: 80px; 
+    }
+  }
+{%- endstyle -%}
+
+<section class="section-{{ section.id }}-padding">
+  <div class="pricing-wrapper-{{ section.id }}">
+    
+    {% if section.settings.title != blank %}
+      <h2 class="pricing-title-{{ section.id }}">{{ section.settings.title }}</h2>
+    {% endif %}
+
+    {% if section.settings.description != blank %}
+      <div class="pricing-desc-{{ section.id }}">
+        {{ section.settings.description }}
+      </div>
+    {% endif %}
+
+    {% if section.settings.price != blank %}
+      <div class="pricing-amount-{{ section.id }}">
+        {{ section.settings.price }}
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom Pricing Section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content Settings"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Precio"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Puedes elegir la opción que mejor se adapte a ti: hacer un pago único o dividir el importe en dos pagos.</p>"
+    },
+    {
+      "type": "text",
+      "id": "price",
+      "label": "Price Value",
+      "default": "890€"
+    },
+    {
+      "type": "header",
+      "content": "Styling & Padding"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#fdf8f0"
+    },
+    {
+      "type": "color",
+      "id": "price_color",
+      "label": "Price Color",
+      "default": "#f2914b"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Desktop Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Desktop Padding Bottom",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Mobile Padding Top",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Mobile Padding Bottom",
+      "default": 50
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Pricing Section"
+    }
+  ]
+}
+{% endschema %}

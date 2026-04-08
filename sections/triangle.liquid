@@ -1,0 +1,202 @@
+{% schema %}
+{
+  "name": "360 U-Curve Gallery",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#fdf9f3"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_top_negative",
+      "min": -200,
+      "max": 0,
+      "step": 5,
+      "unit": "px",
+      "label": "Move Up (Negative Margin)",
+      "default": -50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Gallery Image",
+      "limit": 9,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Select Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "360 U-Curve Gallery"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  :root {
+    --v-card-w: 230px; 
+    --v-card-h: 320px;
+    --v-speed: 1.2s;
+  }
+
+  .v-edge-section {
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    /* সেকশনটিকে উপরে তোলার প্রধান ট্রিক এখানে */
+    margin-top: {{ section.settings.margin_top_negative }}px !important;
+    margin-bottom: 0 !important;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    z-index: 10; /* ওপরের সেকশনের গায়ের ওপর উঠতে সাহায্য করবে */
+  }
+
+  .wide-viewport {
+    perspective: 2000px; 
+    height: 500px; /* হাইট কিছুটা কমানো হয়েছে যাতে গ্যাপ কম থাকে */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .v-curved-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .v-card {
+    position: absolute;
+    width: var(--v-card-w);
+    height: var(--v-card-h);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all var(--v-speed) cubic-bezier(0.2, 1, 0.3, 1);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+    background: #fff;
+    will-change: transform, opacity;
+  }
+
+  .v-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Desktop Positions */
+  .v-pos-1 { transform: translateX(-750px) translateZ(400px) rotateY(55deg); opacity: 0.2; z-index: 50; filter: blur(3px); }
+  .v-pos-2 { transform: translateX(-520px) translateZ(250px) rotateY(40deg); opacity: 0.7; z-index: 40; }
+  .v-pos-3 { transform: translateX(-320px) translateZ(80px) rotateY(20deg); opacity: 0.9; z-index: 30; }
+  .v-pos-4 { transform: translateX(-120px) translateZ(-250px) rotateY(5deg); opacity: 1; z-index: 10; }
+  .v-pos-5 { transform: translateX(120px) translateZ(-250px) rotateY(-5deg); opacity: 1; z-index: 10; }
+  .v-pos-6 { transform: translateX(320px) translateZ(80px) rotateY(-20deg); opacity: 0.9; z-index: 30; }
+  .v-pos-7 { transform: translateX(520px) translateZ(250px) rotateY(-35deg); opacity: 0.7; z-index: 40; }
+  .v-pos-8 { transform: translateX(750px) translateZ(400px) rotateY(-50deg); opacity: 0.2; z-index: 50; filter: blur(3px); }
+  .v-pos-9 { transform: translateZ(-1500px) scale(0); opacity: 0; pointer-events: none; }
+
+  /* Tablet/Medium Screen */
+  @media (max-width: 1200px) {
+    --v-card-w: 180px;
+    --v-card-h: 250px;
+    .wide-viewport { height: 400px; }
+    .v-pos-1 { transform: translateX(-500px) translateZ(300px) rotateY(55deg); }
+    .v-pos-2 { transform: translateX(-350px) translateZ(150px) rotateY(40deg); }
+    .v-pos-3 { transform: translateX(-200px) translateZ(50px) rotateY(20deg); }
+    .v-pos-4 { transform: translateX(-90px) translateZ(-150px) rotateY(5deg); }
+    .v-pos-5 { transform: translateX(90px) translateZ(-150px) rotateY(-5deg); }
+    .v-pos-6 { transform: translateX(200px) translateZ(50px) rotateY(-20deg); }
+    .v-pos-7 { transform: translateX(350px) translateZ(150px) rotateY(-35deg); }
+    .v-pos-8 { transform: translateX(500px) translateZ(300px) rotateY(-50deg); }
+  }
+
+  /* Mobile Screen */
+  @media (max-width: 768px) {
+    --v-card-w: 140px;
+    --v-card-h: 200px;
+    .v-edge-section { margin-top: -30px !important; } /* মোবাইলে নেগেটিভ মার্জিন কিছুটা কমানো */
+    .wide-viewport { height: 350px; perspective: 1000px; }
+    .v-pos-1, .v-pos-8 { opacity: 0; visibility: hidden; }
+    .v-pos-2 { transform: translateX(-140px) translateZ(50px) rotateY(45deg); opacity: 0.6; }
+    .v-pos-3 { transform: translateX(-90px) translateZ(0px) rotateY(25deg); opacity: 0.8; }
+    .v-pos-4 { transform: translateX(-40px) translateZ(-100px) rotateY(10deg); opacity: 1; }
+    .v-pos-5 { transform: translateX(40px) translateZ(-100px) rotateY(-10deg); opacity: 1; }
+    .v-pos-6 { transform: translateX(90px) translateZ(0px) rotateY(-25deg); opacity: 0.8; }
+    .v-pos-7 { transform: translateX(140px) translateZ(50px) rotateY(-45deg); opacity: 0.6; }
+  }
+</style>
+
+<section class="v-edge-section">
+  <div class="wide-viewport">
+    <div class="v-curved-track" id="v-auto-track">
+      {% for block in section.blocks %}
+        <div class="v-card v-pos-{{ forloop.index }}" {{ block.shopify_attributes }}>
+          {% if block.settings.image != blank %}
+            <img src="{{ block.settings.image | img_url: '800x' }}" alt="Gallery Image" loading="lazy">
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const track = document.getElementById('v-auto-track');
+    if (!track) return;
+    
+    const cards = Array.from(track.getElementsByClassName('v-card'));
+    if (cards.length === 0) return;
+
+    let positions = Array.from({length: cards.length}, (_, i) => i + 1);
+
+    function rotateGallery() {
+      const last = positions.pop();
+      positions.unshift(last);
+      
+      cards.forEach((card, index) => {
+        card.className = 'v-card'; 
+        const currentPos = positions[index];
+        card.classList.add('v-pos-' + currentPos);
+      });
+    }
+
+    setInterval(rotateGallery, 3500);
+  });
+</script>

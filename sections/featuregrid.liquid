@@ -1,0 +1,158 @@
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg-cream: #fdf9f3;
+    --accent-orange: #ff9d5c;
+    --light-orange: #fbdac3;
+    --font-poppins: 'Poppins', sans-serif;
+    --font-serif: 'Playfair Display', serif;
+  }
+
+  .custom-benefit-section {
+    background-color: var(--bg-cream);
+    padding: 100px 20px;
+    text-align: center;
+    font-family: var(--font-poppins);
+  }
+
+  /* Main Headline - Bold Poppins */
+  .section-title {
+    font-family: var(--font-poppins);
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 80px;
+    color: #000;
+  }
+
+  .benefit-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 30px;
+    max-width: 900px; /* Reduced width to prevent cards from being "Too Big" */
+    margin: 0 auto;
+  }
+
+  .benefit-card {
+    background: #ffffff;
+    padding: 50px 40px;
+    border-radius: 25px;
+    /* Soft shadow to match the image style */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Centering the 3rd card at the bottom */
+  .benefit-card:nth-child(3) {
+    grid-column: 1 / span 2;
+    justify-self: center;
+    width: 100%;
+    max-width: 420px; 
+  }
+
+  /* Badges (Overlapping Circles) */
+  .number-badge {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    position: relative;
+    height: 44px;
+    width: 70px;
+  }
+
+  .badge-main, .badge-secondary {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+    color: white;
+    position: absolute;
+  }
+
+  .badge-main {
+    background: var(--accent-orange);
+    z-index: 2;
+    left: 0;
+  }
+
+  .badge-secondary {
+    background: var(--light-orange);
+    z-index: 1;
+    left: 26px; 
+  }
+
+  /* Card Headlines - Using Serif Font for "Czech/Elegant" look */
+  .benefit-card h3 {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    margin: 0 0 15px 0;
+    font-weight: 700;
+    color: #000;
+  }
+
+  .benefit-card p {
+    font-family: var(--font-poppins);
+    font-size: 15px;
+    line-height: 1.5;
+    color: #666;
+    margin: 0;
+    max-width: 320px;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .benefit-container {
+      grid-template-columns: 1fr;
+    }
+    .benefit-card:nth-child(3) {
+      grid-column: 1;
+    }
+    .section-title {
+      font-size: 26px;
+      margin-bottom: 50px;
+    }
+  }
+</style>
+
+<section class="custom-benefit-section">
+  <h2 class="section-title">Además de la guía también obtendrás...</h2>
+
+  <div class="benefit-container">
+    
+    <div class="benefit-card">
+      <div class="number-badge">
+        <div class="badge-main">01</div>
+        <div class="badge-secondary">03</div>
+      </div>
+      <h3>Contacto por WhatsApp</h3>
+      <p>Si te surgen dudas, escríbenos sin compromiso. Queremos que tengas toda la información clar</p>
+    </div>
+
+    <div class="benefit-card">
+      <div class="number-badge">
+        <div class="badge-main">03</div>
+        <div class="badge-secondary">03</div>
+      </div>
+      <h3>Descuento directo</h3>
+      <p>Si decides dar el salto a  nuestro programa de acompañamiento, descontamos el importe de la guía del precio final.
+</p>
+    </div>
+
+    <div class="benefit-card">
+      <div class="number-badge">
+        <div class="badge-main">02</div>
+        <div class="badge-secondary">03</div>
+      </div>
+      <h3>Actualizaciones incluidas</h3>
+      <p>La guía se renueva periódicamente para que siempre tengas datos reales y actuales.</p>
+    </div>
+
+  </div>
+</section>

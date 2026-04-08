@@ -1,0 +1,414 @@
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+
+  /* Global variables */
+  .ai-vicca-header-wrapper-{{ ai_gen_id }} {
+    --accent-color: {{ block.settings.logo_dot_color }};
+    --nav-color: {{ block.settings.nav_text_color }};
+    --bg-color: {{ block.settings.background_color }};
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    background-color: var(--bg-color);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    font-family: "Playfair Display", serif;
+  }
+
+  .ai-vicca-header-container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.container_width }}px;
+    margin: 0 auto;
+    padding: {{ block.settings.header_padding }}px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  /* Desktop Navigation */
+  .ai-vicca-header-nav-{{ ai_gen_id }} {
+    display: none;
+    flex: 1;
+    align-items: center;
+    gap: 5px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .ai-vicca-header-nav-{{ ai_gen_id }} { display: flex; }
+  }
+
+  .ai-vicca-header-nav-item-{{ ai_gen_id }} {
+    position: relative;
+    padding: 0 12px;
+  }
+
+  .ai-vicca-header-nav-item-{{ ai_gen_id }}:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 14px;
+    width: 1px;
+    background-color: rgba(0,0,0,0.1);
+  }
+
+  .ai-vicca-header-nav-link-{{ ai_gen_id }} {
+    font-size: {{ block.settings.nav_font_size }}px;
+    color: var(--nav-color);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.3s;
+  }
+
+  .ai-vicca-header-nav-link-{{ ai_gen_id }}:hover { opacity: 0.7; }
+
+  /* Logo */
+  .ai-vicca-header-logo-{{ ai_gen_id }} {
+    z-index: 1001;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+  }
+
+  .ai-vicca-header-logo-{{ ai_gen_id }} img {
+    height: {{ block.settings.logo_size }}px;
+    width: auto;
+    display: block;
+  }
+
+  @media screen and (max-width: 1023px) {
+    .ai-vicca-header-logo-{{ ai_gen_id }} img { height: 25px; }
+  }
+
+  .nav-dot { color: var(--accent-color); }
+
+  /* Desktop Dropdown */
+  .ai-vicca-dropdown-content-{{ ai_gen_id }} {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    min-width: 220px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    padding: 12px 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+  }
+
+  .ai-vicca-header-nav-item-{{ ai_gen_id }}:hover .ai-vicca-dropdown-content-{{ ai_gen_id }} {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .ai-vicca-dropdown-content-{{ ai_gen_id }} a {
+    display: block;
+    padding: 10px 20px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  /* Action Buttons & Cart */
+  .ai-vicca-header-actions-{{ ai_gen_id }} {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .ai-vicca-cart-link-{{ ai_gen_id }} {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: #000;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+  }
+
+  .ai-vicca-cart-link-{{ ai_gen_id }}:hover {
+    transform: scale(1.1);
+  }
+
+  .ai-vicca-cart-count-{{ ai_gen_id }} {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background-color: var(--accent-color);
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    font-family: sans-serif;
+  }
+
+  .ai-vicca-header-btn-{{ ai_gen_id }} {
+    font-weight: 500;
+    font-size: 14px;
+    padding: 8px 30px;
+    border: 1px solid #000;
+    border-radius: 100px;
+    text-decoration: none;
+    color: #000;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .ai-vicca-header-btn-{{ ai_gen_id }}:hover {
+    background: #000000;
+    color: #ff9d5c !important;
+  }
+
+  /* Mobile Sidebar Styling */
+  .ai-vicca-mobile-toggle-{{ ai_gen_id }} {
+    display: flex;
+    flex: 1;
+    cursor: pointer;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .ai-vicca-mobile-toggle-{{ ai_gen_id }} { display: none; }
+  }
+
+  .ai-vicca-mobile-overlay-{{ ai_gen_id }} {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background: #fff;
+    z-index: 2000;
+    padding: 30px;
+    transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 10px 0 40px rgba(0,0,0,0.1);
+    overflow-y: auto;
+  }
+
+  .ai-vicca-mobile-overlay-{{ ai_gen_id }}.active { left: 0; }
+
+  .mobile-close { font-size: 28px; margin-bottom: 40px; cursor: pointer; }
+
+  .mobile-nav-item { margin-bottom: 20px; }
+  
+  .mobile-main-link { 
+    font-size: 20px; 
+    font-weight: 600; 
+    color: #000; 
+    text-decoration: none; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  /* Mobile Dropdown Logic */
+  .mobile-dropdown {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    padding-left: 15px;
+    border-left: 1px solid #eee;
+  }
+
+  .mobile-nav-item.open .mobile-dropdown {
+    max-height: 300px;
+    margin-top: 15px;
+  }
+
+  .mobile-dropdown a {
+    display: block;
+    padding: 8px 0;
+    text-decoration: none;
+    color: #666;
+    font-size: 16px;
+  }
+
+  .vicca-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 1999;
+    display: none;
+  }
+  .vicca-backdrop.active { display: block; }
+{% endstyle %}
+
+<div class="ai-vicca-header-wrapper-{{ ai_gen_id }}">
+  <div class="ai-vicca-header-container-{{ ai_gen_id }}">
+    
+    <div class="ai-vicca-mobile-toggle-{{ ai_gen_id }}" onclick="toggleViccaMenu()">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.5">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </div>
+
+    <nav class="ai-vicca-header-nav-{{ ai_gen_id }}">
+      <div class="ai-vicca-header-nav-item-{{ ai_gen_id }}">
+        <span class="ai-vicca-header-nav-link-{{ ai_gen_id }}">Go <b>vicca</b><span class="nav-dot">.</span></span>
+        <div class="ai-vicca-dropdown-content-{{ ai_gen_id }}">
+          <a href="{{ block.settings.guide_link }}">{{ block.settings.guide_text }}</a>
+          <a href="{{ block.settings.opp_link }}">{{ block.settings.opp_text }}</a>
+        </div>
+      </div>
+
+      <div class="ai-vicca-header-nav-item-{{ ai_gen_id }}">
+        <a href="{{ block.settings.conocenos_link }}" class="ai-vicca-header-nav-link-{{ ai_gen_id }}">{{ block.settings.conocenos_text }}</a>
+      </div>
+
+      <div class="ai-vicca-header-nav-item-{{ ai_gen_id }}">
+        <span class="ai-vicca-header-nav-link-{{ ai_gen_id }}">Afiliados</span>
+        <div class="ai-vicca-dropdown-content-{{ ai_gen_id }}">
+          <a href="{{ block.settings.become_aff_link }}">{{ block.settings.become_aff_text }}</a>
+          <a href="{{ block.settings.already_aff_link }}">{{ block.settings.already_aff_text }}</a>
+        </div>
+      </div>
+    </nav>
+
+    <a href="{{ routes.root_url }}" class="ai-vicca-header-logo-{{ ai_gen_id }}">
+      <img src="https://cdn.shopify.com/s/files/1/0963/9352/7682/files/96e00406-038e-4603-a3bb-4b1b94d3d48a.png?v=1772001119" alt="Vicca Agency Logo">
+    </a>
+
+    <div class="ai-vicca-header-actions-{{ ai_gen_id }}">
+      
+
+      <a href="{{ block.settings.contact_link }}" class="ai-vicca-header-btn-{{ ai_gen_id }}">
+        {{ block.settings.contact_button_text }}
+      </a>
+      <a href="{{ routes.cart_url }}" class="ai-vicca-cart-link-{{ ai_gen_id }}" id="CartLink-{{ ai_gen_id }}">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        <span class="ai-vicca-cart-count-{{ ai_gen_id }}" id="CartCount-{{ ai_gen_id }}">
+          {{ cart.item_count }}
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="vicca-backdrop" id="viccaBackdrop" onclick="toggleViccaMenu()"></div>
+
+<div class="ai-vicca-mobile-overlay-{{ ai_gen_id }}" id="viccaMobileMenu">
+  <div class="mobile-close" onclick="toggleViccaMenu()">✕</div>
+  
+  <div class="mobile-nav-item">
+    <div class="mobile-main-link" onclick="toggleMobileDropdown(this)">
+      <span>Go vicca<span class="nav-dot">.</span></span>
+      <small>▼</small>
+    </div>
+    <div class="mobile-dropdown">
+      <a href="{{ block.settings.guide_link }}">{{ block.settings.guide_text }}</a>
+      <a href="{{ block.settings.opp_link }}">{{ block.settings.opp_text }}</a>
+    </div>
+  </div>
+
+  <div class="mobile-nav-item">
+    <a href="{{ block.settings.conocenos_link }}" class="mobile-main-link">{{ block.settings.conocenos_text }}</a>
+  </div>
+
+  <div class="mobile-nav-item">
+    <div class="mobile-main-link" onclick="toggleMobileDropdown(this)">
+      <span>Affiliate</span>
+      <small>▼</small>
+    </div>
+    <div class="mobile-dropdown">
+      <a href="{{ block.settings.become_aff_link }}">{{ block.settings.become_aff_text }}</a>
+      <a href="{{ block.settings.already_aff_link }}">{{ block.settings.already_aff_text }}</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleViccaMenu() {
+    const menu = document.getElementById('viccaMobileMenu');
+    const backdrop = document.getElementById('viccaBackdrop');
+    menu.classList.toggle('active');
+    backdrop.classList.toggle('active');
+    document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+  }
+
+  function toggleMobileDropdown(element) {
+    const parent = element.parentElement;
+    parent.classList.toggle('open');
+  }
+
+  // স্ক্রিপ্ট যা কার্ট আপডেট হলে সংখ্যা পরিবর্তন করবে
+  document.addEventListener('DOMContentLoaded', function() {
+    function refreshCartCount() {
+      fetch(window.Shopify.routes.root + 'cart.js')
+        .then(response => response.json())
+        .then(cart => {
+          const countElement = document.getElementById('CartCount-{{ ai_gen_id }}');
+          if (countElement) {
+            countElement.textContent = cart.item_count;
+          }
+        });
+    }
+    // Shopify-এর স্ট্যান্ডার্ড ইভেন্ট লিসেনার (যদি থিম সাপোর্ট করে)
+    document.addEventListener('cart:updated', refreshCartCount);
+    document.addEventListener('cart:item-added', refreshCartCount);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Vicca Header Pro",
+  "settings": [
+    { "type": "header", "content": "Layout Settings" },
+    { "type": "range", "id": "container_width", "label": "Container Max Width", "min": 1000, "max": 1600, "step": 50, "unit": "px", "default": 1400 },
+    { "type": "range", "id": "header_padding", "label": "Vertical Padding", "min": 10, "max": 40, "step": 1, "unit": "px", "default": 20 },
+    { "type": "color", "id": "background_color", "label": "Background Color", "default": "#FAF9F6" },
+    { "type": "header", "content": "Logo Branding" },
+    { "type": "range", "id": "logo_size", "label": "Logo Image Height", "min": 20, "max": 80, "step": 1, "unit": "px", "default": 40 },
+    { "type": "color", "id": "logo_dot_color", "label": "Accent Color (Dots/Borders)", "default": "#FF5C35" },
+    { "type": "header", "content": "Navigation Links" },
+    { "type": "color", "id": "nav_text_color", "label": "Nav Link Color", "default": "#000000" },
+    { "type": "range", "id": "nav_font_size", "label": "Nav Font Size", "min": 13, "max": 18, "step": 1, "unit": "px", "default": 15 },
+    { "type": "text", "id": "conocenos_text", "label": "Center Link Label", "default": "Conócenos" },
+    { "type": "url", "id": "conocenos_link", "label": "Center Link URL" },
+    { "type": "header", "content": "Dropdown 1: Go Vicca" },
+    { "type": "text", "id": "guide_text", "label": "Link 1 Text", "default": "Step Into Guide" },
+    { "type": "url", "id": "guide_link", "label": "Link 1 URL" },
+    { "type": "text", "id": "opp_text", "label": "Link 2 Text", "default": "Step Into Opportunity" },
+    { "type": "url", "id": "opp_link", "label": "Link 2 URL" },
+    { "type": "header", "content": "Dropdown 2: Affiliate" },
+    { "type": "text", "id": "become_aff_text", "label": "Text 1", "default": "Become Affiliate" },
+    { "type": "url", "id": "become_aff_link", "label": "URL 1" },
+    { "type": "text", "id": "already_aff_text", "label": "Text 2", "default": "Already Member" },
+    { "type": "url", "id": "already_aff_link", "label": "URL 2" },
+    { "type": "header", "content": "Call To Action" },
+    { "type": "text", "id": "contact_button_text", "label": "Button Text", "default": "Contacto" },
+    { "type": "url", "id": "contact_link", "label": "Button Link" }
+  ],
+  "presets": [
+    { "name": "Vicca Header Pro" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,190 @@
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<div class="guide-hero-wrapper section-{{ section.id }}" style="background-color: {{ section.settings.bg_color }}; padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+  <div class="guide-hero-container">
+    
+    <div class="guide-hero-card" style="max-width: {{ section.settings.card_width }}px;">
+      <div class="guide-hero-content">
+        <h2 class="guide-title">
+          La primera guía digital que de verdad 
+          <strong>soluciona todas tus dudas.</strong>
+        </h2>
+        
+        <p class="guide-subtitle">
+          Es la información que nos hubiera gustado tener a nosotros cuando nos mudamos por primera vez.
+        </p>
+        
+        <p class="guide-question">
+          ¿Listo/a para empezar tu nueva vida <span style="font-size:18px">en Holanda?</span>
+        </p>
+        
+        <div class="guide-button-wrapper">
+          <a href="{{ section.settings.button_link }}" class="guide-button">
+            Consigue tu guía aquí
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+  /* Wrapper Setup */
+  .guide-hero-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: visible !important;
+    z-index: 5;
+  }
+
+  .guide-hero-container {
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Card Design */
+  .guide-hero-card {
+    background-color: #FDF9F3; 
+    padding: 80px 40px;
+    text-align: center;
+    border-bottom-left-radius: 60px; 
+    border-bottom-right-radius: 60px;
+    position: relative;
+    z-index: 20;
+    {% comment %} box-shadow: 0px 15px 50px rgba(0,0,0,0.05); {% endcomment %}
+    width: 100%;
+    margin-bottom: -120px; 
+  }
+
+  .guide-hero-content {
+    margin: 0 auto;
+  }
+
+  /* Title - Playfair Display */
+  .guide-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    color: #000;
+    margin-bottom: 25px;
+    font-weight: 400;
+    line-height: 1.3;
+  }
+
+  .guide-title strong {
+    display: block; 
+    font-weight: 700;
+    margin-top: 5px;
+  }
+
+  /* Subtitle - Poppins */
+  .guide-subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 60px;
+    line-height: 1.6;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Question - Poppins Bold */
+  .guide-question {
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    color: #000;
+    letter-spacing: -0.5px;
+  }
+
+  /* Button Style */
+  .guide-button {
+    font-family: 'Poppins', sans-serif;
+    display: inline-block;
+    background-color: #FF9E57;
+    color: #fff !important;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    transition: all 0.3s ease;
+  }
+
+  .guide-button:hover {
+    background-color: #000;
+    color:#FF9E57 !important;
+    transform: translateY(-3px);
+  }
+
+  /* Mobile Adjustments */
+  @media (max-width: 768px) {
+    .guide-hero-card {
+      padding: 50px 20px;
+      margin-bottom: -80px;
+    }
+    .guide-title { font-size: 26px; }
+    .guide-question { font-size: 22px; }
+    .guide-button { padding: 12px 30px; font-size: 16px; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Custom Guide Hero",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "card_width",
+      "min": 600,
+      "max": 1200,
+      "step": 20,
+      "unit": "px",
+      "label": "Card Max Width",
+      "default": 1000
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 50
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Guide Hero"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,45 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "settings": {}
+    },
+    "rich_text_wknJ9n": {
+      "type": "rich-text",
+      "blocks": {
+        "text_TDJffm": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Este sitio web <a href=\"https://vicca-agency.com/\"><span style=\"text-decoration:underline\">https://vicca-agency.com/</span></a> utiliza cookies y tecnologías similares para mejorar la experiencia de usuario, analizar el uso y realizar tareas de marketing. Las cookies pueden ser propias o de terceros y están incluidas en esta Política para que usted pueda comprender su funcionamiento y tener su propio control sobre ellas.</p><p><strong>1.⁠ ⁠¿Qué son las cookies?</strong></p><p>Una cookie es un pequeño archivo que se envía junto con las páginas de la Web y que su navegador almacena en su dispositivo. La información recogida puede ser retransmitida a nuestros servidores o a los de terceros cuando vuelve a visitar la Web.</p><p><strong>2.⁠ ⁠¿Qué son los scripts?</strong></p><p>Un script es un fragmento de código que permite que la Web funcione de forma interactiva. Puede ejecutarse en nuestro servidor o en tu dispositivo.</p><p><strong>3.⁠ ⁠¿Qué es una baliza web (o “web beacon”)?</strong></p><p>Se trata de una pequeña pieza de texto o imagen invisible que permite monitorizar el tráfico en la Web. Mediante estas balizas se pueden almacenar datos sobre el usuario y su comportamiento.</p><p><strong>4.⁠ ⁠Tipos de cookies que utilizamos</strong></p><ul><li>Cookies técnicas o funcionales: necesarias para que la Web funcione correctamente, por ejemplo para recordar sus preferencias o mantenerle conectado. Estas se pueden usar sin su consentimiento previo.</li><li>Cookies de estadísticas: utilizadas para conseguir información sobre cómo los usuarios usan la Web, con el objetivo de mejorar su funcionamiento. Estas requieren su consentimiento.</li><li>Cookies de marketing/seguimiento: cookies usadas para crear perfiles de usuario y mostrar publicidad relacionada con sus intereses, o para hacer seguimiento del usuario en varias webs. Requieren su consentimiento.</li><li>Cookies de redes sociales: cuando la Web incluye contenido incrustado o funcionalidad compartida (como botones de “Me gusta” o “Compartir”), pueden colocarse cookies relacionadas con redes sociales que implican tratamiento de datos por terceros.</li></ul><p><strong>5.⁠ ⁠Cookies que usamos</strong></p><p>Descripción de los principales bloques de cookies, incluyendo su categoría, finalidad y caducidad (ejemplos genéricos):</p><ul><li>Cookies funcionales: para guardar sus preferencias, idioma, sesión, etc.</li><li>Cookies analíticas: para ver el número de visitantes, páginas más vistas, origen del tráfico.</li><li>Cookies de marketing: para mostrar anuncios basados en su comportamiento o intereses.</li><li>Cookies de terceros como redes sociales o plataformas de vídeo que se incrustan (por ejemplo, YouTube, TikTok, etc.).</li></ul><p><strong>6.⁠ ⁠Consentimiento</strong></p><p>Cuando accede por primera vez a la Web, se mostrará un banner o ventana emergente que explica el uso de las cookies. Al pulsar “Aceptar”, “Guardar preferencias” o continuar navegando sin cambiar la configuración, da su consentimiento para el uso de las categorías seleccionadas. Es posible cambiar sus ajustes o rechazar ciertas cookies en cualquier momento, aunque algunas funcionalidades de la Web podrían dejar de funcionar correctamente.</p><p><strong>7.⁠ ⁠Cómo activar/desactivar y borrar cookies</strong></p><p>Puede eliminar las cookies que ya están en su dispositivo o impedir que se instalen mediante la configuración de su navegador (consulta la sección “Ayuda” de su navegador para saber cómo hacerlo). Tenga en cuenta que desactivar todas las cookies puede afectar el funcionamiento de la Web. Si usted borra cookies, al visitar de nuevo la Web podría volver a recibir el banner de consentimiento.</p><p><strong>8.⁠ Sus derechos y más información</strong></p><p>Tiene derecho a saber por qué se necesitan sus datos personales, qué sucederá con ellos y cuánto tiempo se conservarán. También puede ejercer los siguientes derechos:</p><p>Derecho de acceso.</p><p>Derecho de rectificación.</p><p>Derecho de supresión (“derecho al olvido”).</p><p>Derecho de limitación del tratamiento.</p><p>Derecho de oposición.</p><p>Derecho a la portabilidad de los datos.</p><p>Para ejercer cualquiera de estos derechos o para más información sobre cómo gestionamos sus datos, envíe un correo a: contact@vicca-agency.com</p><p><strong>9.⁠ ⁠Contacto</strong></p><p>Si tiene preguntas, comentarios o quejas sobre esta Política de Cookies o sobre cómo gestionamos su consentimiento, puede contactarnos a través del correo: contact@vicca-agency.com</p><p>Última actualización: noviembre 2025</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_TDJffm"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "container": "container",
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_wknJ9n"
+  ]
+}

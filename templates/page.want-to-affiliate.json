@@ -1,0 +1,165 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
+    },
+    "viccaaffiliate_zrkxNG": {
+      "type": "viccaaffiliate",
+      "custom_css": [
+        ".vicca-main-title .bold-font {font-family: \"Poppins\", sans-serif; font-size: clamp(50px, 7vw, 70px); font-weight: 600; letter-spacing: -2px; text-transform: lowercase; margin-top: 20px;}",
+        ".vicca-description {font-size: clamp(22px, 3vw, 23px);}",
+        ".vicca-container {max-width: 1355px;}"
+      ],
+      "name": "Affiliate Banner",
+      "settings": {
+        "bg_color": "#fdf9f3",
+        "button_1_text": "Quiero afiliarme",
+        "button_1_link": "",
+        "button_2_text": "Ya soy vicca.afiliate",
+        "button_2_link": "shopify://pages/form"
+      }
+    },
+    "backgroundattribute_R8dpnc": {
+      "type": "backgroundattribute",
+      "name": "Vicca Affiliate Section",
+      "settings": {
+        "bg_image": "shopify://shop_images/Untitled_design_-_2026-02-24T120030.693.png",
+        "bg_color": "#fdfaf5",
+        "text_color": "#000000",
+        "dot_color": "#f39c12",
+        "title": "Ser un vicca.afiliate es...",
+        "content_html": "<p></p><p>Recomendar un programa que sí acompaña de verdad a las personas que quieren mudarse a Holanda.</p><p></p><p>Conectar a personas que lo necesitan con un programa honesto y bien estructurado.</p><p></p><p>Si esa persona entra en Step Into Opportunity, tú recibes una comisión por tu recomendación.</p>",
+        "padding_top": 40,
+        "padding_bottom": 60,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "herotext_XKRQij": {
+      "type": "herotext",
+      "name": "Custom Hero Text",
+      "settings": {
+        "bg_color": "#fdfaf4",
+        "title": "Nothing <em>great</em> is built <em>alone.</em>",
+        "description": "Grow with us by promoting a program built on honesty, experience, and real support.",
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
+    "affilatetarget_VHwEQi": {
+      "type": "affilatetarget",
+      "name": "Affiliate Target Section",
+      "settings": {
+        "bg_color": "#fdfaf4",
+        "heading": "¿A quién va dirigido el programa de afiliados?",
+        "intro_text": "Este programa está pensado para personas que:",
+        "point_1": "Creen en hacer las cosas bien, sin atajos",
+        "point_2": "Valoran el acompañamiento real frente a las promesas vacías",
+        "point_3": "Recomiendan desde la honestidad, no desde la presión",
+        "point_4": "Prefieren construir confianza antes que volumen",
+        "footer_bold_text": "Queremos pocos afiliados, pero alineados.",
+        "padding_top": 72,
+        "padding_bottom": 80
+      }
+    },
+    "sectionaffilate_XM9Xxn": {
+      "type": "sectionaffilate",
+      "custom_css": [
+        "strong {margin-left: 125px;}",
+        ".vicca-content {margin-left: -80px;}",
+        "h2.vicca-title {font-size: 38px; font-weight: 600;}"
+      ],
+      "name": "Vicca Affiliate Section",
+      "settings": {
+        "bg_color": "#fdfaf4",
+        "padding_top": 110,
+        "padding_bottom": 110,
+        "title": "Requisitos para ser vicca",
+        "subtitle": "afiliate",
+        "headline": "No pedimos números, pedimos actitud.",
+        "intro_text": "Para formar parte del programa necesitas:",
+        "list_items": "<ul><li>Tener una comunicación honesta y clara</li><li>Recomendar solo a personas que realmente puedan encajar en el programa</li><li>Respetar el proceso y las normas del programa</li><li>Valorar el trato cercano y humano tanto como el profesional</li></ul>",
+        "footer_text": "Si esto te suena lógico, probablemente encajes."
+      }
+    },
+    "stepprocess_jrdCHW": {
+      "type": "stepprocess",
+      "custom_css": [
+        "h2.step-title {font-size: 38px; font-weight: 600;}"
+      ],
+      "name": "Step Process Section",
+      "settings": {
+        "bg_color": "#fffdfa",
+        "padding_top": 95,
+        "padding_bottom": 95,
+        "main_title": "Conviértete así...",
+        "step1_title": "Regístrate",
+        "step1_text": "Completa el formulario con tu nombre y tu email en el siguiente botón",
+        "btn_label": "Quiero afiliarme",
+        "btn_link": "shopify://pages/querio-affiliate",
+        "step2_title": "Recibe la información completa",
+        "step2_text": "Te enviaremos por email todos los detalles del programa de afiliados: funcionamiento, condiciones, comisiones y forma de pago.",
+        "step3_title": "Confirma y empieza",
+        "step3_text": "Si todo encaja contigo, nos lo confirmas y quedas registrado/a oficialmente como vicca.afiliate."
+      }
+    },
+    "viccabottom_nYFXLR": {
+      "type": "viccabottom",
+      "custom_css": [
+        "ul.vicca-list {margin-left: -35px;}"
+      ],
+      "name": "Vicca Affiliate Section",
+      "settings": {
+        "title_part1": "¿Qué te llevas como vicca",
+        "title_part2": "afiliate?",
+        "dot_color": "#ff8c00",
+        "bg_color": "#fdfaf4",
+        "text_1": "Comisiones por cada persona que contrate Step Into Opportunity gracias a tu recomendación",
+        "text_2": "Un sistema claro y sin letra pequeña",
+        "text_3": "Comunicación directa con el equipo vicca.",
+        "text_4": "Formar parte de un proyecto en crecimiento, con valores claros",
+        "padding_top": 92,
+        "padding_bottom": 92
+      }
+    },
+    "custominfocta_YnTb6r": {
+      "type": "custominfocta",
+      "custom_css": [
+        "span {font-weight: 700;}",
+        "svg {display: none;}"
+      ],
+      "name": "Custom Info CTA",
+      "settings": {
+        "bg_color": "#fdf8f3",
+        "heading_text": "<span>Si te identificas con esta forma de hacer las cosas</span> y quieres recibir toda la información en detalle sin compromiso...",
+        "btn_left_text": "Quiero recibir la info",
+        "btn_left_link": "shopify://pages/querio-affiliate",
+        "accent_color": "#ffffff",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "main",
+    "viccaaffiliate_zrkxNG",
+    "backgroundattribute_R8dpnc",
+    "herotext_XKRQij",
+    "affilatetarget_VHwEQi",
+    "sectionaffilate_XM9Xxn",
+    "stepprocess_jrdCHW",
+    "viccabottom_nYFXLR",
+    "custominfocta_YnTb6r"
+  ]
+}

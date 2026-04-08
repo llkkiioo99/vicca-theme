@@ -1,0 +1,91 @@
+{% schema %}
+{
+  "name": "Animated Wave Background",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#fcf9f2"
+    },
+    {
+      "type": "color",
+      "id": "wave_color",
+      "label": "Wave Line Color",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Section Content",
+      "default": "<p>Your text goes here</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Animated Wave Background"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .wave-container {
+    position: relative;
+    width: 100%;
+    min-height: 400px;
+    background-color: {{ section.settings.bg_color }};
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+  }
+
+  .wave-svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .wave-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+  }
+
+  /* The Animation */
+  @keyframes waveMove {
+    0% { transform: translate(-50%, -45%) scaleY(1); }
+    50% { transform: translate(-45%, -55%) scaleY(1.1); }
+    100% { transform: translate(-50%, -45%) scaleY(1); }
+  }
+
+  .wave-path {
+    fill: none;
+    stroke: {{ section.settings.wave_color }};
+    stroke-width: 0.5;
+    animation: waveMove 10s ease-in-out infinite;
+  }
+</style>
+
+<div class="wave-container">
+  <svg class="wave-svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+    {% for i in (1..5) %}
+      <path class="wave-path" style="animation-delay: {{ i | times: -2 }}s; opacity: {{ 1.0 | minus: i | times: 0.15 }}" 
+        d="M0,160 C320,300 420,0 720,160 C1020,320 1120,0 1440,160 V320 H0 Z">
+      </path>
+    {% endfor %}
+  </svg>
+
+  <div class="wave-content">
+    {{ section.settings.content }}
+  </div>
+</div>

@@ -1,0 +1,159 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header",
+  "sections": {
+    "annoucement": {
+      "type": "annoucement",
+      "blocks": {
+        "item_dGj4GU": {
+          "type": "item",
+          "settings": {
+            "message": "Free shipping for all orders from $60+",
+            "message_link": ""
+          }
+        },
+        "item_6Ycmkw": {
+          "type": "item",
+          "settings": {
+            "message": "Free shipping for all orders from $60+",
+            "message_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_dGj4GU",
+        "item_6Ycmkw"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".m-announcement-bar__container {--container-width: 600px;}"
+      ],
+      "settings": {
+        "container": "container",
+        "color_scheme": "badge-sale",
+        "show_announcement": true,
+        "homepage_only": true,
+        "show_close": true,
+        "show_divider": false,
+        "show_nav": true,
+        "autorotate": true,
+        "autorotate_speed": 3
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "5e153016-a9d7-46c9-a10e-30d16446793d": {
+          "type": "topbar",
+          "disabled": true,
+          "settings": {
+            "color_scheme": "",
+            "show_divider": true,
+            "transparent_on_top": false,
+            "show_phone_numb": false,
+            "show_email": false,
+            "show_social_links": true,
+            "show_stores_page": false,
+            "show_currency_switcher": false,
+            "show_country_selector": true,
+            "show_language_switcher": true,
+            "alert_message": "<span>Open Doors To A World Of Fashion  |  <a class=\"m-link-underline\" href=\"#\">Discover More</a><span></span></span>"
+          }
+        }
+      },
+      "block_order": [
+        "5e153016-a9d7-46c9-a10e-30d16446793d"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".m-topbar a[href*=\"facebook\"] {order: 2;}",
+        ".social-media-links {column-gap: 30px;}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "color_scheme_menu": "",
+        "header_design": "logo-center-menu-left",
+        "container": "container-fluid",
+        "sticky_header": "on_scroll_up",
+        "transparent_on_top": false,
+        "transparent_text_color": "#ffffff",
+        "logo_text": "MINIMOG",
+        "logo_svg": "",
+        "logo_mobile_svg": "",
+        "logo_transparent_svg": "",
+        "logo_max_width": 145,
+        "sticky_logo_max_width": 145,
+        "mobile_logo_max_width": 110,
+        "main_menu": "main-menu",
+        "secondary_menu": "",
+        "mobile_menu": "",
+        "uppercase_parent_level": false,
+        "show_menu_column_divider": true,
+        "search": "show_icon",
+        "show_account_icon": true,
+        "show_cart_icon": true,
+        "show_wishlist_icon": true,
+        "show_compare_icon": false,
+        "show_currency_switcher": false,
+        "show_country_selector": false,
+        "show_language_switcher": false,
+        "mb_show_currency_switcher": false,
+        "mb_show_country_selector": true,
+        "mb_show_language_switcher": true
+      }
+    },
+    "177149496190b208b3": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_273493b_mMMFNm": {
+          "type": "ai_gen_block_273493b",
+          "settings": {
+            "container_width": 1400,
+            "header_padding": 20,
+            "background_color": "#fdf9f3",
+            "logo_size": 24,
+            "logo_dot_color": "#ff6b35",
+            "nav_text_color": "#000000",
+            "nav_font_size": 15,
+            "conocenos_text": "Conócenos",
+            "conocenos_link": "shopify://pages/conocenos",
+            "guide_text": "Step Into Guide",
+            "guide_link": "shopify://pages/step-into-guide",
+            "opp_text": "Step Into Opportunity",
+            "opp_link": "shopify://pages/step-into-opportunity",
+            "become_aff_text": "Quiero afiliarme",
+            "become_aff_link": "shopify://pages/want-to-affiliate",
+            "already_aff_text": "Ya soy vicca.afiliate",
+            "already_aff_link": "shopify://pages/allready-vicca-affiliate",
+            "contact_button_text": "Contacto",
+            "contact_link": "shopify://pages/contact"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_273493b_mMMFNm"
+      ],
+      "custom_css": [
+        "span.dot-color {color: #fe8f46; font-size: 18px; font-weight: 600;}",
+        "@media (max-width: 768px) {.ai-vicca-header-logo-ac1ljrufubxzkzwiwbaigenblock273493bmmmfnm {z-index: 1001; position: absolute; left: 40%; transform: translateX(-50%); display: flex; align-items: center; } .ai-vicca-header-btn-ac1ljrufubxzkzwiwbaigenblock273493bmmmfnm {font-weight: 500; font-size: 14px; padding: 8px 20px; border: 1px solid #000; border-radius: 100px; }}",
+        "span.ai-vicca-header-nav-link-ac1ljrufubxzkzwiwbaigenblock273493bmmmfnm {gap: 3px;}"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "annoucement",
+    "header",
+    "177149496190b208b3"
+  ]
+}

@@ -1,0 +1,270 @@
+{%- style -%}
+  /* Import Poppins Font from Google Fonts */
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap');
+
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    font-family: 'Poppins', sans-serif;
+    background-color: transparent;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_desktop }}px;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    }
+  }
+
+  .vicca-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    color: #1a1a1a;
+  }
+
+  .vicca-heading {
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 40px;
+    letter-spacing: -1px;
+    line-height: 1.2;
+    color: #1a1a1a;
+  }
+
+  /* Clase específica para el punto naranja */
+  .vicca-dot {
+    color: #ff6600 !important; /* Color naranja de la marca */
+    display: inline;
+    font-weight: inherit;
+  }
+
+  .vicca-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+
+  .vicca-img {
+    width: 100%;
+    max-width: 450px;
+    aspect-ratio: 4 / 3; 
+    object-fit: cover;
+    border-radius: 40px; 
+    display: block;
+  }
+
+  .vicca-caption {
+    margin-top: 15px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #888;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .vicca-text-content p {
+    margin-bottom: 20px;
+    line-height: 1.7;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+  }
+
+  .vicca-text-content strong {
+    font-weight: 700;
+  }
+
+  @media (min-width: 768px) {
+    .vicca-grid {
+      flex-direction: row;
+      align-items: center; 
+      justify-content: space-between;
+    }
+    .vicca-grid-item-text { width: 55%; }
+    .vicca-grid-item-img { width: 40%; }
+    
+    .vicca-reverse {
+      flex-direction: row-reverse;
+    }
+    .text-right-align {
+      text-align: right;
+    }
+    .text-right-align .vicca-img {
+        margin-left: auto;
+    }
+  }
+{%- endstyle -%}
+
+<section class="section-{{ section.id }}-padding">
+  <div class="vicca-container">
+    
+    <h2 class="vicca-heading">
+      {%- comment -%} Reemplaza el punto en el título principal {%- endcomment -%}
+      {{ section.settings.main_title | replace: '.', '<span class="vicca-dot">.</span>' }}
+    </h2>
+
+    <div class="vicca-grid">
+      <div class="vicca-grid-item-text vicca-text-content">
+        {%- comment -%} Aplica el punto naranja automáticamente si escribes vicca.agency {%- endcomment -%}
+        {{ section.settings.text_block_1 | replace: 'vicca.agency', 'vicca<span class="vicca-dot">.</span>agency' }}
+      </div>
+      <div class="vicca-grid-item-img text-right-align">
+        {% if section.settings.image_1 != blank %}
+          <img src="{{ section.settings.image_1 | image_url: width: 800 }}" alt="{{ section.settings.image_1.alt }}" class="vicca-img" loading="lazy">
+        {% else %}
+          {{ 'image' | placeholder_svg_tag: 'vicca-img' }}
+        {% endif %}
+        <div class="vicca-caption">
+          <span style="font-style: italic; font-weight: 600; color: #333;">{{ section.settings.caption_name_1 }}</span><br>
+          <span style="font-style: italic;">{{ section.settings.caption_sub_1 }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="vicca-grid vicca-reverse">
+      <div class="vicca-grid-item-text vicca-text-content">
+        {%- comment -%} Aplica el punto naranja automáticamente en el bloque 2 {%- endcomment -%}
+        {{ section.settings.text_block_2 | replace: 'vicca.agency', 'vicca<span class="vicca-dot">.</span>agency' }}
+      </div>
+      <div class="vicca-grid-item-img">
+        {% if section.settings.image_2 != blank %}
+          <img src="{{ section.settings.image_2 | image_url: width: 800 }}" alt="{{ section.settings.image_2.alt }}" class="vicca-img" loading="lazy">
+        {% else %}
+          {{ 'image' | placeholder_svg_tag: 'vicca-img' }}
+        {% endif %}
+        <div class="vicca-caption">
+          <span style="font-style: italic; font-weight: 600; color: #333;">{{ section.settings.caption_name_2 }}</span><br>
+          <span style="font-style: italic;">{{ section.settings.caption_sub_2 }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="width: 100%; margin-top: 50px;" class="vicca-text-content">
+      {%- comment -%} Aplica el punto naranja automáticamente en el texto inferior {%- endcomment -%}
+      {{ section.settings.bottom_text | replace: 'vicca.agency', 'vicca<span class="vicca-dot">.</span>agency' }}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About Us (Vicca Style)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "main_title",
+      "label": "Heading",
+      "default": "Como empezó todo"
+    },
+    {
+      "type": "header",
+      "content": "First Block"
+    },
+    {
+      "type": "richtext",
+      "id": "text_block_1",
+      "label": "Text Block 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1"
+    },
+    {
+      "type": "text",
+      "id": "caption_name_1",
+      "label": "Caption Name 1",
+      "default": "Víctor | Founder y CEO"
+    },
+    {
+      "type": "text",
+      "id": "caption_sub_1",
+      "label": "Caption Subtitle 1",
+      "default": "trabajando de chef en Tholen | 2018"
+    },
+    {
+      "type": "header",
+      "content": "Second Block"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2"
+    },
+    {
+      "type": "text",
+      "id": "caption_name_2",
+      "label": "Caption Name 2",
+      "default": "Carla | Co-Founder"
+    },
+    {
+      "type": "text",
+      "id": "caption_sub_2",
+      "label": "Caption Subtitle 2",
+      "default": "trabajando de chef en Rotterdam | 2022"
+    },
+    {
+      "type": "richtext",
+      "id": "text_block_2",
+      "label": "Text Block 2"
+    },
+    {
+      "type": "richtext",
+      "id": "bottom_text",
+      "label": "Bottom Footer Text"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Us (Vicca Style)"
+    }
+  ]
+}
+{% endschema %}

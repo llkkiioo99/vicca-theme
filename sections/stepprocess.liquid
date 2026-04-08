@@ -1,0 +1,257 @@
+{%- style -%}
+  /* Importar Fuentes */
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+  .step-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.bg_color }};
+  }
+
+  .step-container {
+    max-width: 1200px;
+    font-family: 'Poppins', sans-serif;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .step-title {
+font-family: 'Poppins', sans-serif;
+    font-size: clamp(32px, 5vw, 48px); /* Responsivo */
+    font-weight: 800;
+    margin-bottom: 60px;
+    color: #000;
+    text-align: left;
+  }
+
+  .steps-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  .step-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .step-number {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(60px, 8vw, 80px);
+    font-weight: 400;
+    line-height: 0.8;
+    margin-bottom: 30px;
+    color: #000;
+    opacity: 0.9;
+  }
+
+  .step-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    font-style: italic;
+    margin-bottom: 20px;
+    color: #000;
+    line-height: 1.2;
+  }
+
+  .step-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 30px;
+  }
+
+  .step-button {
+    font-family: 'Poppins', sans-serif;
+    display: inline-block;
+    align-self: flex-start;
+    background-color: #fe8f46;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+
+  .step-button:hover {
+    transform: translateY(-3px);
+    background-color: #fe8f46;
+    box-shadow: 0 5px 15px rgba(255, 158, 87, 0.3);
+  }
+
+  /* Tablet y Laptop */
+  @media (max-width: 1024px) {
+    .steps-grid {
+      gap: 30px;
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .step-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
+    }
+    .steps-grid {
+      flex-direction: column;
+      gap: 50px;
+    }
+    .step-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .step-item {
+      text-align: center;
+      align-items: center;
+    }
+    .step-button {
+      align-self: center;
+    }
+  }
+{%- endstyle -%}
+
+<section class="step-section-{{ section.id }}">
+  <div class="step-container">
+    <h2 class="step-title">{{ section.settings.main_title }}</h2>
+    
+    <div class="steps-grid">
+      <div class="step-item">
+        <div class="step-number">1</div>
+        <h3 class="step-heading">{{ section.settings.step1_title }}</h3>
+        <p class="step-text">{{ section.settings.step1_text }}</p>
+        
+        {% if section.settings.btn_label != blank %}
+          <a href="{{ section.settings.btn_link | default: '#' }}" class="step-button">
+            {{ section.settings.btn_label }}
+          </a>
+        {% endif %}
+      </div>
+
+      <div class="step-item">
+        <div class="step-number">2</div>
+        <h3 class="step-heading">{{ section.settings.step2_title }}</h3>
+        <p class="step-text">{{ section.settings.step2_text }}</p>
+      </div>
+
+      <div class="step-item">
+        <div class="step-number">3</div>
+        <h3 class="step-heading">{{ section.settings.step3_title }}</h3>
+        <p class="step-text">{{ section.settings.step3_text }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Step Process Section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Configuración de Diseño"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Color de Fondo",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Superior",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Inferior",
+      "default": 80
+    },
+    {
+      "type": "text",
+      "id": "main_title",
+      "label": "Título Principal",
+      "default": "Conviértete así..."
+    },
+    {
+      "type": "header",
+      "content": "Paso 1"
+    },
+    {
+      "type": "text",
+      "id": "step1_title",
+      "label": "Título Paso 1",
+      "default": "Regístrate"
+    },
+    {
+      "type": "textarea",
+      "id": "step1_text",
+      "label": "Texto Paso 1",
+      "default": "Completa el formulario con tu nombre y tu email en el siguiente botón"
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Etiqueta Botón",
+      "default": "Quiero ser afiliado"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Link del Botón"
+    },
+    {
+      "type": "header",
+      "content": "Paso 2"
+    },
+    {
+      "type": "text",
+      "id": "step2_title",
+      "label": "Título Paso 2",
+      "default": "Recibe la información completa"
+    },
+    {
+      "type": "textarea",
+      "id": "step2_text",
+      "label": "Texto Paso 2",
+      "default": "Te enviaremos por email todos los detalles del programa de afiliados."
+    },
+    {
+      "type": "header",
+      "content": "Paso 3"
+    },
+    {
+      "type": "text",
+      "id": "step3_title",
+      "label": "Título Paso 3",
+      "default": "Confirma y empieza"
+    },
+    {
+      "type": "textarea",
+      "id": "step3_text",
+      "label": "Texto Paso 3",
+      "default": "Si todo encaja contigo, nos lo confirmas y quedas registrado/a oficialmente."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Step Process Section"
+    }
+  ]
+}
+{% endschema %}

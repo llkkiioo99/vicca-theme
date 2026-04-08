@@ -1,0 +1,114 @@
+{% comment %}
+  Section for "Expectativas realistas"
+  Matches the typography, spacing, and centered layout of the provided image.
+{% endcomment %}
+
+<section class="realistic-expectations section-{{ section.id }}">
+  <div class="container-expectations">
+    
+    <h2 class="title">{{ section.settings.title }}</h2>
+    
+    <div class="intro-text">
+      <p>{{ section.settings.subheading_1 | replace: 'no existe una fórmula mágica ni un camino rápido', '<strong>no existe una fórmula mágica ni un camino rápido</strong>' }}</p>
+      <p>{{ section.settings.subheading_2 | replace: 'cada uno vive su propio proceso y este programa se adapta a cada persona', '<strong>cada uno vive su propio proceso y este programa se adapta a cada persona</strong>' }}</p>
+    </div>
+
+    <div class="description-text">
+      {{ section.settings.description | replace: 'alojamiento', '<strong>alojamiento</strong>' }}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .section-{{ section.id }} {
+    padding: 60px 20px;
+    background-color: {{ section.settings.bg_color }}; /* Set to #FDF9F0 for that creamy paper look */
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #000000;
+  }
+
+  .container-expectations {
+    max-width: 850px;
+    margin: 0 auto;
+  }
+
+  .section-{{ section.id }} .title {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 40px;
+    letter-spacing: -0.5px;
+  }
+
+  .section-{{ section.id }} .intro-text {
+    font-size: 20px;
+    line-height: 1.4;
+    margin-bottom: 50px;
+  }
+
+  .section-{{ section.id }} .intro-text p {
+    margin: 15px 0;
+  }
+
+  .section-{{ section.id }} .description-text {
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: left; /* Aligned left as per the image's bottom paragraph */
+    font-weight: 400;
+    color: #1a1a1a;
+  }
+
+  .section-{{ section.id }} strong {
+    font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    .section-{{ section.id }} .title { font-size: 26px; }
+    .section-{{ section.id }} .intro-text { font-size: 18px; }
+    .section-{{ section.id }} .description-text { font-size: 16px; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Realistic Expectations",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FDF9F0"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Expectativas realistas"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading_1",
+      "label": "Subheading Line 1",
+      "default": "Has de saber que no existe una fórmula mágica ni un camino rápido."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading_2",
+      "label": "Subheading Line 2",
+      "default": "Es importante entender que cada uno vive su propio proceso y este programa se adapta a cada persona."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Main Description",
+      "default": "Hay quienes encuentran alojamiento más rápido y otras que tardan más tiempo. Todo depende del momento, de la cantidad de viviendas disponibles, y del propietario o inquilinos. A veces es incluso cuestión de suerte. Pero con esfuerzo mutuo y constancia, conseguirás tus objetivos lo antes posible. Nuestro papel es que nunca te rindas y que tengas las herramientas necesarias para seguir adelante."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Realistic Expectations"
+    }
+  ]
+}
+{% endschema %}

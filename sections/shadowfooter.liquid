@@ -1,0 +1,395 @@
+{% comment %} <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  /* Desktop Styles from Schema Settings */
+  #section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  /* Mobile Styles from Schema Settings */
+  @media (max-width: 767px) {
+    #section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+  }
+
+  .vicca-section-wrapper {
+    width: 100%;
+    background-color: transparent; 
+    position: relative;
+    z-index: 12; 
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .vicca-main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    transform: translateY(70px); 
+    margin-bottom: 0px; 
+  }
+
+  .vicca-content-container {
+    width: 100%;
+    max-width: 950px;
+    padding: 0 20px;
+  }
+
+  .vicca-floating-card {
+    background: #FAF7F2;
+    padding: 80px 40px;
+    border-radius: 60px; 
+    text-align: center;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12); 
+    border: 1px solid rgba(0,0,0,0.02);
+  }
+
+  .vicca-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    color: #000;
+    margin: 0 0 30px 0;
+    font-weight: 700;
+  }
+
+  .vicca-description {
+    font-size: 28px;
+    line-height: 1.4;
+    color: #111;
+    margin-bottom: 40px;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .vicca-description .dot {
+    color: #FF9D54;
+    font-weight: 800;
+  }
+
+  .vicca-button {
+    display: inline-block;
+    background-color: #FF9D54; 
+    color: #ffffff !important;   
+    padding: 20px 60px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  .vicca-button:hover {
+    background-color: #000000;
+    color:#f78d3d !important;
+  }
+
+  .vicca-footer-text {
+    font-size: 15px;
+    color: #666;
+    margin-top: 35px;
+  }
+
+  .bold-text {
+    font-weight: 700;
+    color: #333;
+  }
+
+  /* Responsive Fixes */
+  @media (max-width: 767px) {
+    .vicca-main-container { 
+      transform: translateY(80px); 
+    }
+    .vicca-floating-card { padding: 50px 25px; border-radius: 40px; }
+    .vicca-title { font-size: 32px; }
+    .vicca-description { font-size: 18px; }
+    .vicca-button { padding: 16px 40px; font-size: 18px; }
+  }
+</style>
+
+<div class="vicca-section-wrapper" id="section-{{ section.id }}">
+  <div class="vicca-main-container">
+    <div class="vicca-content-container">
+      <div class="vicca-floating-card">
+        <h2 class="vicca-title">{{ section.settings.title }}</h2>
+        <div class="vicca-description">
+          {{ section.settings.description | replace: 'vicca.', 'vicca<span class="dot">.</span>' }}
+        </div>
+
+        {% if section.settings.button_label != blank %}
+          <div class="vicca-action">
+            <a href="{{ section.settings.button_link }}" class="vicca-button">
+              {{ section.settings.button_label }}
+            </a>
+          </div>
+        {% endif %}
+
+        <div class="vicca-footer-text">
+          <span class="bold-text">{{ section.settings.footer_bold_text }}</span> 
+          {{ section.settings.footer_regular_text }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div> {% endcomment %}
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  /* Desktop Styles */
+  #section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    background-color: transparent; /* Allows section behind to show if any */
+  }
+
+  .vicca-section-wrapper {
+    width: 100%;
+    position: relative;
+    z-index: 12; 
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .vicca-main-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    /* This creates the overlap into the black area */
+    margin-bottom: -60px; 
+    position: relative;
+    z-index: 2;
+  }
+
+  .vicca-content-container {
+    width: 100%;
+    max-width: 900px; /* Reduced card width to match image */
+    padding: 0 20px;
+  }
+
+  .vicca-floating-card {
+    background: #FDF9F3; /* Exact beige tone from your image */
+    padding: 60px 40px; /* Smaller padding for a smaller card */
+    /* Only bottom border radius as requested */
+    border-radius: 0 0 40px 40px; 
+    text-align: center;
+    {% comment %} box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);  {% endcomment %}
+  }
+
+  .vicca-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px; /* Reduced size */
+    color: #000;
+    margin: 0 0 20px 0;
+    font-weight: 700;
+  }
+
+  .vicca-description {
+    font-size: 22px; /* Reduced size */
+    line-height: 1.4;
+    color: #000;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .vicca-description strong {
+      font-weight: 700;
+  }
+
+  .vicca-description .dot {
+    color: #FF9D54;
+    font-weight: 800;
+  }
+
+  .vicca-button {
+    display: inline-block;
+    background-color: #FF9D54; 
+    color: #ffffff !important;   
+    padding: 12px 25px; /* Smaller button */
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 18px;
+    transition: 0.3s ease;
+  }
+
+  .vicca-button:hover {
+    background-color: #000000;
+    color:#ff914d!important;
+    
+  }
+
+  .vicca-footer-text {
+    font-size: 14px;
+    color: #333;
+    margin-top: 30px;
+    opacity: 0.8;
+  }
+
+  .bold-text {
+    font-weight: 700;
+    color: #000;
+  }
+
+  /* Black bottom section to create the cut-out look */
+  .vicca-black-spacer {
+      width: 100%;
+      height: 70px;
+      background-color: #1a1a1a; /* Dark background color */
+      z-index: 1;
+  }
+
+  /* Mobile Styles */
+  @media (max-width: 767px) {
+    #section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+    }
+    .vicca-main-container { 
+      margin-bottom: -40px; 
+    }
+    .vicca-floating-card { 
+        padding: 40px 20px; 
+        border-radius: 0 0 30px 30px; 
+    }
+    .vicca-title { font-size: 28px; }
+    .vicca-description { font-size: 18px; }
+    .vicca-button { padding: 12px 30px; font-size: 16px; }
+    .vicca-black-spacer { height: 80px; }
+  }
+</style>
+
+<div class="vicca-section-wrapper" id="section-{{ section.id }}">
+  <div class="vicca-main-container">
+    <div class="vicca-content-container">
+      <div class="vicca-floating-card">
+        <h2 class="vicca-title">{{ section.settings.title }}</h2>
+        <div class="vicca-description">
+          {{ section.settings.description | replace: 'vicca.', 'vicca<span class="dot">.</span>' }}
+        </div>
+
+        {% if section.settings.button_label != blank %}
+          <div class="vicca-action">
+            <a href="{{ section.settings.button_link }}" class="vicca-button">
+              {{ section.settings.button_label }}
+            </a>
+          </div>
+        {% endif %}
+
+        <div class="vicca-footer-text">
+          <span class="bold-text">{{ section.settings.footer_bold_text }}</span> 
+          {{ section.settings.footer_regular_text }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+{% schema %}
+{
+  "name": "Vicca Hero Card",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Desktop Layout Settings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 120
+    },
+    {
+      "type": "header",
+      "content": "Mobile Layout Settings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Mobile Padding Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Mobile Padding Bottom",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "No estás solo/a."
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Si sueñas con trabajar y vivir en los Países Bajos, <strong>vicca. te guía paso a paso.</strong></p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Quiero empezar"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "footer_bold_text",
+      "label": "Footer Bold Text",
+      "default": "Sin compromiso."
+    },
+    {
+      "type": "text",
+      "id": "footer_regular_text",
+      "label": "Footer Regular Text",
+      "default": "Hablamos de tu caso y te mostramos como podemos ayudarte."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vicca Hero Card"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,272 @@
+{%- style -%}
+  /* Import Poppins Font */
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+  .book-carousel-{{ section.id }} {
+    background-color: #fdf9f3; /* Section background color */
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    perspective: 2000px; 
+  }
+
+  /* Exactly matching the title in the image */
+  .book-carousel-{{ section.id }} .section-title {
+    font-family: 'Poppins', sans-serif !important;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-weight: 700;
+    margin-bottom: 70px;
+    text-align: center;
+    color: #000000;
+    letter-spacing: -0.5px; /* Slight tightening to match the bold look */
+  }
+
+  .book-carousel-{{ section.id }} .carousel-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .book-carousel-{{ section.id }} .book-container {
+    position: relative;
+    width: 300px; 
+    height: 400px;
+    transform-style: preserve-3d;
+  }
+
+  .book-carousel-{{ section.id }} .book-item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    background: transparent; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  /* Book Bottom Shadows */
+  .book-carousel-{{ section.id }} .book-item::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75%;
+    height: 15px;
+    background: rgba(0, 0, 0, 0.1);
+    filter: blur(12px);
+    border-radius: 50%;
+    z-index: -1;
+    transition: opacity 0.8s ease;
+  }
+
+  .book-carousel-{{ section.id }} .book-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* Navigation Buttons */
+  .book-carousel-{{ section.id }} .nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+  }
+
+  .book-carousel-{{ section.id }} .btn-prev {
+    left: 8%;
+    background-color: #666666; 
+    color: white;
+  }
+
+  .book-carousel-{{ section.id }} .btn-next {
+    right: 8%;
+    background-color: #F8945D; 
+    color: white;
+  }
+
+  .book-carousel-{{ section.id }} .nav-btn:hover {
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  @media (max-width: 768px) {
+    .book-carousel-{{ section.id }} .carousel-wrapper { height: 350px; }
+    .book-carousel-{{ section.id }} .book-container { width: 180px; height: 260px; }
+    .book-carousel-{{ section.id }} .btn-prev { left: 4%; }
+    .book-carousel-{{ section.id }} .btn-next { right: 4%; }
+    .book-carousel-{{ section.id }} .section-title { font-size: 1.8rem; margin-bottom: 40px; }
+  }
+{%- endstyle -%}
+
+<div class="book-carousel-{{ section.id }}">
+  {% if section.settings.title != blank %}
+    <h2 class="section-title">{{ section.settings.title }}</h2>
+  {% endif %}
+
+  <div class="carousel-wrapper">
+    <button class="nav-btn btn-prev" onclick="moveSlide{{ section.id | replace: '-', '_' }}(-1)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    
+    <div class="book-container" id="book-stack-{{ section.id }}">
+      {% for block in section.blocks %}
+        <div class="book-item" {{ block.shopify_attributes }}>
+          {% if block.settings.book_image != blank %}
+            <img src="{{ block.settings.book_image | img_url: '800x' }}" alt="Book Page">
+          {% else %}
+            <div style="background: #e0e0e0; height: 100%; width: 100%; display: flex; align-items: center; justify-content: center; border-radius: 4px;">
+              Image {{ forloop.index }}
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+
+    <button class="nav-btn btn-next" onclick="moveSlide{{ section.id | replace: '-', '_' }}(1)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  (function() {
+    let currentIndex = 0;
+    const sectionId = "{{ section.id }}";
+    let isMoving = false; 
+
+    function render() {
+      const container = document.querySelector(`.book-carousel-${sectionId}`);
+      if (!container) return;
+      
+      const items = container.querySelectorAll('.book-item');
+      const totalItems = items.length;
+      if (totalItems === 0) return;
+      
+      const isMobile = window.innerWidth < 768;
+      
+      items.forEach((item, i) => {
+        let diff = i - currentIndex;
+        const xOffset = isMobile ? 120 : 220; 
+        const zOffset = -200; 
+        const rotationY = -30; 
+
+        if (diff === 0) {
+          item.style.transform = `translateX(0) translateZ(200px) rotateY(0deg)`;
+          item.style.opacity = "1";
+          item.style.zIndex = "50";
+          item.style.visibility = "visible";
+          item.style.pointerEvents = "auto";
+        } 
+        else if (diff > 0) {
+          const x = diff * xOffset;
+          const z = diff * zOffset;
+          item.style.transform = `translateX(${x}px) translateZ(${z}px) rotateY(${rotationY}deg)`;
+          item.style.opacity = diff === 1 ? "0.9" : (diff === 2 ? "0.5" : "0");
+          item.style.zIndex = 50 - diff;
+          item.style.visibility = diff > 2 ? "hidden" : "visible";
+          item.style.pointerEvents = "none";
+        }
+        else {
+          item.style.transform = `translateX(-150%) translateZ(-500px) rotateY(30deg)`;
+          item.style.opacity = "0";
+          item.style.zIndex = "0";
+          item.style.visibility = "hidden";
+          item.style.pointerEvents = "none";
+        }
+      });
+
+      setTimeout(() => { isMoving = false; }, 800);
+    }
+
+    window["moveSlide{{ section.id | replace: '-', '_' }}"] = function(step) {
+      if (isMoving) return; 
+      const items = document.querySelectorAll(`.book-carousel-${sectionId} .book-item`);
+      const totalItems = items.length;
+      isMoving = true;
+      currentIndex += step;
+      if (currentIndex >= totalItems) { currentIndex = 0; } 
+      else if (currentIndex < 0) { currentIndex = totalItems - 1; }
+      render();
+    };
+
+    window.addEventListener('resize', render);
+    render();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "3D Book Carousel",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Descubre lo que encontrarás dentro de la guía..."
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 100
+    }
+  ],
+  "blocks": [
+    {
+      "type": "book_page",
+      "name": "Book Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "book_image",
+          "label": "Book Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "3D Book Carousel",
+      "blocks": [
+        { "type": "book_page" },
+        { "type": "book_page" },
+        { "type": "book_page" }
+      ]
+    }
+  ]
+}
+{% endschema %}

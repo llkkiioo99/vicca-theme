@@ -1,0 +1,167 @@
+{%- style -%}
+  /* Google Font Import */
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+  .affiliate-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.bg_color }};
+    font-family: 'Poppins', sans-serif; 
+    color: #000000;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .affiliate-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: left; /* Aligning list items to the left as per image */
+  }
+
+  /* Title / Heading - Centered */
+  .affiliate-section-{{ section.id }} h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  /* Description / Intro Text - Aligned with list */
+  .affiliate-section-{{ section.id }} p.intro-text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-align: left;
+  }
+
+  .affiliate-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 25px 0;
+  }
+
+  /* List Items - Aligned Left, no bullets */
+  .affiliate-list li {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    margin-bottom: 8px;
+    text-align: left;
+  }
+
+  /* Footer Text - Centered */
+  .affiliate-footer-text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .affiliate-section-{{ section.id }} h2 { font-size: 26px; }
+    .affiliate-list li, .affiliate-section-{{ section.id }} p.intro-text { font-size: 16px; }
+  }
+{%- endstyle -%}
+
+<div class="affiliate-section-{{ section.id }}">
+  <div class="affiliate-container">
+    <h2>{{ section.settings.heading }}</h2>
+    
+    <p class="intro-text">{{ section.settings.intro_text }}</p>
+
+    <ul class="affiliate-list">
+      {%- if section.settings.point_1 != blank -%}<li>{{ section.settings.point_1 }}</li>{%- endif -%}
+      {%- if section.settings.point_2 != blank -%}<li>{{ section.settings.point_2 }}</li>{%- endif -%}
+      {%- if section.settings.point_3 != blank -%}<li>{{ section.settings.point_3 }}</li>{%- endif -%}
+      {%- if section.settings.point_4 != blank -%}<li>{{ section.settings.point_4 }}</li>{%- endif -%}
+    </ul>
+
+    <div class="affiliate-footer-text">
+      {{ section.settings.footer_bold_text }}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Affiliate Target Section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#fdfaf4"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "¿A quién va dirigido el programa de afiliados?"
+    },
+    {
+      "type": "text",
+      "id": "intro_text",
+      "label": "Intro Text",
+      "default": "Este programa está pensado para personas que:"
+    },
+    {
+      "type": "text",
+      "id": "point_1",
+      "label": "Point 1",
+      "default": "Creen en hacer las cosas bien, sin atajos"
+    },
+    {
+      "type": "text",
+      "id": "point_2",
+      "label": "Point 2",
+      "default": "Valoran el acompañamiento real frente a las promesas vacías"
+    },
+    {
+      "type": "text",
+      "id": "point_3",
+      "label": "Point 3",
+      "default": "Recomiendan desde la honestidad, no desde la presión"
+    },
+    {
+      "type": "text",
+      "id": "point_4",
+      "label": "Point 4",
+      "default": "Prefieren construir confianza antes que volumen"
+    },
+    {
+      "type": "text",
+      "id": "footer_bold_text",
+      "label": "Footer Bold Text",
+      "default": "Queremos pocos afiliados, pero alineados."
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "Affiliate Target Section"
+    }
+  ]
+}
+{% endschema %}

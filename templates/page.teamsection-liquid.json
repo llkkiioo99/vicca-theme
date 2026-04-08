@@ -1,0 +1,59 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
+    },
+    "teamsection_kL46Kb": {
+      "type": "teamsection",
+      "blocks": {
+        "team_member_qjyNTg": {
+          "type": "team_member",
+          "settings": {
+            "image": "shopify://shop_images/image_55_0904efc3-2de5-4574-ba1d-3319d4feb2c9.png",
+            "name": "Victor Carbó",
+            "role": "CEO y fundador",
+            "bio": "<p>Víctor tiene una energía que contagia, una visión que siempre va un paso por delante y una pasión sincera por todo lo que hace. Cuida cada detalle y busca siempre la manera de ayudar a los demás desde el corazón, ya sea en vicca o su vida personal. Para él no existen los límites, solo los caminos para llegar. Su espíritu emprendedor y su compromiso son la razón por la que vicca sigue creciendo cada día.</p>"
+          }
+        },
+        "team_member_rQTYFd": {
+          "type": "team_member",
+          "settings": {
+            "image": "shopify://shop_images/image_56.png",
+            "name": "Carla Sáez",
+            "role": "Co-fundadora",
+            "bio": "<p>Carla destaca por su mente brillante, su perfeccionismo (del bueno) y una forma de trabajar que inspira y arrastra. Admiro profundamente su entrega, su sensibilidad y esa capacidad de hacerlo todo bien, incluso cuando no lo ve. Gracias por dar siempre más de lo que se ve y por hacerlo con tanta elegancia, corazón y magia.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "team_member_qjyNTg",
+        "team_member_rQTYFd"
+      ],
+      "name": "Team Vicca Style",
+      "settings": {
+        "bg_color": "#fdfaf5",
+        "heading": "Una gran historia empieza con un gran equipo",
+        "subheading": "<p>Todo lo que hacemos en <strong>vicca.</strong> nace de la confianza y la experiencia compartida. Por eso <strong>quisimos presentarnos de una manera distinta</strong>. Porque a veces, la mejor forma de conocernos es a través de los ojos del otro.</p>",
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "padding_top_mb": 60,
+        "padding_bottom_mb": 60
+      }
+    }
+  },
+  "order": [
+    "main",
+    "teamsection_kL46Kb"
+  ]
+}

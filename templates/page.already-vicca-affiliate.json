@@ -1,0 +1,143 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
+    },
+    "alreadymember_z37Nkm": {
+      "type": "alreadymember",
+      "custom_css": [
+        "span.underline-text {font-weight: bold;}"
+      ],
+      "name": "Vicca Affiliate Banner",
+      "settings": {
+        "heading_thin": "Programa de",
+        "heading_bold": "afiliados",
+        "link_join": "shopify://pages/querio-affiliate",
+        "link_login": "shopify://pages/form"
+      }
+    },
+    "1772093622731b3e40": {
+      "type": "apps",
+      "blocks": {
+        "hulk_form_builder_form_block_PtiCRb": {
+          "type": "shopify://apps/hulk-form-builder/blocks/form-block/b6b8dd14-356b-4725-a4ed-77232212b3c3",
+          "settings": {
+            "form_uuid": "owELI147GgDz6mkqN93BFg",
+            "form_settings": false,
+            "font_color": "#000000",
+            "size": 14,
+            "input_background_color": "#ffffff",
+            "input_background_color_focus": "#f4dada",
+            "input_border_radius": 1,
+            "input_border_color": "#ebe9e9",
+            "input_border_color_focus": "#2d2727",
+            "input_font_color": "#3d3131",
+            "input_size": 14,
+            "border_color": "#121212",
+            "border_radius": 2,
+            "border": 1,
+            "fill_color": "#ebe9e9",
+            "padding": 35,
+            "form_width": 600,
+            "btn_text": "Submit",
+            "sub_btn_txt_color": "#f3f3f3",
+            "sub_btn_bg_color": "#3f3333",
+            "sub_btn_font_size": 14,
+            "sub_btn_bdr_color": "#ffffff",
+            "sub_btn_bdr_rad": 3,
+            "sub_btn_bdr_width": 1,
+            "fonts": "Times New Roman"
+          }
+        }
+      },
+      "block_order": [
+        "hulk_form_builder_form_block_PtiCRb"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "heading_size": "h3",
+        "subheading": "",
+        "header_alignment": "center",
+        "container": "container-fluid",
+        "background_color": "#fbf7f0",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "custom_class": ""
+      }
+    },
+    "17724333305d321917": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_dda471a_3zMCwc": {
+          "type": "ai_gen_block_dda471a",
+          "disabled": true,
+          "settings": {
+            "heading": "Download our free guide",
+            "description": "<p>Enter your email to receive instant access to our comprehensive PDF guide.</p>",
+            "email_placeholder": "Enter your email",
+            "button_text": "Get PDF",
+            "success_message": "<p>Thank you! Your PDF is downloading now. Check your email for a copy.</p>",
+            "pdf_title": "Free guide",
+            "pdf_file": "https://cdn.shopify.com/s/files/1/0963/9352/7682/files/INFO_PROGRAMA_AFILIADOS-4_3.pdf?v=1772428494",
+            "desktop_width_percent": 100,
+            "text_alignment": "center",
+            "form_max_width": 600,
+            "padding": 40,
+            "border_radius": 8,
+            "heading_size": 32,
+            "heading_spacing": 16,
+            "text_size": 16,
+            "description_spacing": 24,
+            "field_gap": 12,
+            "input_padding": 14,
+            "input_font_size": 16,
+            "input_border_width": 1,
+            "input_border_radius": 4,
+            "button_padding_horizontal": 30,
+            "button_font_size": 16,
+            "button_font_weight": "500",
+            "button_border_radius": 4,
+            "message_spacing": 12,
+            "message_font_size": 14,
+            "background_color": "#f5f5f5",
+            "heading_color": "#222222",
+            "text_color": "#666666",
+            "input_background": "#ffffff",
+            "input_text_color": "#222222",
+            "input_placeholder_color": "#999999",
+            "input_border_color": "#dddddd",
+            "input_focus_border_color": "#ff9d5c",
+            "button_background": "#ff9d5c",
+            "button_text_color": "#ffffff",
+            "button_hover_background": "#222222",
+            "success_color": "#3a8735",
+            "error_color": "#da3f3f"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_dda471a_3zMCwc"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "alreadymember_z37Nkm",
+    "1772093622731b3e40",
+    "17724333305d321917"
+  ]
+}

@@ -1,0 +1,249 @@
+{% schema %}
+{
+  "name": "Step Into Opportunity",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Left Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Step Into Opportunity"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Nuestro acompañamiento no es solo asesoría: es tener a alguien que ya vivió lo mismo y sabe exactamente cómo ayudarte a lograrlo.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Saber más"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 80
+    }
+  ],
+  "presets": [
+    {
+      "name": "Step Into Opportunity"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500&display=swap');
+
+.section-{{ section.id }}-padding {
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+}
+
+.step-opportunity {
+  background: #fffdfa;
+  width: 100%;
+}
+
+.step-opportunity__wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.step-opportunity__image {
+  flex: 1;
+}
+
+.step-opportunity__image img {
+  width: 100%;
+  height: auto;
+  border-radius: 40px; /* Increased to match image style */
+  display: block;
+}
+
+.step-opportunity__content {
+  flex: 1;
+  display: flex;           /* Added for button centering */
+  flex-direction: column;  /* Added for button centering */
+}
+
+.step-opportunity__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px; /* Increased to match visual weight */
+  font-weight: 700;
+  line-height: 1.1;
+  color: #000;
+  margin: 0 0 30px;
+}
+
+.step-opportunity__desc {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #777;
+  margin-bottom: 30px;
+}
+
+.step-opportunity__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px;
+}
+
+.step-opportunity__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.step-opportunity__icon {
+  width: 20px;
+  height: 20px;
+  background: #ff914d;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.step-opportunity__icon svg {
+  width: 10px;
+  height: 10px;
+  fill: none;
+  stroke: white;
+  stroke-width: 4;
+}
+
+.step-opportunity__btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background: #ff914d;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 50px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  transition: 0.3s ease;
+  align-self: center; /* THIS CENTERS THE BUTTON IN THE COLUMN */
+  margin-top: 10px;
+}
+
+.step-opportunity__btn:hover {
+  background: #000000;
+  color:#ff9152;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 991px) {
+  .step-opportunity__wrapper {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .step-opportunity__title {
+    font-size: 38px;
+  }
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.7 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.7 | round: 0 }}px;
+  }
+}
+</style>
+
+<section class="step-opportunity section-{{ section.id }}-padding">
+  <div class="step-opportunity__wrapper">
+    <div class="step-opportunity__image">
+      {% if section.settings.image != blank %}
+        <img src="{{ section.settings.image | image_url: width: 1000 }}" alt="{{ section.settings.title }}">
+      {% else %}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </div>
+
+    <div class="step-opportunity__content">
+      <h2 class="step-opportunity__title">{{ section.settings.title }}</h2>
+      
+      {% if section.settings.description != blank %}
+        <div class="step-opportunity__desc">
+          {{ section.settings.description }}
+        </div>
+      {% endif %}
+
+      <ul class="step-opportunity__list">
+        <li>
+          <span class="step-opportunity__icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+          <p>Acompañado y guiado por el equipo de <strong style="color:#000">vicca<span style="color:#fe8f46">.</span></strong></p>
+        </li>
+        <li>
+          <span class="step-opportunity__icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+          <span>No estarás solo/a.</span>
+        </li>
+        <li>
+          <span class="step-opportunity__icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+          <span>Nos adaptamos a ti, no al revés. Te escuchamos, te entendemos y te conectamos con oportunidades reales.</span>
+        </li>
+        <li>
+          <span class="step-opportunity__icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+          <span>Evita errores con nuestra ayuda, ahorra tiempo.</span>
+        </li>
+        <li>
+          <span class="step-opportunity__icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+          <span>Comunicación directa y sin rodeos.</span>
+        </li>
+        <li>
+          <span class="step-opportunity__icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+          <span>Te ayudamos a conseguir alojamiento y empleo más rápido.</span>
+        </li>
+      </ul>
+
+      {% if section.settings.button_text != blank %}
+        <a href="{{ section.settings.button_link }}" class="step-opportunity__btn">
+          {{ section.settings.button_text }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</section>

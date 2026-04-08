@@ -1,0 +1,114 @@
+{% style %}
+ 
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+
+  .vicca-title-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.bg_color }};
+    text-align: center;
+  }
+
+  .vicca-title-{{ section.id }} {
+    font-family: 'Playfair Display', serif;
+    font-size: {{ section.settings.font_size }}px;
+    color: {{ section.settings.text_color }};
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .vicca-title-{{ section.id }} span {
+    font-weight: 900;
+  }
+
+  .dot-accent {
+    color: {{ section.settings.dot_color }};
+  }
+
+
+  @media screen and (max-width: 768px) {
+    .vicca-title-{{ section.id }} {
+      font-size: calc({{ section.settings.font_size }}px * 0.7);
+    }
+  }
+{% endstyle %}
+
+<div class="vicca-title-section-{{ section.id }}">
+  <div class="page-width">
+    <h2 class="vicca-title-{{ section.id }}">
+      {{ section.settings.title_text }}
+      <span class="dot-accent">.</span>
+    </h2>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Vicca Team Title",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title_text",
+      "label": "Title Text",
+      "default": "Conoce al equipo<strong>vicca</strong>"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "dot_color",
+      "label": "Dot Color",
+      "default": "#ff8c00"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#fdf8f3"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 20,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 48
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vicca Team Title"
+    }
+  ]
+}
+{% endschema %}

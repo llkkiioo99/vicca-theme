@@ -1,0 +1,112 @@
+{% comment %}
+  Shopify Section: Program Duration (Poppins Font)
+{% endcomment %}
+
+<style>
+  /* Import Poppins Font */
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+  .program-duration-section {
+    font-family: 'Poppins', sans-serif;
+    padding: 60px 20px;
+    background-color: ##fffdfa; /* Change to match your site background */
+    text-align: center;
+    color: #000000;
+  }
+
+  .program-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .program-title {
+    font-size: 32px;
+      font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    margin-bottom: 50px;
+    letter-spacing: -0.5px;
+  }
+
+  .program-content-wrapper {
+    text-align: left;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  .program-paragraph {
+    margin-bottom: 25px;
+    font-weight: 400;
+  }
+
+  .program-highlight-bold {
+    font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    .program-title {
+      font-size: 24px;
+    }
+    .program-duration-section {
+      padding: 40px 15px;
+    }
+  }
+</style>
+
+<section class="program-duration-section">
+  <div class="program-container">
+    
+    <h2 class="program-title">{{ section.settings.title }}</h2>
+
+    <div class="program-content-wrapper">
+      <div class="program-paragraph">
+        {{ section.settings.text_1 }}
+      </div>
+
+      <div class="program-paragraph">
+        {{ section.settings.text_2 }}
+      </div>
+
+      <div class="program-paragraph program-highlight-bold">
+        {{ section.settings.text_bold }}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Program Duration",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Duración del programa"
+    },
+    {
+      "type": "textarea",
+      "id": "text_1",
+      "label": "First Paragraph",
+      "default": "Este programa tiene una duración total de 4 meses. Este es el tiempo que, bajo nuestra experiencia, es más que suficiente para que puedas instalarte con trabajo, alojamiento y seguridad en tu nuevo destino."
+    },
+    {
+      "type": "textarea",
+      "id": "text_2",
+      "label": "Second Paragraph",
+      "default": "Un mes antes de que llegues al país, el equipo comenzará con todos los trámites para que al llegar todo fluya lo más rápido posible."
+    },
+    {
+      "type": "textarea",
+      "id": "text_bold",
+      "label": "Bottom Bold Text",
+      "default": "Si consigues alojamiento y trabajo antes del plazo de 4 meses, no nos olvidaremos de ti, aún seguirás contando con nuestro apoyo y resolveremos todas tus dudas igual."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Program Duration"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,196 @@
+{% style %}
+  /* Import Poppins Font from Google Fonts */
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+
+  .custom-guide-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    background-color: #fffaf5; 
+    /* Font family changed to Poppins */
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .guide-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .guide-header h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: #000;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+
+  .guide-description {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  .guide-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 40px;
+  }
+
+  .guide-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 18px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    line-height: 1.4;
+  }
+
+  .guide-icon {
+    width: 22px;
+    height: 22px;
+    margin-right: 12px;
+    flex-shrink: 0;
+    background-color: #f38a4e; 
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .guide-icon svg {
+    fill: white;
+    width: 12px;
+    height: 12px;
+  }
+
+  .guide-footer {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  /* Desktop Styles */
+  @media screen and (min-width: 750px) {
+    .custom-guide-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_desktop }}px;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    }
+    .guide-header h2 {
+      font-size: 36px;
+    }
+    .guide-description {
+      max-width: 85%;
+      font-size: 19px;
+    }
+    .guide-item {
+      font-size: 17px;
+    }
+  }
+{% endstyle %}
+
+<section class="custom-guide-{{ section.id }}">
+  <div class="guide-container">
+    <div class="guide-header">
+      <h2>La guía práctica para empezar tu vida en Holanda sin ir a ciegas</h2>
+    </div>
+    
+    <div class="guide-description">
+      Un documento claro y actualizado para que sepas exactamente qué trámites hacer, en qué orden y cómo evitar errores comunes.
+    </div>
+
+    <div class="guide-list">
+      <div class="guide-item">
+        <span class="guide-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+        Guía digital en formato PDF
+      </div>
+      <div class="guide-item">
+        <span class="guide-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+        Acceso inmediato tras el pago
+      </div>
+      <div class="guide-item">
+        <span class="guide-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+        Documento práctico y estructurado
+      </div>
+      <div class="guide-item">
+        <span class="guide-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+        <span>Contacto por WhatsApp con el equipo de vicca. para resolver tus dudas relacionadas con la guía (no se dará información extra ni acompañamiento)</span>
+      </div>
+    </div>
+
+    <div class="guide-footer">
+      *No reembolsable después de pago.<br>
+      *Impuestos incluidos.<br>
+      *Esta guía tiene carácter informativo y no sustituye asesoramiento legal o administrativo profesional.
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom Info Guide",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Desktop Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Mobile Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Info Guide"
+    }
+  ]
+}
+{% endschema %}

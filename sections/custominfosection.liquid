@@ -1,0 +1,166 @@
+{% schema %}
+{
+  "name": "Custom Info Section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Ajustes de Espaciado"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Espaciado superior",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Espaciado inferior",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Contenido de Texto"
+    },
+    {
+      "type": "liquid",
+      "id": "full_header_text",
+      "label": "Header Text (HTML Compatible)",
+      "default": "<span class='text-orange'>Es directa, clara y práctica.</span> Está llena de <span class='text-bold'>consejos y enlaces</span> directos a webs que te pueden ayudar para que tomes decisiones firmes desde el primer día y no pierdas energía en errores evitables."
+    },
+    {
+      "type": "header",
+      "content": "Imagen"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Imagen Principal"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Info Section"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+  .custom-info-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    color: #000000;
+  }
+
+  .container-custom {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .top-header-container {
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto 60px auto;
+  }
+
+  .main-headline {
+    font-size: 26px;
+    line-height: 1.4;
+    font-weight: 400;
+    color: #000000;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  /* Image matching styles */
+  .text-orange {
+    color: #f38a4c !important;
+    font-weight: 600 !important;
+  }
+
+  .text-bold {
+    color: #000000 !important;
+    font-weight: 800 !important;
+  }
+
+  .split-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+  }
+
+  .image-box {
+    flex: 1;
+  }
+
+  .image-box img {
+    width: 100%;
+    height: auto;
+    border-radius: 35px;
+    display: block;
+    object-fit: cover;
+  }
+
+  .text-box {
+    flex: 1.1;
+  }
+
+  .text-box p {
+    font-size: 17px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: #000000;
+    font-weight: 400;
+  }
+
+  .text-box strong {
+    font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    .main-headline { font-size: 22px; }
+    .split-content { flex-direction: column; text-align: left; }
+    .image-box { width: 100%; }
+  }
+</style>
+
+<section class="custom-info-section-{{ section.id }}">
+  <div class="container-custom">
+    
+    <div class="top-header-container">
+      <div class="main-headline">
+        {{ section.settings.full_header_text }}
+      </div>
+    </div>
+
+    <div class="split-content">
+      <div class="image-box">
+        {% if section.settings.main_image %}
+          <img src="{{ section.settings.main_image | img_url: '1000x' }}" alt="Info Section Image">
+        {% else %}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+      </div>
+
+      <div class="text-box">
+        <p>Sabemos que este proceso puede ser un reto y que las dudas aparecen incluso antes de empezar: ¿por dónde empiezo?, ¿qué trámites son realmente obligatorios?, ¿cómo consigo alojamiento o trabajo rápido?, ¿qué hago para no perder dinero ni tiempo en el intento? ¿me estaré dejando algo importante?</p>
+        
+        <p>Con esta guía <strong>estarás mejor preparado de principio a fin</strong>, ahorrarás preocupaciones y podrás concentrarte en lo más importante: empezar tu nueva vida en los Países Bajos con confianza y seguridad.</p>
+      </div>
+    </div>
+  </div>
+</section>

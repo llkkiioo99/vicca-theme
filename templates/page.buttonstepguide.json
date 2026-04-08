@@ -1,0 +1,72 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
+    },
+    "stepcartguide_NbMqtj": {
+      "type": "stepcartguide",
+      "custom_css": [
+        ".top-logo-text .light-font {font-size: 35px; font-weight: 400; color: #000;}"
+      ],
+      "name": "Step Into Guide",
+      "settings": {
+        "selected_product": "step-into-guide",
+        "product_image": "shopify://shop_images/image_37.png",
+        "header_top": "Step Into",
+        "header_bottom": "Guide",
+        "main_title": "¿Listo/a para dar el primer paso?",
+        "product_name": "Guía práctica digital – Step Into Guide",
+        "price": "49€"
+      }
+    },
+    "customserviceguide_y8YhXN": {
+      "type": "customserviceguide",
+      "name": "Custom Service Guide",
+      "settings": {
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "pricevicca_x8U9Qk": {
+      "type": "pricevicca",
+      "custom_css": [
+        ".vicca-footer-text {color: #000; font-size: 20px; margin-bottom: 10px;}",
+        "@media (max-width: 768px) {a.vicca-button {padding: 20px; }}",
+        "strong {color: #666666;}",
+        ".vicca-description {color: #666666;}",
+        ".vicca-title {font-size: 35px; color: #000; margin: 0 0 25px 0; font-weight: 700; line-height: 1.2;}",
+        ".vicca-description {font-size: 18px;}"
+      ],
+      "name": "priceVicca Hero Card",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 5,
+        "title": "¿Y ahora qué?",
+        "description": "<p>Esta guía te da claridad, pero cada situación es distinta.El programa <strong>Step Into Opportunity no es para todo el mundo. </strong>Es para personas que quieren ir un paso más allá y contar con acompañamiento real y ayuda activa</p>",
+        "button_label": "Agenda una llamada",
+        "button_link": "shopify://pages/agenda-una-llamada",
+        "footer_bold_text": "¿Te gustaría que revisemos tu caso",
+        "footer_regular_text": "y   ver si el programa encaja contigo?"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "stepcartguide_NbMqtj",
+    "customserviceguide_y8YhXN",
+    "pricevicca_x8U9Qk"
+  ]
+}

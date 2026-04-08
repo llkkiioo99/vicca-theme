@@ -1,0 +1,451 @@
+{% doc %}
+  @prompt
+    Please make a form where user will give email and I will send them a pdf automaticlly, use shopify's default contact method or emailjs or anyhow make this possible. give the pdf upload option. thank you. 
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-pdf-form-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    padding: 40px;
+    background-color: {{ block.settings.background_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    margin: 0 auto;
+  }
+
+  .ai-pdf-form__content-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .ai-pdf-form__heading-{{ ai_gen_id }} {
+    margin: 0 0 8px;
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.heading_size }}px;
+    text-align: {{ block.settings.text_alignment }};
+  }
+
+  .ai-pdf-form__description-{{ ai_gen_id }} {
+    color: {{ block.settings.text_color }};
+    opacity: 0.8;
+    text-align: {{ block.settings.text_alignment }};
+    margin: 0;
+  }
+
+  .ai-pdf-form__field-wrapper-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .ai-pdf-form__input-group-{{ ai_gen_id }} {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .ai-pdf-form__input-{{ ai_gen_id }} {
+    flex: 1;
+    min-width: 200px;
+    padding: 14px 16px;
+    border: 1px solid {{ block.settings.input_border_color }};
+    border-radius: {{ block.settings.input_border_radius }}px;
+    font-size: 16px;
+    background-color: {{ block.settings.input_background_color }};
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-pdf-form__input-{{ ai_gen_id }}:focus {
+    outline: none;
+    border-color: {{ block.settings.button_color }};
+  }
+
+  .ai-pdf-form__button-{{ ai_gen_id }} {
+    padding: 14px 32px;
+    background-color: {{ block.settings.button_color }};
+    color: {{ block.settings.button_text_color }};
+    border: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .ai-pdf-form__button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_color }};
+  }
+
+  .ai-pdf-form__message-{{ ai_gen_id }} {
+    padding: 12px 16px;
+    border-radius: {{ block.settings.input_border_radius }}px;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+
+  .ai-pdf-form__success-{{ ai_gen_id }} {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+
+  .ai-pdf-form__error-{{ ai_gen_id }} {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+
+  .ai-pdf-form__pdf-info-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background-color: {{ block.settings.input_background_color }};
+    border: 1px solid {{ block.settings.input_border_color }};
+    border-radius: {{ block.settings.input_border_radius }}px;
+    margin-top: 8px;
+  }
+
+  .ai-pdf-form__pdf-icon-{{ ai_gen_id }} {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: {{ block.settings.button_color }};
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+
+  .ai-pdf-form__pdf-icon-{{ ai_gen_id }} svg {
+    width: 24px;
+    height: 24px;
+    fill: {{ block.settings.button_text_color }};
+  }
+
+  .ai-pdf-form__pdf-details-{{ ai_gen_id }} {
+    flex: 1;
+  }
+
+  .ai-pdf-form__pdf-name-{{ ai_gen_id }} {
+    font-weight: 500;
+    color: {{ block.settings.text_color }};
+    margin: 0 0 4px;
+    font-size: 14px;
+  }
+
+  .ai-pdf-form__pdf-description-{{ ai_gen_id }} {
+    font-size: 12px;
+    color: {{ block.settings.text_color }};
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  .ai-pdf-form__empty-state-{{ ai_gen_id }} {
+    text-align: center;
+    padding: 24px;
+    color: {{ block.settings.text_color }};
+    opacity: 0.6;
+    font-size: 14px;
+    font-style: italic;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-pdf-form-{{ ai_gen_id }} {
+      padding: 24px;
+      width: 100%;
+    }
+
+    .ai-pdf-form__input-group-{{ ai_gen_id }} {
+      flex-direction: column;
+    }
+
+    .ai-pdf-form__input-{{ ai_gen_id }} {
+      min-width: 100%;
+    }
+
+    .ai-pdf-form__button-{{ ai_gen_id }} {
+      width: 100%;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-pdf-form-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  {%- form 'contact' -%}
+    <input type="hidden" name="contact[pdf_download_request]" value="true">
+    {% if block.settings.pdf_file %}
+      <input type="hidden" name="contact[pdf_file_url]" value="{{ block.settings.pdf_file }}">
+    {% endif %}
+
+    <div class="ai-pdf-form__content-{{ ai_gen_id }}">
+      {% if block.settings.heading != blank %}
+        <h2 class="ai-pdf-form__heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+      {% endif %}
+
+      {% if block.settings.description != blank %}
+        <div class="ai-pdf-form__description-{{ ai_gen_id }}">{{ block.settings.description }}</div>
+      {% endif %}
+
+      {% if block.settings.pdf_file %}
+        <div class="ai-pdf-form__pdf-info-{{ ai_gen_id }}">
+          <div class="ai-pdf-form__pdf-icon-{{ ai_gen_id }}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6zm2-8h8v2H8v-2zm0 4h8v2H8v-2z"/>
+            </svg>
+          </div>
+          <div class="ai-pdf-form__pdf-details-{{ ai_gen_id }}">
+            <p class="ai-pdf-form__pdf-name-{{ ai_gen_id }}">
+              {% if block.settings.pdf_name != blank %}
+                {{ block.settings.pdf_name }}
+              {% else %}
+                PDF Document
+              {% endif %}
+            </p>
+            <p class="ai-pdf-form__pdf-description-{{ ai_gen_id }}">
+              {% if block.settings.pdf_description != blank %}
+                {{ block.settings.pdf_description }}
+              {% else %}
+                Enter your email to receive this document
+              {% endif %}
+            </p>
+          </div>
+        </div>
+      {% else %}
+        <div class="ai-pdf-form__empty-state-{{ ai_gen_id }}">
+          Upload a PDF file in the block settings to get started
+        </div>
+      {% endif %}
+
+      <div class="ai-pdf-form__field-wrapper-{{ ai_gen_id }}">
+        <div class="ai-pdf-form__input-group-{{ ai_gen_id }}">
+          <input
+            type="email"
+            name="contact[email]"
+            class="ai-pdf-form__input-{{ ai_gen_id }}"
+            value="{{ form.email }}"
+            placeholder="{{ block.settings.email_placeholder }}"
+            aria-required="true"
+            autocorrect="off"
+            autocapitalize="off"
+            autocomplete="email"
+            {% if form.errors %}
+              aria-invalid="true"
+              aria-describedby="ai-pdf-form-error-{{ ai_gen_id }}"
+            {% endif %}
+            {% if form.posted_successfully? %}
+              aria-describedby="ai-pdf-form-success-{{ ai_gen_id }}"
+            {% endif %}
+            required
+          >
+          <button type="submit" class="ai-pdf-form__button-{{ ai_gen_id }}">
+            {{ block.settings.button_text }}
+          </button>
+        </div>
+
+        {% if form.errors %}
+          <div id="ai-pdf-form-error-{{ ai_gen_id }}" class="ai-pdf-form__message-{{ ai_gen_id }} ai-pdf-form__error-{{ ai_gen_id }}">
+            {{ form.errors.messages.email }}
+          </div>
+        {% endif %}
+
+        {% if form.posted_successfully? %}
+          <div id="ai-pdf-form-success-{{ ai_gen_id }}" class="ai-pdf-form__message-{{ ai_gen_id }} ai-pdf-form__success-{{ ai_gen_id }}">
+            {{ block.settings.success_message }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  {%- endform -%}
+</div>
+
+{% schema %}
+{
+  "name": "PDF download form",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Download our free guide</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Enter your email address and we'll send you the PDF instantly</p>"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "PDF file"
+    },
+    {
+      "type": "url",
+      "id": "pdf_file",
+      "label": "PDF file URL"
+    },
+    {
+      "type": "text",
+      "id": "pdf_name",
+      "label": "PDF name",
+      "default": "Free Guide.pdf"
+    },
+    {
+      "type": "text",
+      "id": "pdf_description",
+      "label": "PDF description",
+      "default": "Complete guide to getting started"
+    },
+    {
+      "type": "header",
+      "content": "Form"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email placeholder",
+      "default": "Enter your email"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Get PDF"
+    },
+    {
+      "type": "richtext",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "<p>Thank you! Check your email for the PDF download link.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f9f9f9"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#222222"
+    },
+    {
+      "type": "color",
+      "id": "input_background_color",
+      "label": "Input background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "input_border_color",
+      "label": "Input border color",
+      "default": "#dddddd"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button color",
+      "default": "#ff9d5c"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Button hover color",
+      "default": "#222222"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Form border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "input_border_radius",
+      "label": "Input border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Button border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    }
+  ],
+  "presets": [
+    {
+      "name": "PDF download form"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,195 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
+    },
+    "faqfirst_Wjxg9k": {
+      "type": "faqfirst",
+      "blocks": {
+        "faq_item_T94UkP": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Sois una ETT?",
+            "answer": "<p>No.No gestionamos contratos ni trabajamos para empresas que “colocan” personas.</p><p>Acompañamos a personas que quieren mudarse a Holanda a hacerlo con criterio y autonomía, ya sea a través de nuestra guía o de nuestro programa.</p>"
+          }
+        },
+        "faq_item_AnPtVY": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Me garantizáis trabajo o alojamiento?",
+            "answer": "<p>No.</p><p>Lo que hacemos es <strong>ayudarte activamente</strong> a buscarlos y a tomar buenas decisiones, pero no vendemos promesas ni resultados garantizados.</p>"
+          }
+        },
+        "faq_item_RKQcbX": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Os quedáis con parte de mi salario?",
+            "answer": "<p>No. Nunca.</p><p>Pagas por el acompañamiento, no por tu trabajo. Tu salario es solo tuyo, como debería ser.</p>"
+          }
+        },
+        "faq_item_RTPVTN": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Cómo sé qué opción es mejor para mí?",
+            "answer": "<p>Depende de lo que necesites ahora:</p><ul><li>Si quieres <strong>información</strong>, la guía</li><li>Si quieres <strong>acompañamiento</strong>, el programa</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_T94UkP",
+        "faq_item_AnPtVY",
+        "faq_item_RKQcbX",
+        "faq_item_RTPVTN"
+      ],
+      "name": "Custom FAQ Section",
+      "settings": {
+        "bg_color": "#fdfaf5",
+        "title": "Preguntas rápidas",
+        "subtitle": "Antes de dar el paso, esto es importante...",
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "faqfirst_BLKmGV": {
+      "type": "faqfirst",
+      "blocks": {
+        "faq_item_WBxMBc": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Necesito saber inglés?",
+            "answer": "<p>Sí, un nivel mínimo funcional.</p><p>No perfección, pero sí capacidad de comunicación básica.</p>"
+          }
+        },
+        "faq_item_cwXLCU": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Me vais a decir dónde vivir o qué trabajo aceptar?",
+            "answer": "<p>No.</p><p>Te ayudamos a buscar, entender opciones y evitar errores, pero las decisiones siempre son tuyas.</p>"
+          }
+        },
+        "faq_item_rwdRhN": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Necesito ahorros?",
+            "answer": "<p>Sí.</p><p>Mudarse a otro país requiere un colchón económico mínimo. </p>"
+          }
+        },
+        "faq_item_Vb6WqJ": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Es para todo el mundo?",
+            "answer": "<p>s para personas comprometidas con su proceso y dispuestas a implicarse activamente.<br/><br/></p>"
+          }
+        },
+        "faq_item_FGm74r": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Cómo funciona el pago?",
+            "answer": "<p>Tienes la opción de un único o dos pagos. Pagas por el programa de acompañamiento, no nos quedamos con ningún porcentaje de tu salario.<br/><br/></p>"
+          }
+        },
+        "faq_item_JqFdhk": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Hay reembolsos?",
+            "answer": "<p>Sí, dentro del marco legal.</p><p>Tienes 14 días para desistir, pero si el programa ya ha comenzado, no se devolverá la parte del trabajo que ya hayamos realizado desde vicca.agency.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_WBxMBc",
+        "faq_item_cwXLCU",
+        "faq_item_rwdRhN",
+        "faq_item_Vb6WqJ",
+        "faq_item_FGm74r",
+        "faq_item_JqFdhk"
+      ],
+      "name": "Custom FAQ Section",
+      "settings": {
+        "bg_color": "#fdfaf5",
+        "title": "Preguntas sobre Step Into Opportunity",
+        "subtitle": "",
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "faqfirst_A9QgCf": {
+      "type": "faqfirst",
+      "blocks": {
+        "faq_item_jjJJ9r": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Qué es esta guía?",
+            "answer": "<p>Un documento digital con la información clave para gestionar tus trámites y entender cómo empezar en Holanda de forma legal y ordenada.<br/><br/></p>"
+          }
+        },
+        "faq_item_fPfQbt": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Incluye acompañamiento?",
+            "answer": "<p>No.</p><p>La guía es informativa. El acompañamiento personalizado forma parte de Step Into Opportunity.</p>"
+          }
+        },
+        "faq_item_LGAyrc": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Cuándo la recibo?",
+            "answer": "<p>De forma inmediata tras el pago a través de tu correo electronico.<br/><br/></p>"
+          }
+        },
+        "faq_item_9YGUhm": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Sirve si ya estoy en Holanda?",
+            "answer": "<p>Sí.</p><p>Muchos la usan para ordenar trámites pendientes o entender mejor el sistema.<br/><br/></p>"
+          }
+        },
+        "faq_item_fRx9tC": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Tiene reembolso?",
+            "answer": "<p>No.</p><p>Es un producto digital con acceso inmediato.<br/><br/></p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_jjJJ9r",
+        "faq_item_fPfQbt",
+        "faq_item_LGAyrc",
+        "faq_item_9YGUhm",
+        "faq_item_fRx9tC"
+      ],
+      "name": "Custom FAQ Section",
+      "settings": {
+        "bg_color": "#fdfaf5",
+        "title": "Preguntas sobre Step Into Guide",
+        "subtitle": "",
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    }
+  },
+  "order": [
+    "main",
+    "faqfirst_Wjxg9k",
+    "faqfirst_BLKmGV",
+    "faqfirst_A9QgCf"
+  ]
+}

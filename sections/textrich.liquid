@@ -1,0 +1,126 @@
+{%- style -%}
+  .section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.bg_color }};
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .section-{{ section.id }} .content-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-{{ section.id }} p {
+    margin: 0;
+    line-height: 1.4;
+    color: {{ section.settings.text_color }};
+  }
+
+  .section-{{ section.id }} .first-line {
+    font-size: {{ section.settings.font_size }}px;
+    font-weight: 400;
+    margin-bottom: 5px;
+  }
+
+  .section-{{ section.id }} .first-line strong {
+    font-weight: 700;
+  }
+
+  .section-{{ section.id }} .second-line {
+    font-size: {{ section.settings.font_size }}px;
+    font-weight: 700;
+  }
+
+  @media screen and (max-width: 749px) {
+    .section-{{ section.id }} {
+      padding-top: 60px; /* Reduced for mobile */
+      padding-bottom: 60px;
+    }
+    .section-{{ section.id }} .first-line, 
+    .section-{{ section.id }} .second-line {
+      font-size: 18px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="section-{{ section.id }}">
+  <div class="content-wrapper">
+    <div class="first-line">
+      {{ section.settings.text_line_1 }}
+    </div>
+    <div class="second-line">
+      {{ section.settings.text_line_2 }}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Info Text",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "text_line_1",
+      "label": "First Line (use bold for 'el tiempo')",
+      "default": "Un recurso muy valioso y que todos cuidamos, es <strong>el tiempo.</strong>"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "text_line_2",
+      "label": "Second Line",
+      "default": "Es importante que lo inviertas en cosas que de verdad te aportan valor."
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 16,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 24
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#fcfaf5"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 250,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 150
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 250,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 150
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Info Text"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,149 @@
+<div class="req-container section-{{ section.id }}">
+  <div class="req-wrapper">
+    
+    <ul class="req-list">
+      {% for block in section.blocks %}
+        <li class="req-item">
+          <span class="req-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" fill="#FF8A47"/>
+              <path d="M8 12.5L11 15.5L16 9.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <div class="req-text">{{ block.settings.text }}</div>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <div class="req-buttons">
+      <a href="{{ section.settings.back_link }}" class="btn-back">{{ section.settings.back_label }}</a>
+      
+      <a href="{{ section.settings.next_link }}" class="btn-next">
+          {{ section.settings.next_label }}
+        </a>
+    </div>
+    
+  </div>
+</div>
+
+<style>
+  /* Reset and Base Styles */
+  .section-{{ section.id }} {
+    padding: 80px 20px;
+    background-color: #ffffff;
+    font-family: 'Poppins', sans-serif; /* Example clean font, or use theme font */
+  }
+  .req-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .req-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 60px;
+  }
+  .req-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 22px;
+    gap: 12px;
+  }
+  .req-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+  .req-text {
+    font-size: 15px; /* Size to match image */
+    line-height: 1.4;
+    color: #000;
+  }
+  .req-text p {
+    margin: 0;
+  }
+  /* Very specific bold weight for the highlighted text */
+  .req-text b, .req-text strong {
+    font-weight: 800;
+  }
+  
+  /* Buttons Styling - Clean and Centered as per image */
+  .req-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 50px;
+  }
+  .btn-back {
+    padding: 14px 45px;
+    background: #F9F7F5;
+    color: #444;
+    text-decoration: none;
+    border-radius: 40px;
+    font-weight: 700;
+    font-size: 13px;
+    transition: 0.3s;
+  }
+  
+  /* Updated 'Quiero dar el paso' button - NO SIDE ARROW, adjusted padding */
+  .btn-next {
+    padding: 16px 55px; /* Wider padding to look like the image button */
+    background: #FF9E5E; /* The exact soft orange color from your image */
+    color: white;
+    text-decoration: none;
+    border-radius: 40px;
+    font-weight: 700;
+    font-size: 14px; /* Matches the clean text style */
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(255, 138, 71, 0.2); /* Subtle hover shadow */
+    text-align: center;
+  }
+
+  /* Optional hover effect */
+  .btn-next:hover {
+    background: #ff8a47;
+  }
+
+  /* Responsive styling */
+  @media (max-width: 600px) {
+    .req-buttons {
+      flex-direction: column-reverse;
+      gap: 15px;
+    }
+    .btn-next, .btn-back {
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Requirements Checklist",
+  "settings": [
+    { "type": "text", "id": "back_label", "label": "Back Button Label", "default": "Atrás" },
+    { "type": "url", "id": "back_link", "label": "Back Button Link" },
+    { "type": "text", "id": "next_label", "label": "Next Button Label", "default": "Quiero dar el paso" },
+    { "type": "url", "id": "next_link", "label": "Next Button Link" }
+  ],
+  "blocks": [
+    {
+      "type": "requirement",
+      "name": "Checklist Item",
+      "settings": [
+        { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Nivel mínimo de <b>inglés B1</b>...</p>" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Requirements Checklist",
+      "blocks": [
+        { "type": "requirement" },
+        { "type": "requirement" }
+      ]
+    }
+  ]
+}
+{% endschema %}

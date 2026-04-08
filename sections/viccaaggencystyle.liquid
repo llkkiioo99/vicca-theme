@@ -1,0 +1,180 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<section class="vicca-section" id="vicca-{{ section.id }}">
+  <div class="vicca-container">
+    <div class="vicca-header">
+      <h2 class="vicca-main-title">{{ section.settings.heading }}</h2>
+      <p class="vicca-orange-sub">{{ section.settings.subheading }}</p>
+    </div>
+    
+    <div class="vicca-grid">
+      <div class="vicca-text-content">
+        {%- assign styled_brand = '<strong class="brand-bold">vicca<span class="orange-dot">.</span>agency</strong>' -%}
+        {{ section.settings.content | replace: 'vicca.agency', styled_brand }}
+      </div>
+      
+      <div class="vicca-image-wrapper">
+        {% if section.settings.image != blank %}
+          <img src="{{ section.settings.image | img_url: '800x' }}" alt="{{ section.settings.heading }}">
+        {% else %}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vicca-section {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: 'Poppins', sans-serif !important;
+    background-color: #ffffff;
+    overflow: hidden;
+  }
+
+  .vicca-container { 
+    max-width: 1200px; /* একটু বাড়িয়ে দেওয়া হয়েছে ইমেজ ও টেক্সটের ব্যালেন্সের জন্য */
+    margin: 0 auto; 
+  }
+
+  .vicca-header { 
+    text-align: center; 
+    margin-bottom: 60px; 
+  }
+
+  .vicca-main-title { 
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 48px; /* ইমেজের মতো বড় সাইজ */
+    font-weight: 800 !important;
+    margin-bottom: 30px; 
+    color: #000000;
+    letter-spacing: -1px;
+  }
+
+  .vicca-orange-sub { 
+    font-family: 'Poppins', sans-serif !important;
+    color: #FF8F5E; 
+    font-size: 28px; /* ইমেজের সাবহেডিং বেশ বোল্ড ও বড় */
+    font-weight: 700 !important; 
+    margin-top: 0;
+    letter-spacing: -0.5px;
+  }
+
+  .vicca-grid { 
+    display: flex; 
+    align-items: flex-start; /* টেক্সট টপ থেকে শুরু হবে */
+    gap: 50px; 
+    justify-content: space-between;
+  }
+
+  .vicca-text-content {
+    flex: 1;
+    max-width: 550px;
+  }
+
+  .vicca-text-content p { 
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 19px; /* রিডাবিলিটি বাড়ানোর জন্য */
+    font-weight: 400 !important;
+    color: #1a1a1a;
+    line-height: 1.4; /* ইমেজের মতো টাইট লাইন হাইট */
+    margin-bottom: 25px;
+  }
+
+  .brand-bold {
+    font-weight: 700 !important; 
+    color: #000000 !important;
+  }
+
+  .orange-dot {
+    color: #FF8F5E !important;
+  }
+
+  .vicca-image-wrapper {
+    flex: 1;
+    max-width: 550px;
+  }
+
+  .vicca-image-wrapper img { 
+    width: 100%; 
+    height: 400px; /* ফিক্সড হাইট ইমেজের রেশিও ঠিক রাখতে */
+    object-fit: cover;
+    border-radius: 45px; /* ইমেজের মতো রাউন্ডেড কর্নার */
+    display: block;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .vicca-main-title { font-size: 36px; }
+    .vicca-orange-sub { font-size: 22px; }
+    .vicca-grid { gap: 30px; }
+  }
+
+  @media (max-width: 768px) {
+    .vicca-grid { flex-direction: column; align-items: center; text-align: left; }
+    .vicca-image-wrapper { width: 100%; }
+    .vicca-image-wrapper img { height: auto; border-radius: 30px; }
+    .vicca-main-title { font-size: 32px; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Vicca Agency Perfect",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "¿Por qué elegirnos?"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Porque no decidimos por ti, decidimos contigo."
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Main Text",
+      "default": "<p>No trabajamos como otras agencias ni te imponemos casa, trabajo o condiciones. No tocamos tu salario, no te mandamos a donde no quieres ir. Te acompañamos como lo haríamos con un amigo, pero con la experiencia de una agencia profesional que ya conoce el camino.</p><p>Con un equipo dedicado y experiencia probada, estamos listos para ayudarte a dar el paso hacia tu nueva vida.</p><p>¡Únete ya al grupo de personas que han confiado en vicca.agency y han logrado sus metas!</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Right Side Image"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 100
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vicca Agency Perfect"
+    }
+  ]
+}
+{% endschema %}

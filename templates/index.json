@@ -1,0 +1,540 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "customagencyhero_XR3xnQ": {
+      "type": "customagencyhero",
+      "custom_css": [
+        "span.ai-vicca-header-nav-link-ac1ljrufubxzkzwiwbaigenblock273493bmmmfnm {gap: 5px;}",
+        ".bold-text {font-family: \"Poppins\", sans-serif; font-weight: 700; font-size: clamp(22px, 6.5vw, 65px);}",
+        ".bg-text-italic {font-family: \"Playfair Display\", serif; font-size: clamp(35px, 11vw, 120px);}",
+        ".serif-text {font-size: clamp(18px, 4.5vw, 60px);}",
+        ".bg-text-italic {font-size: 110px;}"
+      ],
+      "name": "Agency Custom Hero",
+      "settings": {
+        "bg_color": "#fdf9f1",
+        "accent_color": "#ff914d",
+        "btn_hover_bg": "#000000",
+        "btn_hover_text": "#ff914d",
+        "bg_text": "como",
+        "text_1": "Cercanos",
+        "text_2": "amigos,",
+        "text_3": "expertos",
+        "text_4": "agencia",
+        "desc_text": "Transformamos el reto de mudarte a Holanda en una experiencia guiada y llena de oportunidades reales. Lo hacemos simple, acompañándote desde el primer paso hasta tu nueva vida.",
+        "btn_label": "Empezar",
+        "btn_link": "shopify://pages/step-into-opportunity",
+        "padding_top": 88,
+        "padding_bottom": 52
+      }
+    },
+    "triangle_wyHL9B": {
+      "type": "triangle",
+      "blocks": {
+        "image_ebKacq": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image_11.png"
+          }
+        },
+        "image_myrUVx": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image_13.png"
+          }
+        },
+        "image_rAFyiR": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image_14.png"
+          }
+        },
+        "image_NFwMjG": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image_15.png"
+          }
+        },
+        "image_FVThrp": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image_16.png"
+          }
+        },
+        "image_Lfc6tD": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image_17.png"
+          }
+        },
+        "image_qwxyhh": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image_18.png"
+          }
+        },
+        "image_CUNRdr": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image_20.png"
+          }
+        },
+        "image_qtGqEM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image_19.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_ebKacq",
+        "image_myrUVx",
+        "image_rAFyiR",
+        "image_NFwMjG",
+        "image_FVThrp",
+        "image_Lfc6tD",
+        "image_qwxyhh",
+        "image_CUNRdr",
+        "image_qtGqEM"
+      ],
+      "name": "Infinite Auto Scroller",
+      "settings": {
+        "bg_color": "#fdf9f3",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top_negative": -50
+      }
+    },
+    "aboutagency_ChKMHN": {
+      "type": "aboutagency",
+      "name": "About Agency Section",
+      "settings": {
+        "bg_color": "#fdf9f3",
+        "text_highlight": "#ff914d",
+        "text_body": "#333333",
+        "heading_text": "<strong>Más que una agencia </strong>somos ese amigo que te acompaña paso a paso y te guía con <strong>honestidad</strong>.",
+        "content_body": "<p>Ayudamos a personas de Europa a mudarse a Holanda: sin caos, evitando errores, trámites confusos y frustraciones innecesarias.</p><p>Ya sea a través de nuestra guía práctica digital o con nuestro programa de acompañamiento personalizado, estamos contigo desde la decisión hasta tu llegada y adaptación al país.</p><p>Para conseguir todo esto, contamos con un equipo que no solo es experto, sino que ha pasado por lo mismo que tú, lo que hace que esté más involucrado y empatice más contigo.</p>",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "agencyabout_XNgkey": {
+      "type": "agencyabout",
+      "name": "Agency About Section",
+      "settings": {
+        "bg_1": "shopify://shop_images/Untitled_design_-_2026-03-03T093920.362.png",
+        "bg_2": "shopify://shop_images/Untitled_design_-_2026-03-03T094113.486.png",
+        "bg_3": "shopify://shop_images/Untitled_design_-_2026-03-03T094331_160-Picsart-AiImageEnhancer.png",
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
+    "curvedbottomsection_KgpzHU": {
+      "type": "curvedbottomsection",
+      "name": "Curved Bottom Section",
+      "settings": {
+        "heading_text": "Descubre cómo vicca. te puede ayudar",
+        "bg_image": "shopify://shop_images/banner.jpg",
+        "bg_color": "#f9f7f2",
+        "text_color": "#000000",
+        "font_size_desktop": 30,
+        "padding_top_desktop": 150,
+        "padding_bottom_desktop": 190,
+        "font_size_mobile": 28,
+        "padding_top_mobile": 65,
+        "padding_bottom_mobile": 70
+      }
+    },
+    "stepintoguide_gKFCcc": {
+      "type": "stepintoguide",
+      "custom_css": [
+        ".guide-description p {font-size: 16px; line-height: 1.4; margin-bottom: 30px; color: #666666; font-weight: 700; max-width: 550px;}",
+        ".guide-title {font-family: \"Playfair Display\", serif; font-size: 43px; font-weight: 700; margin-bottom: 20px; color: #000; line-height: 1.1;}",
+        "@media (max-width: 768px) {h2.guide-title {font-size: 30px !important; }}"
+      ],
+      "name": "Step Into Guide",
+      "settings": {
+        "bg_color": "#fffdfa",
+        "padding_top": 90,
+        "padding_bottom": 60,
+        "title": "Step Into Guide",
+        "description": "<p>Utiliza la guía digital para tener en un mismo documento toda la información que necesitas.</p>",
+        "point_1": "Qué trámites sí o sí debes gestionar de forma legal.",
+        "point_2": "Cómo conseguir alojamiento y trabajo sin que     suponga un caos. ¡Que no te timen!",
+        "point_3": "Mejores compañías para contratar tus servicios. No     pagues de más.",
+        "point_4": "Encuentra los enlaces directos de las webs de",
+        "point_5": "Ayuntamientos y de páginas webs oficiales que     necesitas.",
+        "point_6": "Descubre como conseguir ayudas económicas del     Gobierno holandés.",
+        "btn_label": "Quiero la guía",
+        "btn_link": "shopify://pages/step-into-guide",
+        "image": "shopify://shop_images/image-Picsart-AiImageEnhancer.png"
+      }
+    },
+    "oppertauntiny_y8De3f": {
+      "type": "oppertauntiny",
+      "custom_css": [
+        "@media (max-width: 768px) {h2.step-opportunity__title {font-size: 30px; font-weight: 700; }}",
+        ".step-opportunity__title {font-family: \"Playfair Display\", serif; font-size: 43px;}"
+      ],
+      "name": "Vicca Opportunity Section",
+      "settings": {
+        "image": "shopify://shop_images/Untitled_design_-_2026-02-26T083121_485-Picsart-AiImageEnhancer.png",
+        "title": "Step Into Opportunity",
+        "description": "<p><strong>Nuestro acompañamiento no es solo asesoría: es tener a alguien que ya vivió lo mismo y sabe exactamente cómo ayudarte a lograrlo.</strong></p>",
+        "button_text": "Saber más",
+        "button_link": "shopify://pages/step-into-opportunity",
+        "padding_top": 60,
+        "padding_bottom": 130
+      }
+    },
+    "custominfogrid_Eny7Xy": {
+      "type": "custominfogrid",
+      "blocks": {
+        "info_card_JFeBQi": {
+          "type": "info_card",
+          "settings": {
+            "heading": "Adaptación completa",
+            "text": "Desde la idea de mudarte hasta la completa integración en tu nueva vida."
+          }
+        },
+        "info_card_HCwAGk": {
+          "type": "info_card",
+          "settings": {
+            "heading": "Experiencia multicultural",
+            "text": "Te ayudamos a adaptarte a la cultura holandesa. Sabemos lo que significa empezar de cero en otro país y te preparamos para que lo hagas con confianza."
+          }
+        },
+        "info_card_Tnw3Ck": {
+          "type": "info_card",
+          "settings": {
+            "heading": "Acompañamiento real y personal",
+            "text": "Te guiamos con honestidad en cada paso del proceso."
+          }
+        },
+        "info_card_JVFPYU": {
+          "type": "info_card",
+          "settings": {
+            "heading": "Trámites simplificados",
+            "text": "Evitamos errores y confusiones en la burocracia. Te ayudamos a gestionar cada trámite."
+          }
+        }
+      },
+      "block_order": [
+        "info_card_JFeBQi",
+        "info_card_HCwAGk",
+        "info_card_Tnw3Ck",
+        "info_card_JVFPYU"
+      ],
+      "custom_css": [
+        "@media (max-width: 768px) {h2 {font-size: 26px !important; }}",
+        "h2 {font-size: 30px !important;}"
+      ],
+      "name": "Custom Info Grid",
+      "settings": {
+        "title": "Cómo lo hacemos posible",
+        "center_image": "shopify://shop_images/image_25-Picsart-AiImageEnhancer.png",
+        "bg_color": "#fdfaf5",
+        "padding_top": 110,
+        "padding_bottom": 90
+      }
+    },
+    "viccatestimonial_VKhrB8": {
+      "type": "viccatestimonial",
+      "blocks": {
+        "testimonial_pJiaEG": {
+          "type": "testimonial",
+          "settings": {
+            "user_image": "shopify://shop_images/image_26-Picsart-AiImageEnhancer.png",
+            "client_name": "Michelle - California (USA)",
+            "testimonial_text": "I’m Michelle, from California, and I decided to move to Europe in 2024. My first stop was France, where I lived for a year, but I made the mistake of handling all the legal paperwork on my own, and honestly, it was a never-ending process. I thought I’d save money by not hiring an agency, but it turned out to be the opposite. By the end of the next year, I wanted to move to the Netherlands, but I knew I didn’t want to go through that chaos again. I started looking for agencies and job platforms, but none of them convinced me until I found Vicca through some friends from the Netherlands.\nThe fact that the people helping me had actually gone through the same experience gave me a level of trust that no one else did, and it was the best decision ever. They helped me with everything, paperwork, BSN, housing, work… I couldn’t be happier with them. Totally recommend it !!!!"
+          }
+        },
+        "testimonial_NQUFH9": {
+          "type": "testimonial",
+          "settings": {
+            "user_image": "shopify://shop_images/image_27.png",
+            "client_name": "Carlos - Castellón (España)",
+            "testimonial_text": "Soy Carlos, de Castellón. Hace unos meses me mudé a los Países Bajos para estudiar, pero también quería empezar a trabajar y no sabía muy bien qué tenía que hacer, así que contacté con vicca y me ayudaron con todos los trámites, BSN etc. y también a conseguir trabajo y alojamiento. Además si tienes dudas son super majos y te ayudan y te contestan enseguida."
+          }
+        },
+        "testimonial_V44UMP": {
+          "type": "testimonial",
+          "settings": {
+            "user_image": "shopify://shop_images/image_28.png",
+            "client_name": "Mario - Valencia (España)",
+            "testimonial_text": "Decidí dar un cambio a mi vida y mudarme a Holanda. No tenía ni idea de por dónde empezar, pero encontré a Vicca Agency y desde el primer momento me sentí super tranquilo y acompañado con la ayuda de todos los trámites, el alojamiento, y hasta con el trabajo. Conseguí trabajo como chef que es lo que quería y vivo tranquilo haciendo lo que me gusta.\n\nPara mi lo mejor de todo es que como dicen no son solo una agencia, son super cercanos y sientes de verdad el apoyo durante todo el proceso. Si estás pensando en mudarte, yo no dudaría en contratar este programa que te ayuda con todo, es una inversión sí, pero 100% vale la pena para quitarte de problemas y saber que al 100% estás haciendo todo bien”"
+          }
+        },
+        "testimonial_yyBj3r": {
+          "type": "testimonial",
+          "settings": {
+            "user_image": "shopify://shop_images/image_29.png",
+            "client_name": "Alejandro - Valencia (España)",
+            "testimonial_text": "Contacté con vicca agency a través de unos amigos a los que ya habian ayudado y estoy muy contento de haberlo hecho. Mudarte a otro país es de por sí un poco caos pero con ayuda es mucho mejor. Conseguí trabajo de camarero en un antiguo crucero que ahora es un hotel de lujo. Me ayudaron muchísimo con todo el proceso y llegué a Holanda con todo organizado. La experiencia está siendo una pasada, y estoy súper agradecido por cómo salió todo."
+          }
+        },
+        "testimonial_wbBWiB": {
+          "type": "testimonial",
+          "settings": {
+            "user_image": "shopify://shop_images/image_30.png",
+            "client_name": "Nico - Madrid (España)",
+            "testimonial_text": "Soy Nico y, sinceramente, sin victor y carla no me habría atrevido a venir a Holanda. Tenía mil dudas y estaba bastante perdido con todo el papeleo y el tema trabajo, pero me lo pusieron súper fácil. Me explicaron todo claro, paso a paso, y siempre estuvieron ahí cuando lo necesitaba. Ahora ya estoy aquí trabajando y viviendo tranquilo y ahorrando que es lo que quería. Si estás pensando en dar el paso, hazlo con ellos. Te quitan un peso enorme de encima y saben muy bien guiarte."
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_pJiaEG",
+        "testimonial_NQUFH9",
+        "testimonial_V44UMP",
+        "testimonial_yyBj3r",
+        "testimonial_wbBWiB"
+      ],
+      "custom_css": [
+        "@media (max-width: 768px) {h2.testimonial-title {font-size: 28px; }}",
+        "h2.testimonial-title {font-size: 30px !important; font-weight: 700 !important;}"
+      ],
+      "name": "Vicca Testimonial",
+      "settings": {
+        "heading": "Esto es lo que dicen nuestros cliente",
+        "bg_color": "#fdf8f3",
+        "padding_top": 60,
+        "padding_bottom": 80
+      }
+    },
+    "collapsible_tabs_ecyFiN": {
+      "type": "collapsible-tabs",
+      "blocks": {
+        "item_zAJCzw": {
+          "type": "item",
+          "settings": {
+            "header": "¿Sois una ETT?",
+            "text_size": "h5",
+            "content": "<p>No.No gestionamos contratos ni trabajamos para empresas que “colocan” personas.<br/>Acompañamos a personas que quieren mudarse a Holanda a hacerlo con criterio y autonomía, ya sea a través de nuestra guía o de nuestro programa.</p>",
+            "content_page": "",
+            "open": false
+          }
+        },
+        "item_dBWXCF": {
+          "type": "item",
+          "settings": {
+            "header": "¿Me garantizáis trabajo o alojamiento?",
+            "text_size": "h5",
+            "content": "<p>No.Lo que hacemos es ayudarte activamente a buscarlos y a tomar buenas decisiones, pero no vendemos promesas ni resultados garantizados.<br/></p>",
+            "content_page": "",
+            "open": false
+          }
+        },
+        "item_pAnKjX": {
+          "type": "item",
+          "settings": {
+            "header": "¿Os quedáis con parte de mi salario?",
+            "text_size": "h5",
+            "content": "<p>No. Nunca. Pagas por el acompañamiento, no por tu trabajo. Tu salario es solo tuyo, como debería ser.</p>",
+            "content_page": "",
+            "open": false
+          }
+        },
+        "item_9cxNjj": {
+          "type": "item",
+          "settings": {
+            "header": "¿Cómo sé qué opción es mejor para mí?",
+            "text_size": "h5",
+            "content": "<p>Depende de lo que necesites ahora:<br/>Si quieres información, la guía<br/>Si quieres acompañamiento, el programa</p>",
+            "content_page": "",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "item_zAJCzw",
+        "item_dBWXCF",
+        "item_pAnKjX",
+        "item_9cxNjj"
+      ],
+      "custom_css": [
+        "h2.m-section__heading.h2.m-scroll-trigger.animate--fade-in-up {font-family: \"Poppins\", sans-serif !important;}",
+        ".m-section__description.rte.m-scroll-trigger.animate--fade-in-up {font-family: Poppins, sans-serif !important;}",
+        "h3.m-collapsible--button.h5 {font-family: Poppins, sans-serif !important;}",
+        "p {font-family: Poppins, sans-serif !important;}",
+        ".m-section__description.rte.m-scroll-trigger.animate--fade-in-up {color: #000;}"
+      ],
+      "name": "Collapsible tabs",
+      "settings": {
+        "container": "container",
+        "color_scheme": "footer",
+        "image_position": "left",
+        "column_gap": 100,
+        "heading": "Preguntas rápidas",
+        "heading_size": "h2",
+        "subheading": "",
+        "description": "Antes de dar el paso, esto es importante...",
+        "header_alignment": "left",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "animations": "inherit",
+        "custom_class": ""
+      }
+    },
+    "slider_7ckhwr": {
+      "type": "slider",
+      "blocks": {
+        "slider_item_CQamqH": {
+          "type": "slider_item",
+          "settings": {
+            "background": "shopify://shop_images/Untitled_design_-_2026-02-21T142101.392.png",
+            "content_in_container": false,
+            "content_position": "center middle",
+            "text_alignment": "center",
+            "text_size": "medium",
+            "text_color": "black",
+            "subheading": "",
+            "title": "",
+            "description": "",
+            "image_link": "",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "m-button--primary",
+            "button_size": "",
+            "second_button_text": "",
+            "second_button_link": "",
+            "second_button_style": "m-button--primary",
+            "second_button_size": "",
+            "show_footer": false,
+            "footer_alignment": "end",
+            "footer_text": "New Collection",
+            "footer_button": "Shop Now",
+            "footer_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slider_item_CQamqH"
+      ],
+      "disabled": true,
+      "name": "Slideshow",
+      "settings": {
+        "container": "w-full",
+        "slideshow_height": "adapt",
+        "show_overlay": false,
+        "dots_position": "bottom",
+        "dots_color": "dark",
+        "show_dots": true,
+        "show_arrows": false,
+        "autorotate": false,
+        "autorotate_speed": 5,
+        "use_content_above": false,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "customfooter_NMVUmd": {
+      "type": "customfooter",
+      "disabled": true,
+      "name": "Custom Hero Banner",
+      "settings": {
+        "bg_color_top": "#faf7f2",
+        "bg_color_bottom": "#fcf9f3",
+        "heading": "No estás solo/a.",
+        "subheading": "Si sueñas con trabajar y vivir en los Países Bajos, <strong>vicca. te guía paso a paso.</strong>",
+        "button_label": "Quiero empezar",
+        "button_link": "",
+        "footer_text": "<strong>Sin compromiso.</strong> Hablamos de tu caso y te mostramos como podemos ayudarte."
+      }
+    },
+    "shadowfooter_iEGc47": {
+      "type": "shadowfooter",
+      "custom_css": [
+        "span.bold-text {font-size: 18px;}",
+        ".vicca-section-wrapper {width: 100%; background-color: #fdfaf5; position: relative; z-index: 12; font-family: \"Poppins\", sans-serif;}",
+        "span.bold-text {color: #666666; font-size: 14px !important;}",
+        ".vicca-title {font-family: \"Playfair Display\", serif; font-size: 28px;}"
+      ],
+      "name": "Vicca Hero Card",
+      "settings": {
+        "padding_top": 70,
+        "padding_bottom": 0,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 60,
+        "title": "No estás solo/a.",
+        "description": "<p>Si sueñas con trabajar y vivir en los Países Bajos, <strong>vicca. te guía paso a paso.</strong></p>",
+        "button_label": "Quiero empezar",
+        "button_link": "shopify://pages/step-into-opportunity",
+        "footer_bold_text": "Sin compromiso.",
+        "footer_regular_text": "Hablamos de tu caso y te mostramos como podemos ayudarte."
+      }
+    },
+    "177243164316acd14f": {
+      "type": "apps",
+      "blocks": {
+        "hulk_form_builder_form_block_TqqDkm": {
+          "type": "shopify://apps/hulk-form-builder/blocks/form-block/b6b8dd14-356b-4725-a4ed-77232212b3c3",
+          "settings": {
+            "form_uuid": "",
+            "form_settings": false,
+            "font_color": "#000000",
+            "size": 14,
+            "input_background_color": "#ffffff",
+            "input_background_color_focus": "#f4dada",
+            "input_border_radius": 1,
+            "input_border_color": "#ebe9e9",
+            "input_border_color_focus": "#2d2727",
+            "input_font_color": "#3d3131",
+            "input_size": 14,
+            "border_color": "#121212",
+            "border_radius": 2,
+            "border": 1,
+            "fill_color": "#ebe9e9",
+            "padding": 35,
+            "form_width": 600,
+            "btn_text": "Submit",
+            "sub_btn_txt_color": "#f3f3f3",
+            "sub_btn_bg_color": "#3f3333",
+            "sub_btn_font_size": 14,
+            "sub_btn_bdr_color": "#ffffff",
+            "sub_btn_bdr_rad": 3,
+            "sub_btn_bdr_width": 1,
+            "fonts": "Times New Roman"
+          }
+        }
+      },
+      "block_order": [
+        "hulk_form_builder_form_block_TqqDkm"
+      ],
+      "settings": {
+        "heading": "",
+        "heading_size": "h3",
+        "subheading": "",
+        "header_alignment": "center",
+        "container": "container",
+        "background_color": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "customagencyhero_XR3xnQ",
+    "triangle_wyHL9B",
+    "aboutagency_ChKMHN",
+    "agencyabout_XNgkey",
+    "curvedbottomsection_KgpzHU",
+    "stepintoguide_gKFCcc",
+    "oppertauntiny_y8De3f",
+    "custominfogrid_Eny7Xy",
+    "viccatestimonial_VKhrB8",
+    "collapsible_tabs_ecyFiN",
+    "slider_7ckhwr",
+    "customfooter_NMVUmd",
+    "shadowfooter_iEGc47",
+    "177243164316acd14f"
+  ]
+}
