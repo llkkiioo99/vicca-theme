@@ -23,12 +23,13 @@
 
   .info-grid-wrapper {
     display: grid;
-    grid-template-columns: 1fr 650px 1fr; 
+    grid-template-columns: 1fr minmax(300px, 550px) 1fr;
     align-items: center;
     max-width: 1400px;
     margin: 0 auto;
     position: relative;
     padding: 0 20px;
+    box-sizing: border-box;
   }
 
   .info-grid-center {
@@ -57,14 +58,14 @@
   /* --- ALINEACIÓN DINÁMICA --- */
   .left-col {
     grid-column: 1;
-    align-items: flex-end; /* Empuja las tarjetas hacia la imagen */
-    margin-right: -100px; 
+    align-items: flex-end;
+    margin-right: -60px;
   }
 
   .right-col {
     grid-column: 3;
-    align-items: flex-start; /* Empuja las tarjetas hacia la imagen */
-    margin-left: -100px;
+    align-items: flex-start;
+    margin-left: -60px;
   }
 
   .info-card {
@@ -138,25 +139,44 @@
     margin: 0;
   }
 
-  /* Responsive */
+  /* Tablet */
   @media (max-width: 1100px) {
     .info-grid-wrapper {
       grid-template-columns: 1fr;
       gap: 30px;
     }
     .info-grid-center { grid-column: 1; order: -1; }
-    .left-col, .right-col { 
-      grid-column: 1; 
-      margin: 0; 
-      align-items: center; 
+    .left-col, .right-col {
+      grid-column: 1;
+      margin: 0;
+      align-items: center;
       text-align: center;
     }
-    .left-col .info-card, .right-col .info-card { 
-      align-items: center; 
+    .left-col .info-card, .right-col .info-card {
+      align-items: center;
       text-align: center;
+      max-width: 100%;
     }
     .info-card-badge { flex-direction: row !important; }
     .badge-total { margin-left: -12px !important; margin-right: 0 !important; padding-left: 8px !important; }
+    .info-grid-center img { max-width: 100%; border-radius: 20px; }
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .info-grid-{{ section.id }} {
+      clip-path: none;
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+    .info-grid-header h2 { font-size: 26px; margin-bottom: 36px; }
+    .info-card { padding: 24px; min-height: auto; max-width: 100%; }
+    .info-card h3 { font-size: 18px; }
+  }
+
+  @media (max-width: 480px) {
+    .info-grid-{{ section.id }} { padding-top: 40px; padding-bottom: 40px; }
+    .info-card { padding: 20px; border-radius: 16px; }
   }
 {%- endstyle -%}
 
