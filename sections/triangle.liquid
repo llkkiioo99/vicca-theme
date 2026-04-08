@@ -26,7 +26,7 @@
       "step": 4,
       "unit": "px",
       "label": "Padding Bottom",
-      "default": 0
+      "default": 20
     },
     {
       "type": "range",
@@ -62,7 +62,7 @@
 {% endschema %}
 
 <style>
-  .vicca-gallery-section {
+  .vg-section-{{ section.id }} {
     background-color: {{ section.settings.bg_color }};
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
@@ -72,103 +72,105 @@
     overflow: hidden;
   }
 
-  .vicca-gallery-track {
+  .vg-strip {
     display: flex;
-    gap: 16px;
-    padding: 30px 40px;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 18px;
+    padding: 40px 30px 20px;
+    max-width: 100%;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    -ms-overflow-style: none;
   }
 
-  .vicca-gallery-track::-webkit-scrollbar {
-    display: none;
-  }
+  .vg-strip::-webkit-scrollbar { display: none; }
 
-  .vicca-gallery-card {
+  .vg-card {
     flex-shrink: 0;
-    scroll-snap-align: start;
-    border-radius: 20px;
+    scroll-snap-align: center;
+    border-radius: 14px;
     overflow: hidden;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
     background: #fff;
-    position: relative;
   }
 
-  .vicca-gallery-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+  .vg-card:hover {
+    transform: translateY(-8px) rotate(0deg) !important;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
+    z-index: 5;
   }
 
-  /* Varied card sizes for editorial feel */
-  .vicca-gallery-card:nth-child(3n+1) {
-    width: 280px;
-    height: 360px;
-  }
-
-  .vicca-gallery-card:nth-child(3n+2) {
-    width: 240px;
-    height: 320px;
-  }
-
-  .vicca-gallery-card:nth-child(3n+3) {
-    width: 300px;
-    height: 380px;
-  }
-
-  .vicca-gallery-card img {
+  .vg-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .vicca-gallery-card:hover img {
-    transform: scale(1.04);
-  }
+  /* Varied sizes + slight rotations like the reference */
+  .vg-card:nth-child(9n+1) { width: 200px; height: 280px; transform: rotate(-4deg); }
+  .vg-card:nth-child(9n+2) { width: 180px; height: 240px; transform: rotate(2deg) translateY(-15px); }
+  .vg-card:nth-child(9n+3) { width: 240px; height: 320px; transform: rotate(-1deg); }
+  .vg-card:nth-child(9n+4) { width: 190px; height: 260px; transform: rotate(3deg) translateY(-10px); }
+  .vg-card:nth-child(9n+5) { width: 220px; height: 300px; transform: rotate(-2deg); }
+  .vg-card:nth-child(9n+6) { width: 170px; height: 230px; transform: rotate(4deg) translateY(-20px); }
+  .vg-card:nth-child(9n+7) { width: 210px; height: 290px; transform: rotate(-3deg); }
+  .vg-card:nth-child(9n+8) { width: 185px; height: 250px; transform: rotate(1deg) translateY(-12px); }
+  .vg-card:nth-child(9n+9) { width: 230px; height: 310px; transform: rotate(-2deg); }
 
   /* Tablet */
   @media screen and (max-width: 1024px) {
-    .vicca-gallery-track { padding: 24px 24px; gap: 14px; }
-    .vicca-gallery-card:nth-child(3n+1) { width: 220px; height: 290px; }
-    .vicca-gallery-card:nth-child(3n+2) { width: 200px; height: 260px; }
-    .vicca-gallery-card:nth-child(3n+3) { width: 240px; height: 310px; }
+    .vg-strip { gap: 14px; padding: 30px 20px 16px; }
+    .vg-card:nth-child(9n+1) { width: 170px; height: 240px; }
+    .vg-card:nth-child(9n+2) { width: 155px; height: 210px; }
+    .vg-card:nth-child(9n+3) { width: 200px; height: 270px; }
+    .vg-card:nth-child(9n+4) { width: 165px; height: 225px; }
+    .vg-card:nth-child(9n+5) { width: 185px; height: 255px; }
+    .vg-card:nth-child(9n+6) { width: 150px; height: 200px; }
+    .vg-card:nth-child(9n+7) { width: 175px; height: 245px; }
+    .vg-card:nth-child(9n+8) { width: 160px; height: 215px; }
+    .vg-card:nth-child(9n+9) { width: 195px; height: 265px; }
   }
 
   /* Mobile */
   @media screen and (max-width: 768px) {
-    .vicca-gallery-section { margin-top: -30px; }
-    .vicca-gallery-track { padding: 20px 16px; gap: 12px; }
-    .vicca-gallery-card { border-radius: 16px; }
-    .vicca-gallery-card:nth-child(3n+1) { width: 180px; height: 240px; }
-    .vicca-gallery-card:nth-child(3n+2) { width: 160px; height: 210px; }
-    .vicca-gallery-card:nth-child(3n+3) { width: 190px; height: 250px; }
-  }
-
-  @media screen and (max-width: 480px) {
-    .vicca-gallery-track { padding: 16px 12px; gap: 10px; }
-    .vicca-gallery-card:nth-child(3n+1) { width: 160px; height: 210px; }
-    .vicca-gallery-card:nth-child(3n+2) { width: 140px; height: 185px; }
-    .vicca-gallery-card:nth-child(3n+3) { width: 170px; height: 220px; }
-    .vicca-gallery-card { border-radius: 14px; }
+    .vg-section-{{ section.id }} { margin-top: -20px; }
+    .vg-strip { gap: 10px; padding: 20px 12px 12px; }
+    .vg-card { border-radius: 10px; }
+    .vg-card:nth-child(9n+1) { width: 140px; height: 195px; }
+    .vg-card:nth-child(9n+2) { width: 125px; height: 170px; }
+    .vg-card:nth-child(9n+3) { width: 160px; height: 220px; }
+    .vg-card:nth-child(9n+4) { width: 130px; height: 180px; }
+    .vg-card:nth-child(9n+5) { width: 150px; height: 205px; }
+    .vg-card:nth-child(9n+6) { width: 120px; height: 165px; }
+    .vg-card:nth-child(9n+7) { width: 145px; height: 200px; }
+    .vg-card:nth-child(9n+8) { width: 130px; height: 175px; }
+    .vg-card:nth-child(9n+9) { width: 155px; height: 215px; }
+    /* Less rotation on mobile */
+    .vg-card:nth-child(9n+1) { transform: rotate(-2deg); }
+    .vg-card:nth-child(9n+2) { transform: rotate(1deg) translateY(-8px); }
+    .vg-card:nth-child(9n+3) { transform: rotate(-1deg); }
+    .vg-card:nth-child(9n+4) { transform: rotate(2deg) translateY(-5px); }
+    .vg-card:nth-child(9n+5) { transform: rotate(-1deg); }
+    .vg-card:nth-child(9n+6) { transform: rotate(2deg) translateY(-10px); }
+    .vg-card:nth-child(9n+7) { transform: rotate(-1deg); }
+    .vg-card:nth-child(9n+8) { transform: rotate(1deg) translateY(-6px); }
+    .vg-card:nth-child(9n+9) { transform: rotate(-1deg); }
   }
 </style>
 
-<section class="vicca-gallery-section">
-  <div class="vicca-gallery-track" id="vicca-gallery-track-{{ section.id }}">
+<section class="vg-section-{{ section.id }}">
+  <div class="vg-strip">
     {% for block in section.blocks %}
-      <div class="vicca-gallery-card" {{ block.shopify_attributes }}>
+      <div class="vg-card" {{ block.shopify_attributes }}>
         {% if block.settings.image != blank %}
           <img
             src="{{ block.settings.image | image_url: width: 600 }}"
-            alt="Gallery Image {{ forloop.index }}"
+            alt="Gallery {{ forloop.index }}"
             loading="lazy"
-            width="300"
-            height="400"
           >
         {% else %}
           {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
@@ -177,41 +179,3 @@
     {% endfor %}
   </div>
 </section>
-
-<script>
-(function() {
-  var track = document.getElementById('vicca-gallery-track-{{ section.id }}');
-  if (!track) return;
-
-  // Auto-scroll animation
-  var scrollSpeed = 0.5;
-  var scrollPos = 0;
-  var isPaused = false;
-  var maxScroll = track.scrollWidth - track.clientWidth;
-
-  function autoScroll() {
-    if (!isPaused && maxScroll > 0) {
-      scrollPos += scrollSpeed;
-      if (scrollPos >= maxScroll) scrollPos = 0;
-      track.scrollLeft = scrollPos;
-    }
-    requestAnimationFrame(autoScroll);
-  }
-
-  // Pause on hover/touch
-  track.addEventListener('mouseenter', function() { isPaused = true; });
-  track.addEventListener('mouseleave', function() { isPaused = false; scrollPos = track.scrollLeft; });
-  track.addEventListener('touchstart', function() { isPaused = true; }, { passive: true });
-  track.addEventListener('touchend', function() {
-    setTimeout(function() { isPaused = false; scrollPos = track.scrollLeft; }, 2000);
-  });
-
-  // Recalculate on resize
-  window.addEventListener('resize', function() {
-    maxScroll = track.scrollWidth - track.clientWidth;
-  });
-
-  // Start auto-scroll after a brief delay
-  setTimeout(function() { requestAnimationFrame(autoScroll); }, 1000);
-})();
-</script>

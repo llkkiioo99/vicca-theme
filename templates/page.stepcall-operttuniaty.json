@@ -16,23 +16,9 @@
     },
     "viccacalltime_tLEpwd": {
       "type": "viccacalltime",
-      "blocks": {
-        "meety_appointment_booking_meety_inline_widget_qrciQf": {
-          "type": "shopify://apps/meety-booking-app/blocks/meety-inline-widget/47f38863-0648-44e3-873d-c84301243dcb",
-          "settings": {
-            "assigned_product": "craft-service"
-          }
-        }
-      },
-      "block_order": [
-        "meety_appointment_booking_meety_inline_widget_qrciQf"
-      ],
       "custom_css": [
-        ".meety-date-picker-header {color: #fff;}",
         ".vicca-h2 {font-family: \"Poppins\", sans-serif; font-size: 50px; font-weight: 700;}",
-        ".meety-inline-widget .meety-product-image {width: 80px !important; height: 48px; min-width: 80px !important; min-height: 48px; object-fit: contain !important; border-radius: unset !important;}",
-        ".vicca-top-bg {background: #ffffff; padding: 80px 0 80px 0; margin-bottom: -100px; clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);}",
-        ".meety-button.meety-button-primary.meety-button-disabled {background: #ff914d;}"
+        ".vicca-top-bg {background: #ffffff; padding: 80px 0 80px 0; margin-bottom: -100px; clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);}"
       ],
       "name": "Vicca Booking Section",
       "settings": {
@@ -42,7 +28,8 @@
         "subheading": "Agenda una llamada con el equipo de vicca",
         "description_1": "Conocerás en qué consiste el programa, cómo podemos ayudarte paso a paso y si realmente se adapta a lo que necesitas.",
         "description_2": "Queremos que tomes decisiones con claridad, esta es tu oportunidad.",
-        "bg_color": "#fdfaf5"
+        "bg_color": "#fdfaf5",
+        "cal_embed_url": "vicca-agency/discovery-call"
       }
     },
     "177192730609609a64": {
