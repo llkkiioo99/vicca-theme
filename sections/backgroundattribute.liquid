@@ -15,7 +15,7 @@
     
     display: flex;
     align-items: center;
-    min-height: 500px;
+    min-height: 400px;
     width: 100%;
     position: relative;
     overflow: hidden;
@@ -29,9 +29,9 @@
   }
 
   .vicca-title-{{ section.id }} {
-    font-size: clamp(28px, 5vw, 40px); /* Tamaño fluido */
+    font-size: clamp(24px, 3.5vw, 34px);
     font-weight: 800;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
     color: {{ section.settings.text_color }};
     font-family: inherit;
     line-height: 1.2;
@@ -42,10 +42,10 @@
   }
 
   .vicca-content-{{ section.id }} p {
-    font-size: clamp(16px, 2vw, 20px); /* Tamaño fluido */
+    font-size: clamp(14px, 1.5vw, 17px);
     line-height: 1.6;
-    margin-bottom: 20px;
-    max-width: 750px;
+    margin-bottom: 18px;
+    max-width: 700px;
     color: {{ section.settings.text_color }};
     font-family: inherit;
   }
@@ -66,8 +66,18 @@
     
     .vicca-title-{{ section.id }} {
       text-align: left;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
+  }
+
+  @media screen and (max-width: 480px) {
+    #shopify-section-{{ section.id }} .vicca-affiliate-wrapper {
+      min-height: auto;
+      background-size: 40%;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+    .vicca-content-{{ section.id }} p { font-size: 14px; }
   }
 {%- endstyle -%}
 

@@ -18,27 +18,27 @@
 
   /* --- Text Styles --- */
   .expectations-header h2 {
-    font-size: 42px;
+    font-size: clamp(26px, 3.5vw, 34px);
     font-weight: 800;
     font-family: 'Poppins', sans-serif;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
     color: #000;
   }
 
   .expectations-middle-text {
-    font-size: 24px;
+    font-size: clamp(16px, 2vw, 20px);
     line-height: 1.3;
     font-weight: 500;
-    max-width: 900px;
-    margin: 0 auto 30px auto;
+    max-width: 800px;
+    margin: 0 auto 24px auto;
     color: #000;
   }
 
   .expectations-description {
-    font-size: 17px;
+    font-size: 15px;
     line-height: 1.6;
-    max-width: 1000px;
-    margin: 0 auto 80px auto;
+    max-width: 900px;
+    margin: 0 auto 60px auto;
     color: #444;
   }
 
@@ -99,7 +99,17 @@
       transform: none !important;
       aspect-ratio: 1;
     }
-    .expectations-header h2 { font-size: 30px; }
+    .expectations-header h2 { font-size: 24px; }
+    .expectations-middle-text { font-size: 16px; }
+    .expectations-description { font-size: 14px; margin-bottom: 40px; }
+  }
+
+  @media screen and (max-width: 480px) {
+    .expectations-header h2 { font-size: 22px; }
+    .expectations-middle-text { font-size: 15px; }
+    .expectations-description { font-size: 13px; }
+    .expectations-container { padding: 0 16px; }
+    .expectation-card { flex: 0 0 47%; }
   }
 {%- endstyle -%}
 

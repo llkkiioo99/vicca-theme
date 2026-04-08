@@ -17,12 +17,11 @@
   }
 
   .vicca-title {
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: bold;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
     color: #000;
-    /* Asegura que el título también esté alineado a la izquierda */
-    text-align: left; 
+    text-align: left;
   }
 
   .vicca-dot {
@@ -38,19 +37,26 @@
   }
 
   .vicca-list li {
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.6;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     color: #333;
     display: block;
   }
 
-  @media screen and (max-width: 749px) {
-    .vicca-title { font-size: 1.8rem; }
+  @media screen and (max-width: 768px) {
+    .vicca-title { font-size: 1.6rem; }
+    .vicca-list li { font-size: 15px; }
     .vicca-section-{{ section.id }} {
-      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+      padding-top: {{ section.settings.padding_top | times: 0.65 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.65 | round: 0 }}px;
     }
+  }
+
+  @media screen and (max-width: 480px) {
+    .vicca-title { font-size: 1.4rem; }
+    .vicca-list li { font-size: 14px; }
+    .vicca-container { padding: 0 16px; }
   }
 {%- endstyle -%}
 

@@ -28,9 +28,9 @@
 
   .guide-title {
     font-family: 'Playfair Display', serif;
-    font-size: 42px; 
+    font-size: clamp(26px, 3.5vw, 36px);
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     color: #1a1a1a;
     line-height: 1.2;
   }
@@ -88,11 +88,11 @@
     display: inline-block;
     background-color: #ff914d;
     color: #ffffff !important;
-    padding: 12px 25px; 
+    padding: 11px 24px;
     border-radius: 40px;
     text-decoration: none;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 15px;
     transition: all 0.3s ease;
     border: none;
   }
@@ -117,14 +117,27 @@
     display: block;
   }
 
-  @media (max-width: 991px) {
-    .guide-title { font-size: 32px; }
+  @media (max-width: 1024px) {
+    .guide-container-{{ section.id }} { gap: 30px; }
+    .guide-image-wrap img { height: 280px; }
+  }
+
+  @media (max-width: 768px) {
     .guide-container-{{ section.id }} { flex-direction: column; text-align: center; }
     .guide-content { align-items: center; text-align: center; }
     .guide-list li { text-align: left; }
     .guide-button-container { justify-content: center; }
-    .guide-image-wrap { order: -1; margin-bottom: 30px; }
-    .guide-image-wrap img { height: 350px; } 
+    .guide-image-wrap { order: -1; margin-bottom: 20px; }
+    .guide-image-wrap img { height: 260px; }
+    .guide-section-{{ section.id }} { padding-left: 20px; padding-right: 20px; }
+  }
+
+  @media (max-width: 480px) {
+    .guide-description p { font-size: 14px; }
+    .guide-list li { font-size: 14px; }
+    .guide-image-wrap img { height: 220px; }
+    .guide-button { width: 100%; text-align: center; font-size: 14px; }
+    .guide-section-{{ section.id }} { padding-left: 16px; padding-right: 16px; }
   }
 {%- endstyle -%}
 

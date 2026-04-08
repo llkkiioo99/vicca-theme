@@ -45,12 +45,12 @@
 
 .vicca-title {
   font-family: 'Poppins', sans-serif !important;
-  font-size: 32px; 
+  font-size: clamp(24px, 3vw, 30px);
   font-weight: 600;
-  margin: 0 auto 35px auto;
-  letter-spacing: -1.5px;
+  margin: 0 auto 28px auto;
+  letter-spacing: -1px;
   display: block;
-  text-align: center; /* Ensures exact center */
+  text-align: center;
 }
 
 .orange-dot {
@@ -59,8 +59,8 @@
 
 .vicca-headline {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.3rem;
-  margin-bottom: 45px;
+  font-size: 1.1rem;
+  margin-bottom: 32px;
   text-align: center;
 }
 
@@ -74,12 +74,12 @@
 }
 
 .vicca-intro {
-  margin-bottom: 25px;
-  font-size: 1.15rem;
+  margin-bottom: 20px;
+  font-size: 1rem;
 }
 
 .vicca-list-container {
-  font-size: 1.15rem;
+  font-size: 1rem;
 }
 
 .vicca-list-container ul {
@@ -93,21 +93,29 @@
 }
 
 .vicca-footer-text {
-  margin-top: 50px;
-  font-size: 1.3rem;
+  margin-top: 36px;
+  font-size: 1.1rem;
   text-align: center;
 }
 
 @media (max-width: 768px) {
-  .vicca-title { font-size: 2rem; }
-  .vicca-alignment-box { 
-    max-width: 100%;
-    text-align: left;
-  }
+  .vicca-title { font-size: 24px; }
+  .vicca-headline { font-size: 1rem; }
+  .vicca-alignment-box { max-width: 100%; text-align: left; }
+  .vicca-footer-text { font-size: 1rem; }
   .vicca-section-wrapper-{{ section.id }} {
     padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
     padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
   }
+}
+
+@media (max-width: 480px) {
+  .vicca-title { font-size: 22px; letter-spacing: -0.5px; }
+  .vicca-headline { font-size: 15px; margin-bottom: 24px; }
+  .vicca-intro { font-size: 14px; }
+  .vicca-list-container { font-size: 14px; }
+  .vicca-footer-text { font-size: 15px; margin-top: 28px; }
+  .vicca-container { padding: 0 16px; }
 }
 {% endstyle %}
 

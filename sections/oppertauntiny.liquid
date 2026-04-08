@@ -77,12 +77,12 @@
 }
 
 .step-opportunity__wrapper {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 20px;
   display: flex;
   align-items: center;
-  gap: 60px;
+  gap: 45px;
 }
 
 .step-opportunity__image {
@@ -104,11 +104,11 @@
 
 .step-opportunity__title {
   font-family: 'Playfair Display', serif;
-  font-size: 48px; /* Increased to match visual weight */
+  font-size: clamp(26px, 3.5vw, 38px);
   font-weight: 700;
   line-height: 1.1;
   color: #000;
-  margin: 0 0 30px;
+  margin: 0 0 24px;
 }
 
 .step-opportunity__desc {
@@ -159,16 +159,16 @@
 
 .step-opportunity__btn {
   display: inline-block;
-  padding: 12px 30px;
+  padding: 11px 28px;
   background: #ff914d;
   color: #fff;
   text-decoration: none;
   border-radius: 50px;
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 15px;
   transition: 0.3s ease;
-  align-self: center; /* THIS CENTERS THE BUTTON IN THE COLUMN */
+  align-self: center;
   margin-top: 10px;
 }
 
@@ -178,18 +178,31 @@
   transform: translateY(-2px);
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
+  .step-opportunity__wrapper { gap: 30px; }
+  .step-opportunity__image img { border-radius: 28px; }
+}
+
+@media (max-width: 768px) {
   .step-opportunity__wrapper {
     flex-direction: column;
-    gap: 40px;
+    gap: 28px;
   }
-  .step-opportunity__title {
-    font-size: 38px;
-  }
+  .step-opportunity__content { text-align: center; }
+  .step-opportunity__list li { text-align: left; }
+  .step-opportunity__image img { border-radius: 24px; }
   .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.7 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.7 | round: 0 }}px;
+    padding-top: {{ section.settings.padding_top | times: 0.6 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.6 | round: 0 }}px;
   }
+}
+
+@media (max-width: 480px) {
+  .step-opportunity__wrapper { padding: 0 16px; }
+  .step-opportunity__desc { font-size: 14px; }
+  .step-opportunity__list li { font-size: 14px; gap: 10px; }
+  .step-opportunity__btn { padding: 10px 24px; font-size: 14px; width: 100%; text-align: center; }
+  .step-opportunity__image img { border-radius: 20px; }
 }
 </style>
 
