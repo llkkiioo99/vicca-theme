@@ -41,7 +41,8 @@
 
   .ai-vicca-header-nav-item-{{ ai_gen_id }} {
     position: relative;
-    padding: 0 12px;
+    padding: 0 12px 15px;
+    margin-bottom: -15px;
   }
 
   .ai-vicca-header-nav-item-{{ ai_gen_id }}:not(:last-child)::after {
@@ -93,8 +94,6 @@
 
   /* Desktop Dropdown */
   .ai-vicca-dropdown-content-{{ ai_gen_id }} {
-    visibility: hidden;
-    opacity: 0;
     position: absolute;
     top: 100%;
     left: 0;
@@ -103,14 +102,12 @@
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     border-radius: 8px;
     padding: 12px 0;
-    transform: translateY(10px);
-    transition: all 0.3s ease;
+    z-index: 100;
+    display: none;
   }
 
-  .ai-vicca-header-nav-item-{{ ai_gen_id }}:hover .ai-vicca-dropdown-content-{{ ai_gen_id }} {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0);
+  .ai-vicca-header-nav-item-{{ ai_gen_id }}:hover > .ai-vicca-dropdown-content-{{ ai_gen_id }} {
+    display: block;
   }
 
   .ai-vicca-dropdown-content-{{ ai_gen_id }} a {
@@ -281,10 +278,10 @@
       </div>
 
       <div class="ai-vicca-header-nav-item-{{ ai_gen_id }}">
-        <span class="ai-vicca-header-nav-link-{{ ai_gen_id }}">Afiliados</span>
+        <span class="ai-vicca-header-nav-link-{{ ai_gen_id }}" style="cursor:pointer;">Afiliados</span>
         <div class="ai-vicca-dropdown-content-{{ ai_gen_id }}">
-          <a href="{{ block.settings.become_aff_link }}">{{ block.settings.become_aff_text }}</a>
-          <a href="{{ block.settings.already_aff_link }}">{{ block.settings.already_aff_text }}</a>
+          <a href="{{ block.settings.become_aff_link }}" onclick="event.preventDefault(); viccaOpenSignupModal();">{{ block.settings.become_aff_text }}</a>
+          <a href="{{ block.settings.already_aff_link }}" onclick="event.preventDefault(); viccaOpenAffiliateModal();">{{ block.settings.already_aff_text }}</a>
         </div>
       </div>
     </nav>
@@ -339,8 +336,8 @@
       <small>▼</small>
     </div>
     <div class="mobile-dropdown">
-      <a href="{{ block.settings.become_aff_link }}">{{ block.settings.become_aff_text }}</a>
-      <a href="{{ block.settings.already_aff_link }}">{{ block.settings.already_aff_text }}</a>
+      <a href="javascript:void(0)" onclick="toggleViccaMenu(); viccaOpenSignupModal();">{{ block.settings.become_aff_text }}</a>
+      <a href="javascript:void(0)" onclick="toggleViccaMenu(); viccaOpenAffiliateModal();">{{ block.settings.already_aff_text }}</a>
     </div>
   </div>
 </div>
