@@ -3,6 +3,7 @@
   Triggers after 1.1 seconds for first-time visitors
   Stores dismissal in localStorage for 7 days
   Submits to Shopify contact form + tags for Klaviyo segmentation
+  Rate limiting: honeypot + time trap (1.5s) + 30s cooldown + 20/day cap
 {% endcomment %}
 
 <div id="vicca-email-popup" class="vicca-popup-overlay" aria-hidden="true">
@@ -21,6 +22,15 @@
           placeholder="Tu email"
           required
           autocomplete="email"
+        >
+        <input
+          type="text"
+          name="website"
+          id="vicca-popup-hp"
+          class="vicca-popup-hp"
+          tabindex="-1"
+          autocomplete="off"
+          aria-hidden="true"
         >
         <button type="submit" class="vicca-popup-btn">Envíame la guía gratis</button>
       </form>
@@ -135,6 +145,16 @@
 
   .vicca-popup-input:focus { border-color: #ff914d; }
 
+  .vicca-popup-hp {
+    position: absolute !important;
+    left: -9999px !important;
+    width: 1px !important;
+    height: 1px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    top: auto !important;
+  }
+
   .vicca-popup-btn {
     width: 100%;
     padding: 14px 28px;
@@ -175,6 +195,8 @@
 </style>
 
 <script>
+window._viccaPopupShownAt = 0;
+
 (function() {
   var popup = document.getElementById('vicca-email-popup');
   if (!popup) return;
@@ -189,6 +211,7 @@
   function showPopup() {
     popup.classList.add('active');
     popup.setAttribute('aria-hidden', 'false');
+    window._viccaPopupShownAt = Date.now();
   }
 
   // Show after 1.1 seconds on homepage
@@ -231,6 +254,49 @@ function viccaSubmitEmail(e) {
   if (!email) return false;
 
   var btn = document.querySelector('.vicca-popup-btn');
+
+  // Honeypot: bots fill hidden field, humans don't see it
+  var hp = document.getElementById('vicca-popup-hp');
+  if (hp && hp.value) {
+    // Silent fake success so bots don't retry
+    document.getElementById('vicca-email-form').style.display = 'none';
+    document.querySelector('.vicca-popup-note').style.display = 'none';
+    document.getElementById('vicca-popup-success').style.display = 'block';
+    return false;
+  }
+
+  var now = Date.now();
+
+  // Time trap: block submits faster than 1.5s after popup open (bot signature)
+  var shownAt = window._viccaPopupShownAt || 0;
+  if (shownAt === 0 || (now - shownAt) < 1500) {
+    btn.textContent = 'Un momento...';
+    setTimeout(function() { btn.textContent = 'Envíame la guía gratis'; }, 1500);
+    return false;
+  }
+
+  // Cooldown: 30s between submits from same browser
+  var lastSubmit = parseInt(localStorage.getItem('vicca_popup_last_submit') || '0', 10);
+  if (now - lastSubmit < 30000) {
+    var wait = Math.ceil((30000 - (now - lastSubmit)) / 1000);
+    btn.textContent = 'Espera ' + wait + 's';
+    setTimeout(function() { btn.textContent = 'Envíame la guía gratis'; }, 2000);
+    return false;
+  }
+
+  // Daily cap: 20 submits per browser per day
+  var dayKey = 'vicca_popup_count_' + new Date().toISOString().slice(0, 10);
+  var dayCount = parseInt(localStorage.getItem(dayKey) || '0', 10);
+  if (dayCount >= 20) {
+    btn.textContent = 'Límite diario alcanzado';
+    btn.disabled = true;
+    return false;
+  }
+
+  // Passed all checks, record submit
+  localStorage.setItem('vicca_popup_last_submit', now.toString());
+  localStorage.setItem(dayKey, (dayCount + 1).toString());
+
   btn.disabled = true;
   btn.textContent = 'Enviando...';
 
