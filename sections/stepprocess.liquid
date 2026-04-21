@@ -114,6 +114,16 @@ font-family: 'Poppins', sans-serif;
       align-self: center;
     }
   }
+
+  @media (max-width: 480px) {
+    .step-section-{{ section.id }} { padding: 40px 16px; }
+    .step-title { font-size: 24px; margin-bottom: 30px; }
+    .step-number { font-size: clamp(36px, 8vw, 40px); }
+    .step-heading { font-size: 20px; }
+    .step-text { font-size: 14px; }
+    .steps-grid { gap: 35px; }
+    .step-button { font-size: 14px; padding: 12px 28px; }
+  }
 {%- endstyle -%}
 
 <section class="step-section-{{ section.id }}">

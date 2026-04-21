@@ -103,6 +103,16 @@
     .section-{{ section.id }} p { margin: 0 auto 30px; }
     .section-{{ section.id }} .image-wrapper { width: 100%; margin-top: 40px; }
   }
+
+  @media (max-width: 480px) {
+    .section-{{ section.id }} { padding: 50px 0; }
+    .section-{{ section.id }} .container { padding: 0 16px; gap: 24px; }
+    .section-{{ section.id }} h2 { font-size: 32px; }
+    .section-{{ section.id }} h2 span { font-size: 36px; }
+    .section-{{ section.id }} p { font-size: 15px; margin: 0 auto 24px; }
+    .section-{{ section.id }} .btn { padding: 12px 24px; font-size: 14px; width: 100%; box-sizing: border-box; text-align: center; }
+    .section-{{ section.id }} .image-wrapper img { border-radius: 24px; }
+  }
 {%- endstyle -%}
 
 <section class="section-{{ section.id }}">

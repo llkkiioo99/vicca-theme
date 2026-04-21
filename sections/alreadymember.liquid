@@ -46,22 +46,24 @@
   .vicca-content-box .underline-text { text-decoration: underline; text-decoration-thickness: 2px; }
 
   .vicca-button-wrapper { display: flex; justify-content: center; margin-bottom: 50px; }
-  .btn-group { display: inline-flex; background-color: #000; border-radius: 50px; overflow: hidden; padding: 0; }
+  .btn-group { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
 
   .vicca-btn {
-    text-decoration: none; padding: 16px 32px; font-weight: 600; font-size: 15px;
-    cursor: pointer; border: none; color: #FFF; transition: 0.3s; background: none; font-family: 'Poppins', sans-serif;
-    display: inline-block;
+    text-decoration: none; padding: 18px 44px; font-weight: 700; font-size: 16px;
+    cursor: pointer; border: none; color: #FFF; transition: 0.3s; font-family: 'Poppins', sans-serif;
+    display: inline-flex; align-items: center; justify-content: center; border-radius: 100px; white-space: nowrap;
   }
-  .vicca-btn.btn-orange { background-color: #FF9654; border-radius: 50px; color: #fff; }
+  .vicca-btn.btn-orange { background-color: #FF9654; color: #fff; }
+  .vicca-btn.btn-orange:hover { background-color: #e87a3a; }
   .vicca-btn.btn-black { background-color: #000; color: #FFF; }
+  .vicca-btn.btn-black:hover { background-color: #222; }
 
   @media (max-width: 768px) {
     .vicca-am-container { flex-direction: column; text-align: center; }
     .vicca-title-box { text-align: center; }
     .vicca-content-box { text-align: center; max-width: 100%; }
-    .btn-group { flex-direction: column; width: 100%; border-radius: 20px; }
-    .vicca-btn { padding: 14px 24px; font-size: 14px; }
+    .btn-group { flex-direction: column; width: 100%; max-width: 340px; margin: 0 auto; }
+    .vicca-btn { width: 100%; padding: 16px 32px; font-size: 15px; }
   }
 </style>
 

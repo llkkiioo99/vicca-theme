@@ -33,9 +33,10 @@
         "menu_title_3": "Soporte",
         "menu_3": "soporte",
         "legal_menu": "policies",
-        "fb_link": "",
-        "ig_link": "",
-        "x_link": "",
+        "fb_link": "https://www.facebook.com/vicca.agency",
+        "ig_link": "https://www.instagram.com/vicca.agency/",
+        "tiktok_link": "https://www.tiktok.com/@vicca.agency",
+        "x_link": "https://x.com/viccaagency",
         "wa_link": "https://wa.me/31612345678"
       }
     },

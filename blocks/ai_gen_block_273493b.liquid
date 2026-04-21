@@ -278,11 +278,7 @@
       </div>
 
       <div class="ai-vicca-header-nav-item-{{ ai_gen_id }}">
-        <span class="ai-vicca-header-nav-link-{{ ai_gen_id }}" style="cursor:pointer;">Afiliados</span>
-        <div class="ai-vicca-dropdown-content-{{ ai_gen_id }}">
-          <a href="{{ block.settings.become_aff_link }}" onclick="event.preventDefault(); viccaOpenSignupModal();">{{ block.settings.become_aff_text }}</a>
-          <a href="{{ block.settings.already_aff_link }}" onclick="event.preventDefault(); viccaOpenAffiliateModal();">{{ block.settings.already_aff_text }}</a>
-        </div>
+        <a href="{{ block.settings.become_aff_link }}" class="ai-vicca-header-nav-link-{{ ai_gen_id }}">Afiliados</a>
       </div>
     </nav>
 
@@ -331,14 +327,7 @@
   </div>
 
   <div class="mobile-nav-item">
-    <div class="mobile-main-link" onclick="toggleMobileDropdown(this)">
-      <span>Affiliate</span>
-      <small>▼</small>
-    </div>
-    <div class="mobile-dropdown">
-      <a href="javascript:void(0)" onclick="toggleViccaMenu(); viccaOpenSignupModal();">{{ block.settings.become_aff_text }}</a>
-      <a href="javascript:void(0)" onclick="toggleViccaMenu(); viccaOpenAffiliateModal();">{{ block.settings.already_aff_text }}</a>
-    </div>
+    <a href="{{ block.settings.become_aff_link }}" class="mobile-main-link" onclick="toggleViccaMenu();">Afiliados</a>
   </div>
 </div>
 

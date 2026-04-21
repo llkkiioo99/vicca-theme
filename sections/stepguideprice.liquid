@@ -82,9 +82,46 @@
       margin-bottom: 20px;
     }
     #shopify-section-{{ section.id }} .price-display {
-      font-size: 50px; /* Tamaño ajustado para pantallas pequeñas */
+      font-size: 50px;
       letter-spacing: -1px;
     }
+  }
+
+  @media (max-width: 480px) {
+    #shopify-section-{{ section.id }} .price-wrapper {
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+    #shopify-section-{{ section.id }} .price-title { font-size: 24px; }
+    #shopify-section-{{ section.id }} .price-subtitle { font-size: 16px; }
+    #shopify-section-{{ section.id }} .price-display { font-size: 40px; }
+  }
+
+  #shopify-section-{{ section.id }} .price-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  #shopify-section-{{ section.id }} .price-cta-btn {
+    display: inline-block;
+    background: #ff914d;
+    color: #fff !important;
+    padding: 18px 50px;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  #shopify-section-{{ section.id }} .price-cta-btn:hover {
+    background: #000;
+    color: #ff914d !important;
+    transform: translateY(-2px);
   }
 </style>
 
@@ -92,7 +129,12 @@
   <div class="price-content">
     <h2 class="price-title">{{ section.settings.title }}</h2>
     <p class="price-subtitle">{{ section.settings.subtitle }}</p>
-    <div class="price-display">{{ section.settings.price_text }}</div>
+    <div class="price-row">
+      <div class="price-display">{{ section.settings.price_text }}</div>
+      {% if section.settings.cta_label != blank %}
+        <a href="{{ section.settings.cta_link }}" class="price-cta-btn">{{ section.settings.cta_label }}</a>
+      {% endif %}
+    </div>
   </div>
 </div>
 
@@ -117,6 +159,17 @@
       "id": "price_text",
       "label": "Price Text",
       "default": "49€"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA Button Label",
+      "default": "Consigue tu guía"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Button Link"
     },
     {
       "type": "header",

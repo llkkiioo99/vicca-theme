@@ -1,77 +1,118 @@
 {%- style -%}
-  .vicca-section-{{ section.id }} {
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+  .vbot-section-{{ section.id }} {
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
     background-color: {{ section.settings.bg_color }};
-    font-family: sans-serif;
+    font-family: 'Poppins', sans-serif;
   }
 
-  .vicca-container {
-    max-width: 800px;
+  .vbot-container {
+    max-width: 900px;
     margin: 0 auto;
     padding: 0 20px;
-    /* Cambiado de 'align-items: center' a 'align-items: flex-start' para alinear a la izquierda */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
   }
 
-  .vicca-title {
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    font-weight: bold;
-    margin-bottom: 24px;
+  .vbot-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 800;
     color: #000;
-    text-align: left;
+    text-align: center;
+    margin: 0 0 48px;
+    letter-spacing: -0.5px;
   }
 
-  .vicca-dot {
+  .vbot-dot {
     color: {{ section.settings.dot_color }};
+    font-weight: 900;
   }
 
-  .vicca-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    text-align: left;
-    width: 100%;
+  .vbot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
   }
 
-  .vicca-list li {
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 10px;
+  .vbot-card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 32px 28px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .vbot-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ff914d;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .vbot-card p {
+    font-size: 15px;
+    line-height: 1.5;
     color: #333;
-    display: block;
+    margin: 0;
+    padding-top: 8px;
   }
 
-  @media screen and (max-width: 768px) {
-    .vicca-title { font-size: 1.6rem; }
-    .vicca-list li { font-size: 15px; }
-    .vicca-section-{{ section.id }} {
-      padding-top: {{ section.settings.padding_top | times: 0.65 | round: 0 }}px;
-      padding-bottom: {{ section.settings.padding_bottom | times: 0.65 | round: 0 }}px;
-    }
+  @media (max-width: 768px) {
+    .vbot-grid { grid-template-columns: 1fr; }
+    .vbot-card { padding: 28px 24px; border-radius: 20px; }
+    .vbot-title { margin-bottom: 36px; }
   }
 
-  @media screen and (max-width: 480px) {
-    .vicca-title { font-size: 1.4rem; }
-    .vicca-list li { font-size: 14px; }
-    .vicca-container { padding: 0 16px; }
+  @media (max-width: 480px) {
+    .vbot-card { padding: 24px 20px; border-radius: 18px; }
+    .vbot-card p { font-size: 14px; }
+    .vbot-title { font-size: 22px; }
+    .vbot-container { padding: 0 16px; }
   }
 {%- endstyle -%}
 
-<div class="vicca-section-{{ section.id }}">
-  <div class="vicca-container">
-    <h2 class="vicca-title">
-      {{ section.settings.title_part1 }}<span class="vicca-dot">.</span>{{ section.settings.title_part2 }}
+<div class="vbot-section-{{ section.id }}">
+  <div class="vbot-container">
+    <h2 class="vbot-title">
+      {{ section.settings.title_part1 }}<span class="vbot-dot">.</span>{{ section.settings.title_part2 }}
     </h2>
-    
-    <ul class="vicca-list">
-      {%- if section.settings.text_1 != blank -%}<li>{{ section.settings.text_1 }}</li>{%- endif -%}
-      {%- if section.settings.text_2 != blank -%}<li>{{ section.settings.text_2 }}</li>{%- endif -%}
-      {%- if section.settings.text_3 != blank -%}<li>{{ section.settings.text_3 }}</li>{%- endif -%}
-      {%- if section.settings.text_4 != blank -%}<li>{{ section.settings.text_4 }}</li>{%- endif -%}
-    </ul>
+
+    <div class="vbot-grid">
+      {%- if section.settings.text_1 != blank -%}
+        <div class="vbot-card">
+          <span class="vbot-icon">&#10003;</span>
+          <p>{{ section.settings.text_1 }}</p>
+        </div>
+      {%- endif -%}
+      {%- if section.settings.text_2 != blank -%}
+        <div class="vbot-card">
+          <span class="vbot-icon">&#10003;</span>
+          <p>{{ section.settings.text_2 }}</p>
+        </div>
+      {%- endif -%}
+      {%- if section.settings.text_3 != blank -%}
+        <div class="vbot-card">
+          <span class="vbot-icon">&#10003;</span>
+          <p>{{ section.settings.text_3 }}</p>
+        </div>
+      {%- endif -%}
+      {%- if section.settings.text_4 != blank -%}
+        <div class="vbot-card">
+          <span class="vbot-icon">&#10003;</span>
+          <p>{{ section.settings.text_4 }}</p>
+        </div>
+      {%- endif -%}
+    </div>
   </div>
 </div>
 

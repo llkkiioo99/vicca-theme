@@ -1,0 +1,445 @@
+{% schema %}
+{
+  "name": "Vicca Contact Form",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Estamos aquí para ayudarte"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Cuéntanos un poco sobre tu situación y qué te gustaría saber antes de dar el paso. Te responderemos en menos de 24 horas."
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#fdf9f3"
+    },
+    {
+      "type": "url",
+      "id": "booking_link",
+      "label": "Booking Link (Virtual Consultation)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vicca Contact Form"
+    }
+  ]
+}
+{% endschema %}
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<section class="vcf-section" style="background-color: {{ section.settings.bg_color }};">
+  <div class="vcf-container">
+    <div class="vcf-header">
+      <h2 class="vcf-title">{{ section.settings.title }}</h2>
+      <p class="vcf-desc">{{ section.settings.description }}</p>
+    </div>
+
+    <div class="vcf-tabs">
+      <button class="vcf-tab active" onclick="vcfSwitchTab(this, 'form')">
+        <span class="vcf-tab-icon">&#9993;</span> Enviar mensaje
+      </button>
+      <button class="vcf-tab" onclick="vcfSwitchTab(this, 'virtual')">
+        <span class="vcf-tab-icon">&#128247;</span> Consulta virtual
+      </button>
+    </div>
+
+    <div class="vcf-card" id="vcf-panel-form">
+      {%- form 'contact' -%}
+        {%- if form.posted_successfully? -%}
+          <div class="vcf-success">
+            <span class="vcf-success-icon">&#10003;</span>
+            <p>¡Gracias por contactarnos! Te responderemos muy pronto.</p>
+          </div>
+        {%- endif -%}
+
+        {%- if form.errors -%}
+          <div class="vcf-error">
+            <p>Por favor, revisa los campos marcados.</p>
+          </div>
+        {%- endif -%}
+
+        <div class="vcf-row">
+          <div class="vcf-field">
+            <label for="vcf-name">Nombre completo <span class="vcf-req">*</span></label>
+            <input type="text" id="vcf-name" name="contact[name]" required placeholder="Tu nombre y apellido"
+              value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}">
+          </div>
+          <div class="vcf-field">
+            <label for="vcf-email">Correo electrónico <span class="vcf-req">*</span></label>
+            <input type="email" id="vcf-email" name="contact[email]" required placeholder="tu@email.com"
+              value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+          </div>
+        </div>
+
+        <div class="vcf-row">
+          <div class="vcf-field">
+            <label for="vcf-phone">Teléfono / WhatsApp</label>
+            <input type="tel" id="vcf-phone" name="contact[phone]" placeholder="+34 612 345 678"
+              value="{% if form.phone %}{{ form.phone }}{% endif %}">
+          </div>
+          <div class="vcf-field">
+            <label for="vcf-country">País de residencia actual</label>
+            <select id="vcf-country" name="contact[country]">
+              <option value="" disabled selected>Selecciona tu país</option>
+              <option value="España">España</option>
+              <option value="México">México</option>
+              <option value="Colombia">Colombia</option>
+              <option value="Argentina">Argentina</option>
+              <option value="Chile">Chile</option>
+              <option value="Perú">Perú</option>
+              <option value="Venezuela">Venezuela</option>
+              <option value="Ecuador">Ecuador</option>
+              <option value="Países Bajos">Países Bajos</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="vcf-row">
+          <div class="vcf-field vcf-full">
+            <label for="vcf-service">¿En qué te podemos ayudar? <span class="vcf-req">*</span></label>
+            <select id="vcf-service" name="contact[service]" required>
+              <option value="" disabled selected>Selecciona una opción</option>
+              <option value="Reubicación completa">Reubicación completa a Países Bajos</option>
+              <option value="Búsqueda de empleo">Búsqueda de empleo</option>
+              <option value="Trámites legales / Visa">Trámites legales / Visa</option>
+              <option value="Vivienda">Ayuda con vivienda</option>
+              <option value="Información general">Información general sobre el programa</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="vcf-row">
+          <div class="vcf-field vcf-full">
+            <label for="vcf-message">Mensaje <span class="vcf-req">*</span></label>
+            <textarea id="vcf-message" name="contact[body]" rows="5" required placeholder="Cuéntanos tu situación, tus dudas o en qué necesitas ayuda...">{%- if form.body -%}{{ form.body }}{%- endif -%}</textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="vcf-submit">Enviar mensaje</button>
+      {%- endform -%}
+    </div>
+
+    <div class="vcf-card vcf-hidden" id="vcf-panel-virtual">
+      <div class="vcf-virtual-content">
+        <p class="vcf-virtual-brand">vicca<span style="color:#ff914d;font-weight:900;">.</span>agency</p>
+        <h3 class="vcf-virtual-title">Agenda una consulta virtual</h3>
+        <p class="vcf-virtual-desc">¿Prefieres hablar directamente con nuestro equipo? Reserva una videollamada gratuita vía Google Meet. Te explicaremos todo sobre el programa y resolveremos tus dudas en tiempo real.</p>
+        <ul class="vcf-virtual-list">
+          <li><span class="vcf-check">&#10003;</span> Sesión personalizada de 45 minutos</li>
+          <li><span class="vcf-check">&#10003;</span> Sin compromiso</li>
+          <li><span class="vcf-check">&#10003;</span> Vía Google Meet</li>
+        </ul>
+        <a href="{{ section.settings.booking_link }}" class="vcf-submit vcf-virtual-btn">Reservar consulta gratuita →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+function vcfSwitchTab(el, panel) {
+  document.querySelectorAll('.vcf-tab').forEach(function(t) { t.classList.remove('active'); });
+  el.classList.add('active');
+  document.getElementById('vcf-panel-form').classList.toggle('vcf-hidden', panel !== 'form');
+  document.getElementById('vcf-panel-virtual').classList.toggle('vcf-hidden', panel !== 'virtual');
+}
+</script>
+
+<style>
+  .vcf-section {
+    padding: 80px 20px;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .vcf-container {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  .vcf-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .vcf-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 800;
+    color: #000;
+    margin: 0 0 16px 0;
+    line-height: 1.2;
+  }
+
+  .vcf-desc {
+    font-size: 17px;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .vcf-card {
+    background: #fff;
+    border-radius: 30px;
+    padding: 48px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+  }
+
+  .vcf-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .vcf-field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .vcf-field.vcf-full {
+    flex: 1 1 100%;
+  }
+
+  .vcf-field label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 8px;
+  }
+
+  .vcf-req {
+    color: #ff914d;
+  }
+
+  .vcf-field input,
+  .vcf-field select,
+  .vcf-field textarea {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    padding: 14px 18px;
+    border: 1.5px solid #e0ddd8;
+    border-radius: 14px;
+    background: #fafaf8;
+    color: #333;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .vcf-field select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+    cursor: pointer;
+  }
+
+  .vcf-field input:focus,
+  .vcf-field select:focus,
+  .vcf-field textarea:focus {
+    border-color: #ff914d;
+    box-shadow: 0 0 0 3px rgba(255, 145, 77, 0.12);
+  }
+
+  .vcf-field input::placeholder,
+  .vcf-field textarea::placeholder {
+    color: #aaa;
+  }
+
+  .vcf-field textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .vcf-submit {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    margin-top: 28px;
+    background: #ff914d;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    border: 2px solid #ff914d;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .vcf-submit:hover {
+    background: #222;
+    color: #ff914d;
+    border-color: #222;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+
+  .vcf-success {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #eafbe7;
+    border: 1px solid #b6e2a8;
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+  }
+
+  .vcf-success-icon {
+    background: #4caf50;
+    color: #fff;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .vcf-success p {
+    font-size: 15px;
+    font-weight: 500;
+    color: #2e7d32;
+    margin: 0;
+  }
+
+  .vcf-error {
+    background: #fdecea;
+    border: 1px solid #f5c6cb;
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+  }
+
+  .vcf-error p {
+    font-size: 15px;
+    font-weight: 500;
+    color: #c62828;
+    margin: 0;
+  }
+
+  /* Tabs */
+  .vcf-tabs {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 32px;
+  }
+
+  .vcf-tab {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 14px 32px;
+    border-radius: 50px;
+    border: 2px solid #e0ddd8;
+    background: #fff;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .vcf-tab.active {
+    background: #ff914d;
+    color: #fff;
+    border-color: #ff914d;
+  }
+
+  .vcf-tab:not(.active):hover {
+    border-color: #ff914d;
+    color: #ff914d;
+  }
+
+  .vcf-tab-icon { font-size: 16px; }
+
+  .vcf-hidden { display: none !important; }
+
+  /* Virtual Panel */
+  .vcf-virtual-content { text-align: center; padding: 20px 0; }
+  .vcf-virtual-brand {
+    font-family: 'Poppins', sans-serif;
+    font-size: 34px;
+    font-weight: 800;
+    color: #000;
+    margin: 0 0 20px 0;
+  }
+  .vcf-virtual-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+    margin: 0 0 16px 0;
+  }
+  .vcf-virtual-desc {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.7;
+    max-width: 500px;
+    margin: 0 auto 28px;
+  }
+  .vcf-virtual-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto 32px;
+    max-width: 320px;
+    text-align: left;
+  }
+  .vcf-virtual-list li {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    color: #333;
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .vcf-check {
+    color: #ff914d;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .vcf-virtual-btn {
+    display: inline-block;
+    width: auto;
+    padding: 16px 40px;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .vcf-section { padding: 60px 16px; }
+    .vcf-card { padding: 32px 24px; border-radius: 24px; }
+    .vcf-row { flex-direction: column; gap: 16px; margin-bottom: 16px; }
+    .vcf-tabs { flex-direction: column; gap: 10px; }
+    .vcf-tab { justify-content: center; }
+  }
+
+  @media (max-width: 480px) {
+    .vcf-section { padding: 48px 12px; }
+    .vcf-card { padding: 24px 18px; border-radius: 20px; }
+  }
+</style>

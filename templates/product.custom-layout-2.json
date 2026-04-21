@@ -334,6 +334,7 @@
     },
     "16322116198620330d": {
       "type": "recent-viewed-products",
+      "disabled": true,
       "settings": {
         "container": "container",
         "heading": "Recently Viewed Products",

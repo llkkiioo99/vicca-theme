@@ -1,16 +1,17 @@
 {% comment %}
-  Email Capture Pop-up
-  Triggers on exit intent (desktop) or scroll depth 60% (mobile)
+  Email Capture Pop-up — "Envíame la guía gratis"
+  Triggers after 1.1 seconds for first-time visitors
   Stores dismissal in localStorage for 7 days
+  Submits to Shopify contact form + tags for Klaviyo segmentation
 {% endcomment %}
 
 <div id="vicca-email-popup" class="vicca-popup-overlay" aria-hidden="true">
   <div class="vicca-popup-card">
     <button class="vicca-popup-close" onclick="viccaClosePopup()" aria-label="Cerrar">&times;</button>
     <div class="vicca-popup-content">
-      <p class="vicca-popup-pretitle">vicca<span class="vicca-popup-dot">.</span></p>
-      <h3 class="vicca-popup-heading">No te pierdas nada</h3>
-      <p class="vicca-popup-text">Recibe información, novedades y contenido exclusivo directamente en tu correo.</p>
+      <p class="vicca-popup-pretitle">vicca<span class="vicca-popup-dot">.</span>agency</p>
+      <h3 class="vicca-popup-heading">Descarga tu guía gratis</h3>
+      <p class="vicca-popup-text">Déjanos tu correo y recibe al instante nuestra guía con todo lo que necesitas saber para dar el paso a los Países Bajos.</p>
       <form id="vicca-email-form" class="vicca-popup-form" onsubmit="return viccaSubmitEmail(event)">
         <input
           type="email"
@@ -21,9 +22,12 @@
           required
           autocomplete="email"
         >
-        <button type="submit" class="vicca-popup-btn">Suscribirme</button>
+        <button type="submit" class="vicca-popup-btn">Envíame la guía gratis</button>
       </form>
-      <p id="vicca-popup-success" class="vicca-popup-success" style="display:none;">Gracias por suscribirte</p>
+      <p class="vicca-popup-note">Sin spam. Solo contenido útil.</p>
+      <p id="vicca-popup-success" class="vicca-popup-success" style="display:none;">
+        ¡Listo! Revisa tu bandeja de entrada 📩
+      </p>
     </div>
   </div>
 </div>
@@ -52,7 +56,7 @@
     background: #fff;
     border-radius: 24px;
     padding: 48px 40px 40px;
-    max-width: 420px;
+    max-width: 440px;
     width: 100%;
     position: relative;
     transform: translateY(30px) scale(0.96);
@@ -111,11 +115,12 @@
 
   .vicca-popup-form {
     display: flex;
-    gap: 8px;
+    flex-direction: column;
+    gap: 10px;
   }
 
   .vicca-popup-input {
-    flex: 1;
+    width: 100%;
     padding: 14px 18px;
     border: 2px solid #eee;
     border-radius: 50px;
@@ -125,18 +130,20 @@
     outline: none;
     transition: border-color 0.2s;
     background: #fafafa;
+    box-sizing: border-box;
   }
 
   .vicca-popup-input:focus { border-color: #ff914d; }
 
   .vicca-popup-btn {
+    width: 100%;
     padding: 14px 28px;
     background: #ff914d;
     color: #fff;
     border: none;
     border-radius: 50px;
     font-family: 'Poppins', sans-serif;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     cursor: pointer;
     white-space: nowrap;
@@ -144,6 +151,13 @@
   }
 
   .vicca-popup-btn:hover { background: #e8803a; }
+
+  .vicca-popup-note {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    color: #999;
+    margin-top: 12px;
+  }
 
   .vicca-popup-success {
     font-family: 'Poppins', sans-serif;
@@ -156,41 +170,29 @@
   @media (max-width: 480px) {
     .vicca-popup-card { padding: 36px 24px 30px; border-radius: 20px; }
     .vicca-popup-heading { font-size: 22px; }
-    .vicca-popup-form { flex-direction: column; }
-    .vicca-popup-btn { width: 100%; }
+    .vicca-popup-btn { font-size: 14px; padding: 13px 20px; }
   }
 </style>
 
 <script>
 (function() {
-  var POPUP_KEY = 'vicca_email_popup_dismissed';
-  var POPUP_DAYS = 7;
   var popup = document.getElementById('vicca-email-popup');
   if (!popup) return;
 
-  // Check if already dismissed
-  var dismissed = localStorage.getItem(POPUP_KEY);
-  if (dismissed) {
-    var dismissedAt = parseInt(dismissed, 10);
-    if (Date.now() - dismissedAt < POPUP_DAYS * 86400000) return;
-  }
+  // Only show on homepage
+  var path = window.location.pathname;
+  var isHome = (path === '/' || path === '' || path.indexOf('/preview_theme_id') === 0);
+  if (!isHome) return;
 
-  var shown = false;
+  var reopenTimer = null;
 
   function showPopup() {
-    if (shown) return;
-    shown = true;
     popup.classList.add('active');
     popup.setAttribute('aria-hidden', 'false');
   }
 
-  // Show after 1.1 seconds — only for first-time visitors
-  if (!localStorage.getItem('vicca_popup_seen')) {
-    setTimeout(function() {
-      showPopup();
-      localStorage.setItem('vicca_popup_seen', '1');
-    }, 1100);
-  }
+  // Show after 1.1 seconds on homepage
+  setTimeout(showPopup, 1100);
 
   // Close on backdrop click
   popup.addEventListener('click', function(e) {
@@ -201,13 +203,26 @@
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && popup.classList.contains('active')) viccaClosePopup();
   });
+
+  window._viccaPopupReopen = function() {
+    // Re-show after 2 minutes if still on homepage
+    if (reopenTimer) clearTimeout(reopenTimer);
+    reopenTimer = setTimeout(function() {
+      if (window.location.pathname === '/' || window.location.pathname === '') {
+        showPopup();
+      }
+    }, 120000);
+  };
 })();
 
 function viccaClosePopup() {
   var popup = document.getElementById('vicca-email-popup');
   popup.classList.remove('active');
   popup.setAttribute('aria-hidden', 'true');
-  localStorage.setItem('vicca_email_popup_dismissed', Date.now().toString());
+  // Schedule reappearance in 2 minutes
+  if (typeof window._viccaPopupReopen === 'function') {
+    window._viccaPopupReopen();
+  }
 }
 
 function viccaSubmitEmail(e) {
@@ -215,20 +230,57 @@ function viccaSubmitEmail(e) {
   var email = document.getElementById('vicca-popup-email').value;
   if (!email) return false;
 
-  // Submit to Shopify customer API (newsletter)
-  fetch(window.Shopify && window.Shopify.routes ? window.Shopify.routes.root + 'contact' : '/contact', {
+  var btn = document.querySelector('.vicca-popup-btn');
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+
+  var KLAVIYO_COMPANY_ID = 'VrALBU';
+  var KLAVIYO_LIST_ID = 'RFUakM';
+
+  var klaviyoPayload = {
+    data: {
+      type: 'subscription',
+      attributes: {
+        custom_source: 'Newsletter popup — Free guide',
+        profile: {
+          data: {
+            type: 'profile',
+            attributes: {
+              email: email,
+              properties: { source: 'free_guide_popup' }
+            }
+          }
+        }
+      },
+      relationships: {
+        list: { data: { type: 'list', id: KLAVIYO_LIST_ID } }
+      }
+    }
+  };
+
+  var klaviyoReq = fetch('https://a.klaviyo.com/client/subscriptions/?company_id=' + KLAVIYO_COMPANY_ID, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'revision': '2024-10-15'
+    },
+    body: JSON.stringify(klaviyoPayload)
+  });
+
+  var shopifyReq = fetch(window.Shopify && window.Shopify.routes ? window.Shopify.routes.root + 'contact' : '/contact', {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: 'form_type=customer&utf8=%E2%9C%93&contact%5Bemail%5D=' + encodeURIComponent(email) + '&contact%5Btags%5D=newsletter_popup'
-  }).then(function() {
-    document.getElementById('vicca-email-form').style.display = 'none';
-    document.getElementById('vicca-popup-success').style.display = 'block';
-    setTimeout(viccaClosePopup, 2500);
-  }).catch(function() {
-    document.getElementById('vicca-email-form').style.display = 'none';
-    document.getElementById('vicca-popup-success').style.display = 'block';
-    setTimeout(viccaClosePopup, 2500);
+    body: 'form_type=customer&utf8=%E2%9C%93&contact%5Bemail%5D=' + encodeURIComponent(email) + '&contact%5Btags%5D=newsletter_popup,free_guide'
   });
+
+  var showSuccess = function() {
+    document.getElementById('vicca-email-form').style.display = 'none';
+    document.querySelector('.vicca-popup-note').style.display = 'none';
+    document.getElementById('vicca-popup-success').style.display = 'block';
+    setTimeout(viccaClosePopup, 3000);
+  };
+
+  Promise.allSettled([klaviyoReq, shopifyReq]).then(showSuccess).catch(showSuccess);
 
   return false;
 }

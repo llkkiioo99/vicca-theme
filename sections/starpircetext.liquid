@@ -67,8 +67,16 @@
       font-size: 18px;
     }
     .pricing-amount-{{ section.id }} {
-      font-size: 80px; 
+      font-size: 80px;
     }
+  }
+
+  @media screen and (max-width: 480px) {
+    .pricing-wrapper-{{ section.id }} { padding: 0 16px; }
+    .pricing-title-{{ section.id }} { font-size: 24px; }
+    .pricing-desc-{{ section.id }},
+    .pricing-desc-{{ section.id }} p { font-size: 14px; }
+    .pricing-amount-{{ section.id }} { font-size: 44px; }
   }
 {%- endstyle -%}
 

@@ -1,121 +1,147 @@
 {% comment %}
-  Vicca Affiliate Requirements Section - EXACT MATCH
+  Vicca Affiliate Requirements Section - Redesigned
 {% endcomment %}
 
-<div class="vicca-section-wrapper-{{ section.id }}">
-  <div class="vicca-container">
-    
-    <h2 class="vicca-title">
-      {{ section.settings.title }}<span class="orange-dot">.</span>{{ section.settings.subtitle }}
-    </h2>
+<div class="affr-section-{{ section.id }}">
+  <div class="affr-container">
+    <div class="affr-card">
+      <p class="affr-label">Requisitos</p>
+      <h2 class="affr-heading">
+        {{ section.settings.title }}<span class="affr-dot">.</span>{{ section.settings.subtitle }}
+      </h2>
+      <p class="affr-subtitle">{{ section.settings.headline }}</p>
+      <p class="affr-intro">{{ section.settings.intro_text }}</p>
 
-    <p class="vicca-headline"><strong>{{ section.settings.headline }}</strong></p>
-
-    <div class="vicca-alignment-box">
-      <p class="vicca-intro">{{ section.settings.intro_text }}</p>
-      
-      <div class="vicca-list-container">
+      <div class="affr-list">
         {{ section.settings.list_items }}
       </div>
+
+      <p class="affr-footer">{{ section.settings.footer_text }}</p>
     </div>
-
-    <p class="vicca-footer-text"><strong>{{ section.settings.footer_text }}</strong></p>
-
   </div>
 </div>
 
 {% style %}
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
-.vicca-section-wrapper-{{ section.id }} {
-  background-color: {{ section.settings.bg_color }};
+.affr-section-{{ section.id }} {
   padding-top: {{ section.settings.padding_top }}px;
   padding-bottom: {{ section.settings.padding_bottom }}px;
-  text-align: center;
+  background-color: {{ section.settings.bg_color }};
   font-family: 'Poppins', sans-serif;
-  color: #000;
-  line-height: 1.4;
 }
 
-.vicca-container {
-  max-width: 1200px;
+.affr-container {
+  max-width: 680px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-.vicca-title {
-  font-family: 'Poppins', sans-serif !important;
-  font-size: clamp(24px, 3vw, 30px);
-  font-weight: 600;
-  margin: 0 auto 28px auto;
-  letter-spacing: -1px;
-  display: block;
-  text-align: center;
+.affr-card {
+  background: #111;
+  border-radius: 32px;
+  padding: 48px 44px;
+  box-shadow: 0 6px 30px rgba(0,0,0,0.08);
+  color: #fff;
 }
 
-.orange-dot {
-  color: #ff6b00;
+.affr-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #ff914d;
+  margin: 0 0 16px;
 }
 
-.vicca-headline {
+.affr-heading {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.1rem;
-  margin-bottom: 32px;
-  text-align: center;
+  font-size: clamp(24px, 3vw, 30px);
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 10px;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
 }
 
-/* Container that holds the intro and list - Left aligned but centered as a block */
-.vicca-alignment-box {
-  display: inline-block;
-  text-align: left;
-  width: 100%;
-  max-width: 680px; /* Controls the 'left' shift of the description */
-  margin: 0 auto;
+.affr-dot { color: #ff914d; font-weight: 900; }
+
+.affr-subtitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+  margin: 0 0 6px;
 }
 
-.vicca-intro {
-  margin-bottom: 20px;
-  font-size: 1rem;
+.affr-intro {
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.6);
+  margin: 0 0 28px;
+  line-height: 1.5;
 }
 
-.vicca-list-container {
-  font-size: 1rem;
+.affr-list {
+  margin: 0 0 28px;
 }
 
-.vicca-list-container ul {
+.affr-list ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.vicca-list-container li {
-  margin-bottom: 6px;
+.affr-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 0;
+  font-size: 15px;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.4;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
-.vicca-footer-text {
-  margin-top: 36px;
-  font-size: 1.1rem;
+.affr-list li:last-child { border-bottom: none; }
+
+.affr-list li::before {
+  content: '\2713';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #ff914d;
+  color: #111;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.affr-footer {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ff914d;
   text-align: center;
+  margin: 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.08);
 }
 
 @media (max-width: 768px) {
-  .vicca-title { font-size: 24px; }
-  .vicca-headline { font-size: 1rem; }
-  .vicca-alignment-box { max-width: 100%; text-align: left; }
-  .vicca-footer-text { font-size: 1rem; }
-  .vicca-section-wrapper-{{ section.id }} {
-    padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
-  }
+  .affr-card { padding: 36px 28px; border-radius: 24px; }
+  .affr-heading { font-size: 24px; }
 }
 
 @media (max-width: 480px) {
-  .vicca-title { font-size: 22px; letter-spacing: -0.5px; }
-  .vicca-headline { font-size: 15px; margin-bottom: 24px; }
-  .vicca-intro { font-size: 14px; }
-  .vicca-list-container { font-size: 14px; }
-  .vicca-footer-text { font-size: 15px; margin-top: 28px; }
-  .vicca-container { padding: 0 16px; }
+  .affr-card { padding: 28px 22px; border-radius: 20px; }
+  .affr-heading { font-size: 22px; }
+  .affr-list li { font-size: 14px; padding: 10px 0; }
+  .affr-intro { font-size: 14px; }
+  .affr-footer { font-size: 15px; }
+  .affr-container { padding: 0 16px; }
 }
 {% endstyle %}
 

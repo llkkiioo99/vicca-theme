@@ -1,0 +1,22 @@
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
+    },
+    "consulta-virtual": {
+      "type": "vicca-consulta-virtual",
+      "settings": {
+        "heading": "Consulta Virtual",
+        "subheading": "Habla directamente con nuestro equipo.",
+        "description": "Reserva una videollamada gratuita con el equipo de VICCA. Te explicaremos todo sobre el programa, resolveremos tus dudas y crearemos un plan personalizado para ti.",
+        "bg_color": "#fdf9f3"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "consulta-virtual"
+  ]
+}

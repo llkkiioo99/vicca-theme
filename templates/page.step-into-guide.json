@@ -178,6 +178,7 @@
         "title": "Precio",
         "subtitle": "*Pago único",
         "price_text": "49€",
+        "cta_link": "shopify://pages/buttonstep-guide",
         "bg_color": "#fdf9f3",
         "text_color": "#000000",
         "price_color": "#ff9f5f",

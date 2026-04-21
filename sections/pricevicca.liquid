@@ -149,14 +149,21 @@
   }
 
   .vicca-footer-text {
-    font-size: 15px;
-    color: #555;
+    font-size: 20px;
+    color: #333;
     line-height: 1.4;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  .bold-text {
+  .vicca-footer-text .bold-text {
+    font-size: 20px !important;
     font-weight: 800;
-    color: #222;
+    color: #000;
+    display: inline;
   }
 
   /* --- RESPONSIVE BREAKPOINTS --- */
@@ -174,6 +181,13 @@
     .vicca-description { font-size: 17px; }
     .vicca-button { width: 100%; box-sizing: border-box; }
     .vicca-content-container { transform: translateY(80px); }
+  }
+
+  @media (max-width: 480px) {
+    .vicca-floating-card { padding: 32px 18px; border-radius: 24px; }
+    .vicca-title { font-size: 24px; }
+    .vicca-description { font-size: 15px; }
+    .vicca-content-container { transform: translateY(60px); }
   }
 </style>
 

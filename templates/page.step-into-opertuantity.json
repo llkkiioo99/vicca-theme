@@ -67,7 +67,7 @@
       ],
       "name": "Vicca Program Info",
       "settings": {
-        "button_link": "shopify://pages/agenda-una-llamada",
+        "button_link": "shopify://pages/finout-page",
         "bg_color": "#fffdfa",
         "text_color": "#000000",
         "btn_bg": "#ff9e57",

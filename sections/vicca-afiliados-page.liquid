@@ -1,0 +1,579 @@
+{% schema %}
+{
+  "name": "Vicca Afiliados Page",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#fdf9f3"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vicca Afiliados Page"
+    }
+  ]
+}
+{% endschema %}
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<section class="vap-page" style="background-color: {{ section.settings.bg_color }};">
+
+  {%- comment -%} HERO {%- endcomment -%}
+  <div class="vap-hero">
+    <div class="vap-container">
+      <p class="vap-hero-pretitle">vicca<span class="vap-dot">.</span>agency</p>
+      <h1 class="vap-hero-title">
+        <span class="vap-serif">Programa de</span>
+        <span class="vap-bold">afiliados</span>
+      </h1>
+      <p class="vap-hero-desc">Conviértete en un <strong>vicca<span class="vap-dot">.</span>afiliate</strong> y ayuda a personas a empezar una nueva vida en Holanda con nuestro programa, <strong>ganando dinero por ello.</strong></p>
+    </div>
+  </div>
+
+  {%- comment -%} WHAT IS IT {%- endcomment -%}
+  <div class="vap-section">
+    <div class="vap-container">
+      <h2 class="vap-section-title">Ser un vicca<span class="vap-dot">.</span>afiliate es...</h2>
+      <div class="vap-cards-row">
+        <div class="vap-info-card">
+          <span class="vap-card-icon">&#10003;</span>
+          <p>Recomendar un programa que <strong>acompaña de verdad</strong> a las personas que quieren mudarse a Holanda.</p>
+        </div>
+        <div class="vap-info-card">
+          <span class="vap-card-icon">&#10003;</span>
+          <p>Conectar a personas que lo necesitan con un programa <strong>honesto y bien estructurado.</strong></p>
+        </div>
+        <div class="vap-info-card">
+          <span class="vap-card-icon">&#10003;</span>
+          <p>Si esa persona entra en Step Into Opportunity, tú recibes una <strong>comisión por tu recomendación.</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%} TARGET + REQUIREMENTS — side by side cards {%- endcomment -%}
+  <div class="vap-section vap-section-alt">
+    <div class="vap-container vap-container-wide">
+      <div class="vap-dual-grid">
+
+        <div class="vap-dual-card">
+          <div class="vap-dual-label">Para ti si...</div>
+          <h2 class="vap-dual-title">¿A quién va dirigido?</h2>
+          <p class="vap-dual-sub">Este programa está pensado para personas que:</p>
+          <div class="vap-dual-list">
+            <div class="vap-dual-item">
+              <span class="vap-dual-icon">&#10003;</span>
+              <span>Creen en hacer las cosas bien, <strong>sin atajos</strong></span>
+            </div>
+            <div class="vap-dual-item">
+              <span class="vap-dual-icon">&#10003;</span>
+              <span>Valoran el <strong>acompañamiento real</strong> frente a las promesas vacías</span>
+            </div>
+            <div class="vap-dual-item">
+              <span class="vap-dual-icon">&#10003;</span>
+              <span>Recomiendan desde la <strong>honestidad</strong>, no desde la presión</span>
+            </div>
+            <div class="vap-dual-item">
+              <span class="vap-dual-icon">&#10003;</span>
+              <span>Prefieren construir <strong>confianza</strong> antes que volumen</span>
+            </div>
+          </div>
+          <p class="vap-dual-footer">Queremos pocos afiliados, pero alineados.</p>
+        </div>
+
+        <div class="vap-dual-card vap-dual-card-dark">
+          <div class="vap-dual-label vap-dual-label-light">Requisitos</div>
+          <h2 class="vap-dual-title">Ser vicca<span class="vap-dot">.</span>afiliate</h2>
+          <p class="vap-dual-sub">No pedimos números, pedimos actitud.</p>
+          <div class="vap-dual-list">
+            <div class="vap-dual-item">
+              <span class="vap-dual-icon vap-dual-icon-dark">&#10003;</span>
+              <span>Comunicación <strong>honesta y clara</strong></span>
+            </div>
+            <div class="vap-dual-item">
+              <span class="vap-dual-icon vap-dual-icon-dark">&#10003;</span>
+              <span>Recomendar solo a personas que <strong>realmente encajen</strong></span>
+            </div>
+            <div class="vap-dual-item">
+              <span class="vap-dual-icon vap-dual-icon-dark">&#10003;</span>
+              <span>Respetar el <strong>proceso y las normas</strong> del programa</span>
+            </div>
+            <div class="vap-dual-item">
+              <span class="vap-dual-icon vap-dual-icon-dark">&#10003;</span>
+              <span>Valorar el <strong>trato cercano y humano</strong></span>
+            </div>
+          </div>
+          <p class="vap-dual-footer">Si esto te suena lógico, probablemente encajes.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%} HOW IT WORKS {%- endcomment -%}
+  <div class="vap-section vap-section-alt">
+    <div class="vap-container">
+      <h2 class="vap-section-title">Conviértete así...</h2>
+      <div class="vap-steps">
+        <div class="vap-step">
+          <div class="vap-step-number">1</div>
+          <h3 class="vap-step-title">Regístrate</h3>
+          <p>Completa el formulario con tu nombre y tu email pulsando el botón de abajo.</p>
+        </div>
+        <div class="vap-step">
+          <div class="vap-step-number">2</div>
+          <h3 class="vap-step-title">Recibe la información completa</h3>
+          <p>Te enviaremos por email todos los detalles del programa de afiliados: funcionamiento, condiciones, comisiones y forma de pago.</p>
+        </div>
+        <div class="vap-step">
+          <div class="vap-step-number">3</div>
+          <h3 class="vap-step-title">Confirma y empieza</h3>
+          <p>Si todo encaja contigo, nos lo confirmas y quedas registrado/a oficialmente como vicca<span class="vap-dot">.</span>afiliate.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%} BENEFITS {%- endcomment -%}
+  <div class="vap-section">
+    <div class="vap-container">
+      <h2 class="vap-section-title">¿Qué te llevas como vicca<span class="vap-dot">.</span>afiliate?</h2>
+      <div class="vap-benefits">
+        <div class="vap-benefit">
+          <span class="vap-benefit-icon">&#128176;</span>
+          <p>Comisiones por cada persona que contrate Step Into Opportunity gracias a tu recomendación</p>
+        </div>
+        <div class="vap-benefit">
+          <span class="vap-benefit-icon">&#128196;</span>
+          <p>Un sistema claro y sin letra pequeña</p>
+        </div>
+        <div class="vap-benefit">
+          <span class="vap-benefit-icon">&#128172;</span>
+          <p>Comunicación directa con el equipo vicca<span class="vap-dot">.</span></p>
+        </div>
+        <div class="vap-benefit">
+          <span class="vap-benefit-icon">&#127793;</span>
+          <p>Formar parte de un proyecto en crecimiento, con valores claros</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%} CTA BUTTONS {%- endcomment -%}
+  <div class="vap-cta-section">
+    <div class="vap-container">
+      <p class="vap-cta-text"><strong>Si te identificas con esta forma de hacer las cosas</strong> y quieres recibir toda la información en detalle sin compromiso...</p>
+      <div class="vap-cta-buttons">
+        <button type="button" class="vap-btn vap-btn-orange" onclick="viccaOpenSignupModal()">Quiero afiliarme</button>
+        <button type="button" class="vap-btn vap-btn-black" onclick="viccaOpenAffiliateModal()">Ya soy vicca.afiliate</button>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<style>
+  .vap-page {
+    font-family: 'Poppins', sans-serif;
+    color: #000;
+    overflow: hidden;
+  }
+
+  .vap-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .vap-dot { color: #ff914d; font-weight: 900; }
+
+  /* HERO */
+  .vap-hero {
+    text-align: center;
+    padding: 100px 20px 80px;
+  }
+
+  .vap-hero-pretitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    margin: 0 0 24px;
+    color: #000;
+  }
+
+  .vap-hero-title {
+    margin: 0 0 28px;
+    line-height: 0.9;
+  }
+
+  .vap-serif {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 400;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .vap-bold {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(48px, 8vw, 80px);
+    font-weight: 900;
+    display: block;
+    letter-spacing: -2px;
+    text-transform: lowercase;
+  }
+
+  .vap-hero-desc {
+    font-size: clamp(16px, 2vw, 20px);
+    line-height: 1.5;
+    max-width: 600px;
+    margin: 0 auto;
+    color: #333;
+  }
+
+  /* SECTIONS */
+  .vap-section {
+    padding: 70px 20px;
+  }
+
+  .vap-section-alt {
+    background: rgba(255, 145, 77, 0.04);
+  }
+
+  .vap-section-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(24px, 3vw, 34px);
+    font-weight: 800;
+    text-align: center;
+    margin: 0 0 16px;
+    letter-spacing: -0.5px;
+  }
+
+  .vap-section-sub {
+    font-size: 17px;
+    text-align: center;
+    color: #333;
+    margin: 0 0 32px;
+    line-height: 1.5;
+  }
+
+  .vap-text {
+    font-size: 16px;
+    color: #555;
+    text-align: center;
+    margin: 0 0 28px;
+  }
+
+  /* CARDS ROW */
+  .vap-cards-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  .vap-info-card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 32px 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+
+  .vap-card-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ff914d;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .vap-info-card p {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #333;
+    margin: 0;
+  }
+
+  /* DUAL CARDS */
+  .vap-container-wide {
+    max-width: 1100px;
+  }
+
+  .vap-dual-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  .vap-dual-card {
+    background: #fff;
+    border-radius: 32px;
+    padding: 40px 36px;
+    box-shadow: 0 6px 28px rgba(0,0,0,0.05);
+  }
+
+  .vap-dual-card-dark {
+    background: #111;
+    color: #fff;
+  }
+
+  .vap-dual-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ff914d;
+    margin: 0 0 16px;
+  }
+
+  .vap-dual-label-light {
+    color: #ff914d;
+  }
+
+  .vap-dual-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(22px, 2.5vw, 28px);
+    font-weight: 800;
+    margin: 0 0 10px;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+  }
+
+  .vap-dual-sub {
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0 0 28px;
+    opacity: 0.7;
+    line-height: 1.4;
+  }
+
+  .vap-dual-list {
+    margin-bottom: 28px;
+  }
+
+  .vap-dual-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  .vap-dual-card:not(.vap-dual-card-dark) .vap-dual-item {
+    color: #333;
+  }
+
+  .vap-dual-card-dark .vap-dual-item {
+    color: rgba(255,255,255,0.85);
+  }
+
+  .vap-dual-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #ff914d;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .vap-dual-icon-dark {
+    background: #ff914d;
+    color: #111;
+  }
+
+  .vap-dual-footer {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0;
+    padding-top: 16px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .vap-dual-card-dark .vap-dual-footer {
+    border-top-color: rgba(255,255,255,0.1);
+    color: #ff914d;
+  }
+
+  /* STEPS */
+  .vap-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 48px;
+  }
+
+  .vap-step {
+    text-align: center;
+    padding: 0 8px;
+  }
+
+  .vap-step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #000;
+    color: #ff914d;
+    font-size: 20px;
+    font-weight: 900;
+    margin-bottom: 20px;
+  }
+
+  .vap-step-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 12px;
+  }
+
+  .vap-step p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+    margin: 0;
+  }
+
+  /* BENEFITS */
+  .vap-benefits {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  .vap-benefit {
+    background: #fff;
+    border-radius: 20px;
+    padding: 28px 24px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .vap-benefit-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .vap-benefit p {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #333;
+    margin: 0;
+  }
+
+  /* CTA SECTION */
+  .vap-cta-section {
+    padding: 80px 20px 100px;
+    text-align: center;
+  }
+
+  .vap-cta-text {
+    font-size: clamp(17px, 2vw, 22px);
+    line-height: 1.5;
+    max-width: 650px;
+    margin: 0 auto 40px;
+    color: #000;
+  }
+
+  .vap-cta-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .vap-btn {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: 0.3s ease;
+    padding: 18px 44px;
+    border-radius: 100px;
+  }
+
+  .vap-btn-orange {
+    background: #ff914d;
+    color: #fff;
+  }
+
+  .vap-btn-orange:hover { background: #e87a3a; }
+
+  .vap-btn-black {
+    background: #000;
+    color: #fff;
+  }
+
+  .vap-btn-black:hover { background: #222; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .vap-hero { padding: 70px 20px 60px; }
+    .vap-section { padding: 50px 16px; }
+    .vap-cards-row { grid-template-columns: 1fr; gap: 16px; }
+    .vap-dual-grid { grid-template-columns: 1fr; }
+    .vap-dual-card { padding: 32px 24px; border-radius: 24px; }
+    .vap-steps { grid-template-columns: 1fr; gap: 40px; }
+    .vap-benefits { grid-template-columns: 1fr; }
+    .vap-cta-section { padding: 60px 16px 80px; }
+
+    .vap-cta-buttons {
+      flex-direction: column;
+      width: 100%;
+      max-width: 340px;
+      margin: 0 auto;
+    }
+
+    .vap-btn {
+      width: 100%;
+      padding: 16px 32px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .vap-hero { padding: 56px 16px 48px; }
+    .vap-bold { letter-spacing: -1px; }
+    .vap-section { padding: 40px 12px; }
+    .vap-section-title { font-size: 22px; }
+    .vap-section-sub { font-size: 15px; }
+    .vap-check-item { font-size: 14px; }
+    .vap-step-title { font-size: 16px; }
+    .vap-info-card { padding: 24px 18px; border-radius: 18px; }
+    .vap-dual-card { padding: 28px 20px; border-radius: 20px; }
+    .vap-dual-title { font-size: 20px; }
+    .vap-dual-item { font-size: 14px; }
+    .vap-benefit { padding: 22px 18px; border-radius: 16px; }
+    .vap-cta-section { padding: 48px 12px 70px; }
+    .vap-cta-text { font-size: 16px; }
+    .vap-highlight { font-size: 15px; }
+  }
+</style>

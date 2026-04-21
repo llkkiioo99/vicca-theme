@@ -9,7 +9,7 @@
   .program-duration-section {
     font-family: 'Poppins', sans-serif;
     padding: 60px 20px;
-    background-color: ##fffdfa; /* Change to match your site background */
+    background-color: #fffdfa;
     text-align: center;
     color: #000000;
   }
@@ -42,12 +42,32 @@
     font-weight: 700;
   }
 
+  .program-hero-image {
+    margin-top: 50px;
+    width: 100%;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .program-hero-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 40px;
+    display: block;
+    object-fit: cover;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  }
+
   @media (max-width: 768px) {
     .program-title {
       font-size: 24px;
     }
     .program-duration-section {
       padding: 40px 15px;
+    }
+    .program-hero-image img {
+      border-radius: 24px;
     }
   }
 </style>
@@ -70,6 +90,12 @@
         {{ section.settings.text_bold }}
       </div>
     </div>
+
+    {% if section.settings.image != blank %}
+      <div class="program-hero-image">
+        {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: 'Programa VICCA' }}
+      </div>
+    {% endif %}
 
   </div>
 </section>
@@ -101,6 +127,11 @@
       "id": "text_bold",
       "label": "Bottom Bold Text",
       "default": "Si consigues alojamiento y trabajo antes del plazo de 4 meses, no nos olvidaremos de ti, aún seguirás contando con nuestro apoyo y resolveremos todas tus dudas igual."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero Image"
     }
   ],
   "presets": [

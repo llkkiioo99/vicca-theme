@@ -9,70 +9,17 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "page-contact",
+    "vicca-contact": {
+      "type": "vicca-contact-form",
       "settings": {
-        "container": "container"
-      }
-    },
-    "contact-form": {
-      "type": "contact-form",
-      "blocks": {
-        "text-block-1": {
-          "type": "textblock",
-          "disabled": true,
-          "settings": {
-            "title": "Address",
-            "content": "<p>7895 Piermont Dr NE Albuquerque, NM 198866, <a href=\"#\">See Our Stores</a></p>"
-          }
-        },
-        "text-block-2": {
-          "type": "textblock",
-          "disabled": true,
-          "settings": {
-            "title": "Information",
-            "content": "<p>+391 (0)35 2568 4593</p><p>hello@domain.com</p>"
-          }
-        },
-        "text-block-3": {
-          "type": "socialmedia",
-          "disabled": true,
-          "settings": {
-            "title": "Social Media"
-          }
-        },
-        "text-block-4": {
-          "type": "textblock",
-          "disabled": true,
-          "settings": {
-            "title": "We're Open",
-            "content": "<p>Our store has re-opened for shopping, exchanges</p><p>Every day 11am to 7pm</p>"
-          }
-        }
-      },
-      "block_order": [
-        "text-block-1",
-        "text-block-2",
-        "text-block-3",
-        "text-block-4"
-      ],
-      "custom_css": [
-        "button.m-button.m-button--primary {border-radius: 20px;}",
-        "button.m-button.m-button--primary {padding: 12px 25px; border-radius: 25px !important;}"
-      ],
-      "settings": {
-        "container": "container",
         "title": "Estamos aquí para ayudarte",
-        "description": "<p>Cuéntanos un poco sobre tu situación y qué te gustaría saber antes de dar el paso.</p>",
-        "show_name": true,
-        "show_phone": false,
-        "show_signup_email": false,
-        "animations": "inherit"
+        "description": "Cuéntanos un poco sobre tu situación y qué te gustaría saber antes de dar el paso. Te responderemos en menos de 24 horas.",
+        "bg_color": "#fdf9f3",
+        "booking_link": "shopify://pages/consulta-virtual"
       }
     }
   },
   "order": [
-    "main",
-    "contact-form"
+    "vicca-contact"
   ]
 }

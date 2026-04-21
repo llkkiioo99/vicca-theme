@@ -1,14 +1,17 @@
 {%- if settings.use_favicon == true and settings.favicon != blank -%}
   <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+  <link rel="apple-touch-icon" href="{{ settings.favicon | image_url: width: 180, height: 180 }}">
 {%- endif -%}
 
 {%- capture seo_title -%}
   {%- if request.page_type == 'search' and search.performed == true -%}
     {{ 'general.search.results_with_count' | t: terms: search.terms, count: search.results_count }}
   {%- elsif request.page_type == 'password' -%}
-    {{ shop.name }} &ndash; {{ 'general.password_page.opening_soon' | t }}
+    Vicca Agency &ndash; {{ 'general.password_page.opening_soon' | t }}
+  {%- elsif request.page_type == 'index' -%}
+    Vicca Agency
   {%- else -%}
-    {{ page_title }}
+    {{ page_title }} | Vicca Agency
   {%- endif -%}
   {%- if current_tags -%}
   {%- assign meta_tags = current_tags | join: ', ' -%} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}

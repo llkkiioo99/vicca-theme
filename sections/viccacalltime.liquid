@@ -107,10 +107,7 @@
 
         <div class="vicca-calendar-wrapper">
           <div class="vicca-card">
-            <div class="vicca-cal-tabs">
-              <button class="vicca-cal-tab active" data-tab="morning" onclick="viccaSwitchTab(this, 'morning')">Mañana (09–14h)</button>
-              <button class="vicca-cal-tab" data-tab="afternoon" onclick="viccaSwitchTab(this, 'afternoon')">Tarde (15–17:15h)</button>
-            </div>
+            <h3 class="vicca-cal-heading">Agenda una llamada</h3>
             <div class="vicca-cal-embed" id="vicca-cal-container">
               <!-- Cal.com inline embed -->
               <div id="vicca-cal-inline" style="width:100%;height:100%;overflow:auto;"></div>
@@ -126,50 +123,58 @@
 
 <!-- Cal.com embed script -->
 <script>
-(function() {
-  var calUrl = "{{ section.settings.cal_embed_url | escape }}";
-  if (!calUrl) return;
-
-  // Load Cal.com embed script
-  (function (C, A, L) {
-    var p = function (a, ar) { a.q.push(ar); };
-    var d = C.document;
-    C.Cal = C.Cal || function () {
-      var cal = C.Cal;
-      var ar = arguments;
-      if (!cal.loaded) {
-        cal.ns = {};
-        cal.q = cal.q || [];
-        d.head.appendChild(d.createElement("script")).src = A;
-        cal.loaded = true;
-      }
-      if (ar[0] === L) {
-        var api = function () { p(api, arguments); };
-        var namespace = ar[1];
-        api.q = api.q || [];
-        if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar);
-        return;
-      }
-      p(cal, ar);
-    };
-  })(window, "https://app.cal.com/embed/embed.js", "init");
-
-  Cal("init", "vicca-booking", { origin: "https://app.cal.com" });
-  Cal.ns["vicca-booking"]("inline", {
-    elementOrSelector: "#vicca-cal-inline",
-    calLink: calUrl,
-    layout: "month_view",
-    config: {
-      theme: "light"
+(function (C, A, L) {
+  var p = function (a, ar) { a.q.push(ar); };
+  var d = C.document;
+  C.Cal = C.Cal || function () {
+    var cal = C.Cal;
+    var ar = arguments;
+    if (!cal.loaded) {
+      cal.ns = {};
+      cal.q = cal.q || [];
+      d.head.appendChild(d.createElement("script")).src = A;
+      cal.loaded = true;
     }
-  });
-  Cal.ns["vicca-booking"]("ui", {
-    theme: "light",
-    styles: { branding: { brandColor: "#ff914d" } },
-    hideEventTypeDetails: false,
-    layout: "month_view"
-  });
-})();
+    if (ar[0] === L) {
+      var api = function () { p(api, arguments); };
+      var namespace = ar[1];
+      api.q = api.q || [];
+      if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar);
+      return;
+    }
+    p(cal, ar);
+  };
+})(window, "https://app.cal.eu/embed/embed.js", "init");
+
+Cal("init", "vicca-booking", { origin: "https://app.cal.eu" });
+
+Cal.ns["vicca-booking"]("inline", {
+  elementOrSelector: "#vicca-cal-inline",
+  config: { "layout": "month_view", "theme": "light" },
+  calLink: "viccaagency/reunion-con-el-equipo-vicca"
+});
+
+Cal.ns["vicca-booking"]("ui", {
+  "theme": "light",
+  "hideEventTypeDetails": true,
+  "layout": "month_view",
+  "cssVarsPerTheme": {
+    "light": {
+      "cal-bg": "255,255,255",
+      "cal-text": "0,0,0",
+      "cal-text-emphasis": "0,0,0",
+      "cal-border-emphasis": "224,224,224",
+      "cal-text-default": "51,51,51",
+      "cal-border-default": "224,224,224",
+      "cal-border-subtle": "240,240,240",
+      "cal-bg-emphasis": "245,245,245",
+      "cal-bg-subtle": "250,250,250",
+      "cal-bg-muted": "255,255,255",
+      "cal-brand": "255,145,77"
+    }
+  },
+  styles: { branding: { brandColor: "#ff914d" } }
+});
 
 function viccaSwitchTab(el, tab) {
   document.querySelectorAll('.vicca-cal-tab').forEach(function(t) { t.classList.remove('active'); });
@@ -196,7 +201,7 @@ function viccaSwitchTab(el, tab) {
   }
 
   .vicca-main-section {
-    padding: 80px 0 100px 0;
+    padding: 100px 0 120px 0;
   }
 
   .vicca-container {
@@ -215,7 +220,7 @@ function viccaSwitchTab(el, tab) {
 
   .vicca-tagline {
     font-family: 'Playfair Display', serif;
-    font-size: 32px;
+    font-size: clamp(20px, 2vw, 26px);
     font-weight: 400;
     margin: 0;
     line-height: 1.2;
@@ -224,7 +229,7 @@ function viccaSwitchTab(el, tab) {
 
   .vicca-tagline-bold {
     font-family: 'Poppins', sans-serif;
-    font-size: 48px;
+    font-size: clamp(28px, 3vw, 38px);
     font-weight: 800;
     margin: 0;
     line-height: 1;
@@ -236,20 +241,21 @@ function viccaSwitchTab(el, tab) {
 
   .vicca-h2 {
     font-family: 'Poppins', sans-serif;
-    font-size: clamp(32px, 4vw, 52px);
+    font-size: clamp(22px, 2.2vw, 30px);
     font-weight: 900;
-    line-height: 1.1;
+    line-height: 1.2;
     margin-bottom: 24px;
     color: #000;
-    letter-spacing: -1px;
+    letter-spacing: -0.3px;
   }
 
   .vicca-h3 {
     font-family: 'Poppins', sans-serif;
-    font-size: clamp(18px, 2vw, 24px);
+    font-size: clamp(15px, 1.5vw, 19px);
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     color: #000;
+    line-height: 1.3;
   }
 
   .dot { color: #f28132; }
@@ -258,18 +264,18 @@ function viccaSwitchTab(el, tab) {
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
     color: #555;
-    line-height: 1.6;
-    margin-bottom: 16px;
+    line-height: 1.7;
+    margin-bottom: 20px;
     max-width: 520px;
   }
 
-  .vicca-list { list-style: none; padding: 0; margin-top: 32px; }
+  .vicca-list { list-style: none; padding: 0; margin-top: 40px; }
   .vicca-list li {
     display: flex;
     align-items: center;
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
     font-size: 16px;
     color: #000;
   }
@@ -294,40 +300,24 @@ function viccaSwitchTab(el, tab) {
     max-width: 480px;
     border-radius: 40px;
     padding: 30px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.06);
-    min-height: 500px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+    min-height: 680px;
     position: relative;
     z-index: 2;
+    border: none;
   }
 
-  .vicca-cal-tabs {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 16px;
-  }
-
-  .vicca-cal-tab {
-    flex: 1;
-    padding: 10px 16px;
-    border: 2px solid #eee;
-    background: #fff;
-    border-radius: 50px;
+  .vicca-cal-heading {
     font-family: 'Poppins', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    color: #666;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .vicca-cal-tab.active {
-    background: #f28132;
-    color: #fff;
-    border-color: #f28132;
+    font-size: 18px;
+    font-weight: 700;
+    color: #000;
+    margin: 0 0 16px 0;
+    text-align: center;
   }
 
   .vicca-cal-embed {
-    min-height: 400px;
+    min-height: 580px;
     border-radius: 20px;
     overflow: hidden;
   }
@@ -336,9 +326,9 @@ function viccaSwitchTab(el, tab) {
     text-align: center;
     font-family: 'Poppins', sans-serif;
     font-size: 13px;
-    color: #999;
+    color: #000;
     margin-top: 12px;
-    font-weight: 500;
+    font-weight: 600;
   }
 
   .vicca-typeform-wrapper {
@@ -379,5 +369,20 @@ function viccaSwitchTab(el, tab) {
     .vicca-tagline-bold { font-size: 32px; }
     .vicca-cal-tabs { flex-direction: column; }
     .vicca-cal-tab { text-align: center; }
+  }
+
+  @media (max-width: 480px) {
+    .vicca-container { padding: 0 16px; }
+    .vicca-top-bg { padding: 36px 0; }
+    .vicca-main-section { padding: 36px 0 48px 0; }
+    .vicca-h2 { font-size: 20px; }
+    .vicca-h3 { font-size: 15px; }
+    .vicca-desc p { font-size: 14px; }
+    .vicca-list li { font-size: 14px; }
+    .vicca-card { padding: 16px; border-radius: 24px; }
+    .vicca-cal-heading { font-size: 16px; }
+    .vicca-cal-embed { min-height: 400px; }
+    .vicca-tagline { font-size: 20px; }
+    .vicca-tagline-bold { font-size: 26px; }
   }
 </style>

@@ -141,7 +141,9 @@
   /* Desktop Styles */
   #section-{{ section.id }} {
     padding-top: {{ section.settings.padding_top }}px;
-    background-color: transparent; /* Allows section behind to show if any */
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    margin-bottom: 0;
+    background-color: transparent;
   }
 
   .vicca-section-wrapper {
@@ -160,8 +162,7 @@
     margin: 0 auto;
     display: flex;
     justify-content: center;
-    /* This creates the overlap into the black area */
-    margin-bottom: -60px; 
+    margin-bottom: 0;
     position: relative;
     z-index: 2;
   }
@@ -237,10 +238,11 @@
   }
 
   /* Black bottom section to create the cut-out look */
-  .vicca-black-spacer {
+  .vicca-black-spacer-{{ section.id }} {
       width: 100%;
-      height: 70px;
-      background-color: #1a1a1a; /* Dark background color */
+      height: 80px;
+      background-color: #1a1a1a;
+      margin-top: -40px;
       z-index: 1;
   }
 
@@ -248,18 +250,28 @@
   @media (max-width: 767px) {
     #section-{{ section.id }} {
       padding-top: {{ section.settings.padding_top_mobile }}px;
+      margin-bottom: 0;
     }
-    .vicca-main-container { 
-      margin-bottom: -40px; 
+    .vicca-main-container {
+      margin-bottom: 0;
     }
-    .vicca-floating-card { 
-        padding: 40px 20px; 
-        border-radius: 0 0 30px 30px; 
+    .vicca-floating-card {
+        padding: 40px 20px;
+        border-radius: 0 0 30px 30px;
     }
     .vicca-title { font-size: 22px; }
     .vicca-description { font-size: 14px; }
     .vicca-button { padding: 10px 24px; font-size: 14px; }
-    .vicca-black-spacer { height: 80px; }
+    .vicca-black-spacer-{{ section.id }} { height: 60px; margin-top: -30px; }
+  }
+
+  @media (max-width: 480px) {
+    .vicca-floating-card { padding: 32px 16px; border-radius: 0 0 24px 24px; }
+    .vicca-title { font-size: 20px; }
+    .vicca-description { font-size: 13px; }
+    .vicca-button { padding: 10px 20px; font-size: 13px; }
+    .vicca-footer-text { font-size: 11px; }
+    .vicca-black-spacer-{{ section.id }} { height: 50px; margin-top: -25px; }
   }
 </style>
 
@@ -288,9 +300,8 @@
     </div>
   </div>
 
+  <div class="vicca-black-spacer-{{ section.id }}"></div>
 </div>
-
-
 
 {% schema %}
 {

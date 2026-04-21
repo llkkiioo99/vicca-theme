@@ -105,7 +105,7 @@
         </select>
 
         <label class="aff-modal-label">Mensaje (opcional)</label>
-        <textarea id="signup-message" class="aff-modal-input" rows="3" style="resize:vertical; min-height:80px;"></textarea>
+        <textarea id="signup-message" class="aff-modal-input" rows="2" style="resize:vertical; min-height:50px;"></textarea>
 
         <div class="aff-modal-checkbox">
           <input type="checkbox" id="signup-consent" required>
@@ -131,16 +131,25 @@
 </div>
 
 <style>
+  /* Lock background scroll when modal is open */
+  body.vicca-modal-open {
+    overflow: hidden !important;
+    position: fixed;
+    width: 100%;
+    top: var(--vicca-scroll-y, 0);
+  }
+
   .vicca-modal-overlay {
     position: fixed;
     inset: 0;
     z-index: 10000;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
+    padding: 20px;
   }
 
   .vicca-modal-overlay.active {
@@ -151,7 +160,7 @@
   .vicca-modal-backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
   }
 
   .vicca-modal-panel {
@@ -159,153 +168,156 @@
     z-index: 1;
     background: #111;
     width: 100%;
-    max-width: 560px;
-    max-height: 90vh;
-    border-radius: 30px 30px 0 0;
-    transform: translateY(100%);
-    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    max-width: 480px;
+    max-height: 92vh;
+    border-radius: 24px;
+    transform: translateY(40px) scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .vicca-modal-overlay.active .vicca-modal-panel {
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 
   .vicca-modal-close {
-    position: absolute;
-    top: 18px;
-    right: 22px;
+    position: sticky;
+    top: 0;
+    align-self: flex-end;
     background: none;
     border: none;
-    font-size: 30px;
+    font-size: 28px;
     color: #fff;
     cursor: pointer;
     z-index: 2;
     line-height: 1;
     opacity: 0.7;
     transition: opacity 0.2s;
+    padding: 14px 18px 0 0;
   }
 
   .vicca-modal-close:hover { opacity: 1; }
 
   .vicca-modal-scroll {
-    overflow-y: auto;
-    padding: 48px 36px 36px;
-    -webkit-overflow-scrolling: touch;
+    padding: 8px 28px 28px;
   }
 
   /* Modal inner styles */
-  .aff-modal-header { text-align: center; margin-bottom: 28px; }
+  .aff-modal-header { text-align: center; margin-bottom: 16px; }
 
   .aff-modal-exclusive {
     font-family: 'Poppins', sans-serif;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
     color: #fff;
     opacity: 0.8;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
 
   .aff-modal-title {
     font-family: 'Poppins', sans-serif;
-    font-size: 32px;
+    font-size: 22px;
     font-weight: 900;
     color: #ff914d;
-    margin: 0 0 8px;
-    letter-spacing: -0.5px;
+    margin: 0 0 6px;
+    letter-spacing: -0.3px;
   }
 
   .aff-modal-subtitle {
     font-family: 'Poppins', sans-serif;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 600;
     color: #ff914d;
+    line-height: 1.4;
   }
 
   .aff-modal-alert {
     background: #ff914d;
     color: #fff;
-    padding: 24px;
-    border-radius: 20px;
-    margin-bottom: 32px;
+    padding: 16px;
+    border-radius: 14px;
+    margin-bottom: 20px;
     font-family: 'Poppins', sans-serif;
-    font-size: 13px;
-    line-height: 1.5;
+    font-size: 11px;
+    line-height: 1.4;
   }
 
   .aff-modal-alert strong {
     display: block;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 800;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
 
-  .aff-modal-alert p { margin-bottom: 14px; }
+  .aff-modal-alert p { margin-bottom: 8px; }
 
   .aff-modal-norm {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     font-weight: 700;
+    font-size: 11px;
   }
 
   .aff-modal-section-title {
     color: #ff914d;
     font-family: 'Poppins', sans-serif;
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 800;
-    margin: 28px 0 12px;
+    margin: 16px 0 8px;
   }
 
   .aff-modal-label {
     display: block;
     color: #ff914d;
     font-family: 'Poppins', sans-serif;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
   }
 
   .aff-modal-input {
     width: 100%;
-    padding: 14px 18px;
-    border-radius: 12px;
+    padding: 10px 14px;
+    border-radius: 10px;
     border: none;
     background: #fdfaf7;
-    margin-bottom: 18px;
+    margin-bottom: 10px;
     color: #000;
     font-family: 'Poppins', sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     box-sizing: border-box;
   }
 
   .aff-modal-checkbox {
     display: flex;
-    gap: 12px;
+    gap: 8px;
     font-family: 'Poppins', sans-serif;
-    font-size: 13px;
+    font-size: 11px;
     color: #ff914d;
     font-weight: 600;
-    margin-top: 24px;
+    margin-top: 12px;
     align-items: flex-start;
-    line-height: 1.4;
+    line-height: 1.3;
   }
 
-  .aff-modal-checkbox input { margin-top: 3px; transform: scale(1.2); flex-shrink: 0; }
+  .aff-modal-checkbox input { margin-top: 2px; transform: scale(1.1); flex-shrink: 0; }
   .aff-modal-checkbox strong { font-weight: 800; }
 
   .aff-modal-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 36px;
+    margin-top: 16px;
   }
 
   .aff-modal-back {
     font-family: 'Poppins', sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     color: #fff;
     font-weight: 700;
     background: none;
@@ -317,13 +329,13 @@
   .aff-modal-submit {
     background: #ff914d;
     color: #fff;
-    padding: 14px 36px;
+    padding: 12px 30px;
     border-radius: 50px;
     border: none;
     cursor: pointer;
     font-family: 'Poppins', sans-serif;
     font-weight: 800;
-    font-size: 14px;
+    font-size: 13px;
     transition: opacity 0.2s;
   }
 
@@ -331,46 +343,60 @@
 
   .aff-modal-success {
     font-family: 'Poppins', sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     color: #2ecc71;
     font-weight: 600;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 14px;
   }
 
   .aff-modal-error {
     font-family: 'Poppins', sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     color: #e74c3c;
     font-weight: 600;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 14px;
   }
 
   @media (max-width: 600px) {
-    .vicca-modal-panel { max-width: 100%; border-radius: 24px 24px 0 0; }
-    .vicca-modal-scroll { padding: 36px 20px 28px; }
-    .aff-modal-title { font-size: 26px; }
-    .aff-modal-footer { flex-direction: column-reverse; gap: 16px; }
+    .vicca-modal-overlay { padding: 12px; }
+    .vicca-modal-panel { max-width: 100%; border-radius: 20px; }
+    .vicca-modal-scroll { padding: 6px 20px 20px; }
+    .aff-modal-title { font-size: 20px; }
+    .aff-modal-footer { flex-direction: column-reverse; gap: 12px; }
     .aff-modal-submit { width: 100%; }
     .aff-modal-back { text-align: center; }
   }
 </style>
 
 <script>
+// Lock/unlock background scroll
+function viccaLockScroll() {
+  document.documentElement.style.setProperty('--vicca-scroll-y', '-' + window.scrollY + 'px');
+  document.body.classList.add('vicca-modal-open');
+}
+
+function viccaUnlockScroll() {
+  document.body.classList.remove('vicca-modal-open');
+  var scrollY = document.documentElement.style.getPropertyValue('--vicca-scroll-y');
+  document.documentElement.style.removeProperty('--vicca-scroll-y');
+  window.scrollTo(0, parseInt(scrollY || '0') * -1);
+}
+
 // Affiliate Modal (Ya soy afiliado)
 function viccaOpenAffiliateModal() {
   var modal = document.getElementById('vicca-affiliate-modal');
   modal.classList.add('active');
   modal.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
+  viccaLockScroll();
 }
 
 function viccaCloseAffiliateModal() {
   var modal = document.getElementById('vicca-affiliate-modal');
   modal.classList.remove('active');
   modal.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
+  viccaUnlockScroll();
 }
 
 // Signup Modal (Quiero afiliarme / Quiero recibir la info)
@@ -378,14 +404,14 @@ function viccaOpenSignupModal() {
   var modal = document.getElementById('vicca-signup-modal');
   modal.classList.add('active');
   modal.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
+  viccaLockScroll();
 }
 
 function viccaCloseSignupModal() {
   var modal = document.getElementById('vicca-signup-modal');
   modal.classList.remove('active');
   modal.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
+  viccaUnlockScroll();
 }
 
 // Affiliate form: populate body before submit

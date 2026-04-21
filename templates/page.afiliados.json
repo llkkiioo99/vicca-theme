@@ -1,0 +1,19 @@
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
+    },
+    "afiliados_page": {
+      "type": "vicca-afiliados-page",
+      "settings": {
+        "bg_color": "#fdf9f3"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "afiliados_page"
+  ]
+}
